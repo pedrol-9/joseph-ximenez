@@ -2,8 +2,61 @@
 
 import React from "react";
 import { BookOpen, MapPin, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export const Footer = () => {
+  const pathname = usePathname();
+
+  const renderNavigationLinks = () => {
+    if (pathname?.startsWith("/blog")) {
+      return (
+        <>
+          <h4 className="font-mono text-[#C1533B] text-[10px] tracking-[0.3em] uppercase mb-6">
+            Revista
+          </h4>
+          <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
+            <li><Link href="/blog" className="hover:text-[#C1533B] transition-colors">Portada Editorial</Link></li>
+            <li><Link href="/blog/hallazgo-folio-22" className="hover:text-[#C1533B] transition-colors">El Folio 22</Link></li>
+            <li><Link href="/blog/auto-de-fe-1688" className="hover:text-[#C1533B] transition-colors">La Inquisición</Link></li>
+            <li><Link href="/blog/ermitano-siglo-xvii" className="hover:text-[#C1533B] transition-colors">Vida Eremítica</Link></li>
+          </ul>
+        </>
+      );
+    }
+
+    if (pathname?.startsWith("/galeria")) {
+      return (
+        <>
+          <h4 className="font-mono text-[#C1533B] text-[10px] tracking-[0.3em] uppercase mb-6">
+            Colección
+          </h4>
+          <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
+            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">Exhibición Principal</Link></li>
+            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">Esculturas de Eduardo R.</Link></li>
+            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">Documentos Históricos</Link></li>
+            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">El Desierto de la Candelaria</Link></li>
+          </ul>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <h4 className="font-mono text-[#C1533B] text-[10px] tracking-[0.3em] uppercase mb-6">
+          La Historia
+        </h4>
+        <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
+          <li><Link href="/#inicio" className="hover:text-[#C1533B] transition-colors">El Origen</Link></li>
+          <li><Link href="/#pasado" className="hover:text-[#C1533B] transition-colors">Juventud y Sangre</Link></li>
+          <li><Link href="/#retiro" className="hover:text-[#C1533B] transition-colors">11 años de silencio</Link></li>
+          <li><Link href="/#hoguera" className="hover:text-[#C1533B] transition-colors">El Juicio Final</Link></li>
+          <li><Link href="/#legado" className="hover:text-[#C1533B] transition-colors">El Legado Actual</Link></li>
+        </ul>
+      </>
+    );
+  };
+
   return (
     <footer id="footer" className="bg-[#050505] text-[#E8E2D2] pt-24 pb-12 border-t border-[#C1533B]/10 z-40 relative">
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
@@ -26,18 +79,9 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Columna 2: Navegación */}
+        {/* Columna 2: Navegación Dinámica */}
         <div>
-          <h4 className="font-mono text-[#C1533B] text-[10px] tracking-[0.3em] uppercase mb-6">
-            La Historia
-          </h4>
-          <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
-            <li><a href="#inicio" className="hover:text-[#C1533B] transition-colors">El Origen</a></li>
-            <li><a href="#pasado" className="hover:text-[#C1533B] transition-colors">Juventud y Sangre</a></li>
-            <li><a href="#retiro" className="hover:text-[#C1533B] transition-colors">11 años de silencio</a></li>
-            <li><a href="#hoguera" className="hover:text-[#C1533B] transition-colors">El Juicio Final</a></li>
-            <li><a href="#legado" className="hover:text-[#C1533B] transition-colors">El Legado Actual</a></li>
-          </ul>
+          {renderNavigationLinks()}
         </div>
 
         {/* Columna 3: Información */}
