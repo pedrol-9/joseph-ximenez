@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const links = [
     { label: "Inicio", href: "/" },
@@ -27,11 +28,19 @@ export const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex gap-8 text-xs tracking-widest uppercase relative z-10" style={{ color: "rgba(221,216,207,0.4)" }}>
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-[#C1533B] transition-colors">
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
+            return (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className="hover:text-[#C1533B] transition-colors"
+                style={{ color: isActive ? "#C1533B" : "inherit" }}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile Hamburger Toggle */}
@@ -55,16 +64,20 @@ export const Navbar = () => {
             className="!fixed !inset-0 z-[9998] flex flex-col items-center justify-center bg-[#100F0D]"
           >
             <div className="flex flex-col items-center gap-8 text-sm tracking-widest uppercase" style={{ color: "rgba(221,216,207,0.8)" }}>
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="hover:text-[#C1533B] transition-colors p-4"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {links.map((link) => {
+                const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="hover:text-[#C1533B] transition-colors p-4"
+                    style={{ color: isActive ? "#C1533B" : "inherit" }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}
