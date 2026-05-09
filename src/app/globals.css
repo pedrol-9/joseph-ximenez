@@ -6,7 +6,7 @@
   --font-sans: var(--font-outfit), sans-serif;
   --font-serif: var(--font-playfair), serif;
   --font-accent: var(--font-courgette), cursive;
-  
+
   --color-terracotta: #C1533B;
   --color-terracotta-dark: #A8422B;
   --color-colonial: #F4F1EA;
@@ -49,7 +49,8 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(193, 83, 59, 0.4); /* #C1533B con opacidad */
+  background: rgba(193, 83, 59, 0.4);
+  /* #C1533B con opacidad */
   border-radius: 10px;
 }
 
