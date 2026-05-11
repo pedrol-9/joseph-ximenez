@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -8,7 +9,7 @@ const ACTIVE_COLOR = "#C1533B"; // Mantenemos el color terracota de la galería
 
 const artworks = [
   { 
-    id: "artista", 
+    id: "artista", // Sin foto por ahora
     year: "El Artista", 
     title: "@el_sr_rodriguez", 
     sub: "Perfil",
@@ -16,31 +17,61 @@ const artworks = [
     instagram: "https://www.instagram.com/el_sr_rodriguez/"
   },
   { 
-    id: "I", 
+    id: "obra_1_sf.png", 
     year: "Obra I", 
     title: "Título de la Obra I", 
     sub: "Técnica - Año",
-    body: "Aquí irá la descripción de la obra, qué representa en la vida de Joseph Ximénez o los detalles artísticos de la ilustración."
+    body: "Aquí irá la descripción de la primera obra, qué representa en la vida de Joseph Ximénez o los detalles artísticos de la ilustración."
   },
   { 
-    id: "II", 
-    year: "Obra II", 
+    id: "obra_2_sf.png", 
+    year: "Obra II (Sin Fondo)", 
     title: "Título de la Obra II", 
     sub: "Técnica - Año",
-    body: "Aquí irá la descripción de la obra, qué representa en la vida de Joseph Ximénez o los detalles artísticos de la ilustración."
+    body: "Esta es la versión de prueba sin fondo (SF) para evaluar cómo se integra el arte directamente con el color de la galería."
   },
   { 
-    id: "III", 
+    id: "obra_3_sf.png", 
     year: "Obra III", 
     title: "Título de la Obra III", 
     sub: "Técnica - Año",
-    body: "Aquí irá la descripción de la obra, qué representa en la vida de Joseph Ximénez o los detalles artísticos de la ilustración."
+    body: "Aquí irá la descripción de la tercera obra, qué representa en la vida de Joseph Ximénez o los detalles artísticos de la ilustración."
+  },
+  { 
+    id: "obra_4_sf.png", 
+    year: "Obra IV", 
+    title: "Título de la Obra IV", 
+    sub: "Técnica - Año",
+    body: "Aquí irá la descripción de la cuarta obra, qué representa en la vida de Joseph Ximénez o los detalles artísticos de la ilustración."
+  },
+  { 
+    id: "obra_5.png", 
+    year: "Obra V", 
+    title: "Título de la Obra V", 
+    sub: "Técnica - Año",
+    body: "Nota: Esta obra aún no tiene versión sin fondo (sf) subida, se muestra la original."
   }
 ];
 
 export function ArtShowcase() {
   const [active, setActive] = useState(0);
+  const [blobs, setBlobs] = useState<any[]>([]);
   const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await fetch('/api/artworks');
+        if (res.ok) {
+          const data = await res.json();
+          setBlobs(data.blobs || []);
+        }
+      } catch (err) {
+        console.error("Failed to fetch images", err);
+      }
+    };
+    fetchImages();
+  }, []);
 
   useEffect(() => {
     if (trackRef.current) {
@@ -141,15 +172,35 @@ export function ArtShowcase() {
               animate={{ opacity:1, scale: 1 }} 
               exit={{ opacity:0, scale: 1.02 }}
               transition={{ duration:0.4, ease:"easeOut" }}
-              className="flex-1 flex flex-col xl:flex-row p-6 md:p-12 gap-8 md:gap-12 overflow-y-auto custom-scrollbar"
+              className="flex-1 flex flex-col xl:flex-row p-6 md:p-8 gap-6 md:gap-8 overflow-y-auto custom-scrollbar"
             >
               
-              {/* Lado Izquierdo: IMAGEN (Placeholder) */}
+              {/* Lado Izquierdo: IMAGEN */}
               <div className="w-full xl:w-3/5 flex flex-col items-center justify-center">
-                <div className="w-full aspect-square md:aspect-video xl:aspect-square bg-[#1A1918] border border-white/10 rounded-xl flex flex-col items-center justify-center shadow-2xl relative overflow-hidden group">
-                  {/* Aquí irá la etiqueta <img src={artworks[active].imageUrl} /> cuando tengas las reales */}
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/10 mb-4 group-hover:scale-110 transition-transform duration-500"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                  <p className="text-white/20 font-mono text-sm tracking-widest uppercase">Espacio para Imagen</p>
+                <div className="w-full aspect-square md:aspect-square xl:aspect-square bg-[#1A1918] border border-white/10 rounded-xl flex flex-col items-center justify-center shadow-2xl relative overflow-hidden group">
+                  {(() => {
+                    const activeArtwork = artworks[active];
+                    // Busca la imagen que contenga exactamente el id (ej: "obra_1.png" o "obra_2_sf.png")
+                    const activeBlob = blobs.find((b: any) => b.pathname.toLowerCase().includes(activeArtwork.id.toLowerCase()));
+                    // Ya no usamos el índice de respaldo para que la de "artista" u otras sin imagen no tomen una equivocada
+                    const imageUrl = activeBlob ? activeBlob.url : null;
+
+                    return imageUrl ? (
+                      <Image 
+                        src={imageUrl} 
+                        alt={activeArtwork.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 60vw, 40vw"
+                        priority
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <>
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/10 mb-4 group-hover:scale-110 transition-transform duration-500"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                        <p className="text-white/20 font-mono text-sm tracking-widest uppercase">Cargando o Sin Imagen</p>
+                      </>
+                    );
+                  })()}
                   
                   {/* Decoración de marco */}
                   <div className="absolute inset-4 border border-white/5 pointer-events-none"></div>
@@ -158,15 +209,15 @@ export function ArtShowcase() {
 
               {/* Lado Derecho: INFORMACIÓN */}
               <div className="w-full xl:w-2/5 flex flex-col justify-center relative z-10">
-                <span className="block text-[10px] md:text-xs tracking-[0.3em] uppercase mb-4 font-bold" style={{ color: ACTIVE_COLOR }}>
+                <span className="block text-[10px] md:text-xs tracking-[0.3em] uppercase mb-2 md:mb-3 font-bold" style={{ color: ACTIVE_COLOR }}>
                   {artworks[active].year} · {artworks[active].sub}
                 </span>
                 
-                <h2 className="font-serif mb-6 leading-tight" style={{ fontSize:"clamp(32px,5vw,56px)", color:"#F4F1EA" }}>
+                <h2 className="font-serif mb-3 md:mb-4 leading-tight" style={{ fontSize:"clamp(32px,5vw,56px)", color:"#F4F1EA" }}>
                   {artworks[active].title}
                 </h2>
                 
-                <p className="text-base md:text-xl leading-relaxed font-light mb-8" style={{ color:"rgba(221,216,207,0.8)" }}>
+                <p className="text-base md:text-lg leading-relaxed font-light mb-6 md:mb-6" style={{ color:"rgba(221,216,207,0.8)" }}>
                   {artworks[active].body}
                 </p>
 

@@ -16,36 +16,36 @@ export default function BlogPage() {
     <>
       <Navbar />
       <div className="min-h-screen bg-[#F4F1EA] pt-32 pb-24 text-[#2B2A29] selection:bg-[#7A3B22] selection:text-[#F4F1EA]">
-        
+
         {/* HEADER */}
         <header className="mb-20 flex flex-col items-center text-center px-6">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             className="font-sans text-[10px] tracking-[0.4em] uppercase text-[#7A3B22] mb-6 font-bold"
           >
             Revista de Investigación e Historia
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             className="font-serif text-[clamp(3.5rem,8vw,7rem)] leading-[0.9] tracking-tight text-[#100F0D]"
           >
-            Ecos del <br/><span className="italic text-[#7A3B22]">Desierto</span>
+            Ecos del <br /><span className="italic text-[#7A3B22]">Desierto</span>
           </motion.h1>
           <motion.p
-             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-             className="mt-8 font-light text-[#2B2A29]/60 max-w-xl text-sm md:text-base"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+            className="mt-8 font-light text-[#2B2A29]/60 max-w-xl text-sm md:text-base"
           >
             Explorando el contexto histórico, la vida eremítica y los secretos inquisitoriales detrás de la vida de Joseph Ximénez (1632-1688).
           </motion.p>
         </header>
 
         <div className="max-w-7xl mx-auto px-6">
-          
+
           {/* MAIN FEATURE & SIDEBAR */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24 border-b border-[#2B2A29]/10 pb-24">
-            
+
             {/* MAIN ARTICLE */}
-            <motion.div 
+            <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-10%" }} variants={fadeUp}
               className="lg:col-span-8 group cursor-pointer"
             >
@@ -71,7 +71,7 @@ export default function BlogPage() {
             </motion.div>
 
             {/* SIDEBAR ARTICLES */}
-            <motion.div 
+            <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-10%" }} variants={fadeUp}
               className="lg:col-span-4 space-y-12 lg:border-l border-[#2B2A29]/10 lg:pl-12"
             >
@@ -84,7 +84,7 @@ export default function BlogPage() {
                   Aislarse en el Desierto de la Candelaria, alimentarse de raíces y dormir sobre tablas no era solo penitencia; era un acto de rebeldía espiritual que rozaba los límites del dogma permitido.
                 </p>
               </Link>
-              
+
               <div className="w-12 h-[1px] bg-[#2B2A29]/10" />
 
               <Link href="/blog/esculpiendo-silencio" className="group cursor-pointer block">
@@ -104,17 +104,17 @@ export default function BlogPage() {
             <div className="flex justify-between items-end mb-12 border-b border-[#2B2A29]/10 pb-4">
               <h3 className="font-serif text-3xl text-[#100F0D]">Más lecturas</h3>
               <span className="text-xs font-bold uppercase tracking-widest text-[#7A3B22] transition-colors flex items-center gap-1 opacity-50">
-                Archivo Histórico <ArrowRight size={14}/>
+                Archivo Histórico <ArrowRight size={14} />
               </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-              
+
               <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-10%" }} variants={fadeUp} className="group cursor-pointer">
                 <Link href="/blog/auto-de-fe-1688" className="block">
                   <div className="aspect-[4/3] bg-[#E8E2D2] mb-6 overflow-hidden rounded-sm relative">
-                     <div className="w-full h-full bg-[radial-gradient(circle_at_top_right,#E8E2D2,#D5CFC1)] group-hover:scale-105 transition-transform duration-700" />
-                     <div className="absolute inset-0 bg-[#2B2A29]/5" />
+                    <div className="w-full h-full bg-[radial-gradient(circle_at_top_right,#E8E2D2,#D5CFC1)] group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-[#2B2A29]/5" />
                   </div>
                   <div className="flex gap-4 items-baseline mb-3">
                     <span className="font-mono text-[10px] tracking-widest text-[#7A3B22] uppercase">Contexto Histórico</span>
@@ -130,8 +130,8 @@ export default function BlogPage() {
               <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-10%" }} variants={fadeUp} className="group cursor-pointer">
                 <Link href="/blog/frontera-mental-misticismo" className="block">
                   <div className="aspect-[4/3] bg-[#E8E2D2] mb-6 overflow-hidden rounded-sm relative">
-                     <div className="w-full h-full bg-[radial-gradient(circle_at_bottom_left,#E8E2D2,#D5CFC1)] group-hover:scale-105 transition-transform duration-700" />
-                     <div className="absolute inset-0 bg-[#2B2A29]/5" />
+                    <div className="w-full h-full bg-[radial-gradient(circle_at_bottom_left,#E8E2D2,#D5CFC1)] group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-[#2B2A29]/5" />
                   </div>
                   <div className="flex gap-4 items-baseline mb-3">
                     <span className="font-mono text-[10px] tracking-widest text-[#7A3B22] uppercase">Psicología y Fe</span>
@@ -151,38 +151,38 @@ export default function BlogPage() {
 
         {/* AUTHOR & BOOK PROMO SECTION */}
         <section className="bg-[#100F0D] text-[#E8E2D2] py-24 px-6 mt-12 relative overflow-hidden">
-           {/* Textura de fondo sutil */}
-           <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle,#E8E2D2_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }} />
-           
-           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <span className="font-sans text-[10px] text-[#C1533B] font-bold tracking-[0.3em] uppercase block mb-4">Sobre la Autora</span>
-                <h3 className="font-serif text-4xl mb-6 leading-tight">Patricia Enciso Patiño</h3>
-                <p className="font-light text-[#E8E2D2]/60 text-sm leading-relaxed mb-6">
-                  PhD en Historia Social por la Universidad Federal Fluminense (Río de Janeiro) y Magíster en Historia de la Universidad Nacional de Colombia. Ha dedicado gran parte de su vida a investigar archivos coloniales, rescatando del silencio historias perdidas en los márgenes de la Inquisición.
-                </p>
-                <div className="flex gap-4 items-center">
-                  <div className="w-10 h-[1px] bg-[#C1533B]" />
-                  <span className="font-mono text-xs text-[#E8E2D2]/40 italic">Investigadora Principal</span>
-                </div>
-              </motion.div>
+          {/* Textura de fondo sutil */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle,#E8E2D2_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }} />
 
-              <motion.div 
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="bg-[#1A1918] p-10 border border-[#E8E2D2]/10 flex flex-col items-center text-center rounded-sm"
-              >
-                <div className="bg-[#C1533B]/10 p-4 rounded-full mb-6">
-                  <BookOpen className="text-[#C1533B]" size={32} />
-                </div>
-                <h4 className="font-serif text-2xl mb-4">Del desierto a la hoguera</h4>
-                <p className="font-light text-sm text-[#E8E2D2]/50 mb-8 max-w-sm">
-                  Adquiere el libro completo y sumérgete en los folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
-                </p>
-                <button className="w-full md:w-auto px-8 py-4 bg-[#E8E2D2] text-[#100F0D] text-xs font-bold uppercase tracking-widest hover:bg-[#C1533B] hover:text-[#E8E2D2] transition-colors rounded-sm">
-                  Comprar Libro
-                </button>
-              </motion.div>
-           </div>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="font-sans text-[10px] text-[#C1533B] font-bold tracking-[0.3em] uppercase block mb-4">Sobre la Autora</span>
+              <h3 className="font-serif text-4xl mb-6 leading-tight">Patricia Enciso Patiño</h3>
+              <p className="font-light text-[#E8E2D2]/60 text-sm leading-relaxed mb-6">
+                PhD en Historia Social por la Universidad Federal Fluminense (Río de Janeiro) y Magíster en Historia de la Universidad Nacional de Colombia. Ha dedicado gran parte de su vida a investigar archivos coloniales, rescatando del silencio historias perdidas en los márgenes de la Inquisición.
+              </p>
+              <div className="flex gap-4 items-center">
+                <div className="w-10 h-[1px] bg-[#C1533B]" />
+                <span className="font-mono text-xs text-[#E8E2D2]/40 italic">Investigadora Principal</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="bg-[#1A1918] p-10 border border-[#E8E2D2]/10 flex flex-col items-center text-center rounded-sm"
+            >
+              <div className="bg-[#C1533B]/10 p-4 rounded-full mb-6">
+                <BookOpen className="text-[#C1533B]" size={32} />
+              </div>
+              <h4 className="font-serif text-2xl mb-4">Del desierto a la hoguera</h4>
+              <p className="font-light text-sm text-[#E8E2D2]/50 mb-8 max-w-sm">
+                Adquiere el libro completo y sumérgete en los folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
+              </p>
+              <button className="w-full md:w-auto px-8 py-4 bg-[#E8E2D2] text-[#100F0D] text-xs font-bold uppercase tracking-widest hover:bg-[#C1533B] hover:text-[#E8E2D2] transition-colors rounded-sm">
+                Comprar Libro
+              </button>
+            </motion.div>
+          </div>
         </section>
 
       </div>
