@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 };
 
 // src/app/layout.tsx
+import { Navbar } from "@/layout/Navbar";
+import { Footer } from "@/layout/Footer";
 
 export default function RootLayout({
   children,
@@ -39,7 +41,9 @@ export default function RootLayout({
       className={`${playfair.variable} ${outfit.variable} ${courgette.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-[#100F0D] text-[#DDD8CF]">
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

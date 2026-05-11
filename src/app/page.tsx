@@ -7,8 +7,6 @@ import Retiro from "@/app/(home)/components/Retiro";
 import Hoguera from "@/app/(home)/components/Hoguera";
 import Legado from "@/app/(home)/components/Legado";
 import { TimelineSidebar } from "@/app/(home)/components/TimelineSidebar";
-import { Navbar } from "@/layout/Navbar";
-import { Footer } from "@/layout/Footer";
 
 export default function HomePage() {
   useEffect(() => {
@@ -19,7 +17,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen font-sans overflow-x-hidden selection:bg-[#C1533B] selection:text-[#100F0D]" style={{ background: "#100F0D", color: "#DDD8CF" }}>
 
-      <Navbar />
       <TimelineSidebar />
 
       {/* Actos de la Narrativa */}
@@ -28,8 +25,6 @@ export default function HomePage() {
       <Retiro />
       <Hoguera />
       <Legado />
-
-      <Footer />
 
     </main>
   );
