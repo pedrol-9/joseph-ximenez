@@ -103,7 +103,7 @@ export default function Pasado() {
             El eco de <em className="text-[#C1533B] italic">la violencia.</em>
           </h2>
           <p className="text-[#E8E2D2]/50 text-lg max-w-xl font-light">
-            Antes de ser místico, fue un hombre acorralado por sus propios demonios y errores.
+            Antes de ser místico, fue un hombre acorralado por sus propias sombras y contradicciones.
           </p>
         </motion.div>
 
