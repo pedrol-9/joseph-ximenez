@@ -6,9 +6,18 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export const Footer = () => {
+  const [activeLink, setActiveLink] = React.useState("");
   const pathname = usePathname();
 
+  const isActive = (href: string) => activeLink === href;
+
+  // Sincronizar el link activo con la ruta actual al cargar o cambiar de página
+  React.useEffect(() => {
+    setActiveLink(window.location.pathname + window.location.hash);
+  }, [pathname]);
+
   const renderNavigationLinks = () => {
+
     if (pathname?.startsWith("/blog")) {
       return (
         <>
@@ -16,10 +25,10 @@ export const Footer = () => {
             Revista
           </h4>
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
-            <li><Link href="/blog" className="hover:text-[#C1533B] transition-colors">Portada Editorial</Link></li>
-            <li><Link href="/blog/hallazgo-folio-22" className="hover:text-[#C1533B] transition-colors">El Folio 22</Link></li>
-            <li><Link href="/blog/auto-de-fe-1688" className="hover:text-[#C1533B] transition-colors">La Inquisición</Link></li>
-            <li><Link href="/blog/ermitano-siglo-xvii" className="hover:text-[#C1533B] transition-colors">Vida Eremítica</Link></li>
+            <li><Link href="/blog" onClick={() => setActiveLink("/blog")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog") ? "#C1533B" : "inherit" }}>Portada Editorial</Link></li>
+            <li><Link href="/blog/hallazgo-folio-22" onClick={() => setActiveLink("/blog/hallazgo-folio-22")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog/hallazgo-folio-22") ? "#C1533B" : "inherit" }}>El Folio 22</Link></li>
+            <li><Link href="/blog/auto-de-fe-1688" onClick={() => setActiveLink("/blog/auto-de-fe-1688")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog/auto-de-fe-1688") ? "#C1533B" : "inherit" }}>La Inquisición</Link></li>
+            <li><Link href="/blog/ermitano-siglo-xvii" onClick={() => setActiveLink("/blog/ermitano-siglo-xvii")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog/ermitano-siglo-xvii") ? "#C1533B" : "inherit" }}>Vida Eremítica</Link></li>
           </ul>
         </>
       );
@@ -32,10 +41,9 @@ export const Footer = () => {
             Colección
           </h4>
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
-            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">Exhibición Principal</Link></li>
-            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">Esculturas de Eduardo R.</Link></li>
-            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">Documentos Históricos</Link></li>
-            <li><Link href="/galeria" className="hover:text-[#C1533B] transition-colors">El Desierto de la Candelaria</Link></li>
+            <li><Link href="/galeria#ermitanos" onClick={() => setActiveLink("/galeria#ermitanos")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#ermitanos") ? "#C1533B" : "inherit" }}>Ermitaños de la Historia</Link></li>
+            <li><Link href="/galeria#arte" onClick={() => setActiveLink("/galeria#arte")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#arte") ? "#C1533B" : "inherit" }}>Exhibición de Arte</Link></li>
+            <li><Link href="/galeria" onClick={() => setActiveLink("/galeria")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li>
           </ul>
         </>
       );
@@ -47,11 +55,11 @@ export const Footer = () => {
           La Historia
         </h4>
         <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
-          <li><Link href="/#inicio" className="hover:text-[#C1533B] transition-colors">El Origen</Link></li>
-          <li><Link href="/#pasado" className="hover:text-[#C1533B] transition-colors">Juventud y Sangre</Link></li>
-          <li><Link href="/#retiro" className="hover:text-[#C1533B] transition-colors">11 años de silencio</Link></li>
-          <li><Link href="/#hoguera" className="hover:text-[#C1533B] transition-colors">El Juicio Final</Link></li>
-          <li><Link href="/#legado" className="hover:text-[#C1533B] transition-colors">El Legado Actual</Link></li>
+          <li><Link href="/#inicio" onClick={() => setActiveLink("/#inicio")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/#inicio") ? "#C1533B" : "inherit" }}>El Origen</Link></li>
+          <li><Link href="/#pasado" onClick={() => setActiveLink("/#pasado")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/#pasado") ? "#C1533B" : "inherit" }}>Juventud y Sangre</Link></li>
+          <li><Link href="/#retiro" onClick={() => setActiveLink("/#retiro")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/#retiro") ? "#C1533B" : "inherit" }}>11 años de silencio</Link></li>
+          <li><Link href="/#hoguera" onClick={() => setActiveLink("/#hoguera")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/#hoguera") ? "#C1533B" : "inherit" }}>El Juicio Final</Link></li>
+          <li><Link href="/#legado" onClick={() => setActiveLink("/#legado")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/#legado") ? "#C1533B" : "inherit" }}>El Legado Actual</Link></li>
         </ul>
       </>
     );
@@ -110,8 +118,8 @@ export const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 md:px-12 pt-8 border-t border-[#E8E2D2]/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[#E8E2D2]/30 text-xs">
         <p>© {new Date().getFullYear()} Proyecto Joseph Ximénez. Todos los derechos reservados.</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-[#E8E2D2]/80 transition-colors">Políticas de Privacidad</a>
-          <a href="#" className="hover:text-[#E8E2D2]/80 transition-colors">Términos Legales</a>
+          <Link href="/privacidad" className="hover:text-[#E8E2D2]/80 transition-colors" style={{ color: isActive("/privacidad") ? "#C1533B" : "inherit" }}>Políticas de Privacidad</Link>
+          <Link href="/terminos" className="hover:text-[#E8E2D2]/80 transition-colors" style={{ color: isActive("/terminos") ? "#C1533B" : "inherit" }}>Términos Legales</Link>
         </div>
       </div>
     </footer>
