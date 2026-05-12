@@ -85,7 +85,7 @@ export function ArtShowcase() {
   }, [active]);
 
   return (
-    <section className="w-full font-sans flex flex-col min-h-[80vh]" style={{ background:"#100F0D", color:"#DDD8CF" }}>
+    <section id="arte" className="w-full font-sans flex flex-col min-h-[80vh]" style={{ background:"#100F0D", color:"#DDD8CF" }}>
       
       {/* Título de la Sección */}
       <div className="py-12 px-6 text-center border-b border-white/5">
