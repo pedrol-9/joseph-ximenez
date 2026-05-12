@@ -1,8 +1,6 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Navbar } from "@/layout/Navbar";
-import { Footer } from "@/layout/Footer";
 import { ChevronRight, ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
 
@@ -14,7 +12,6 @@ const fadeUp: Variants = {
 export default function BlogPage() {
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-[#F4F1EA] pt-32 pb-24 text-[#2B2A29] selection:bg-[#7A3B22] selection:text-[#F4F1EA]">
 
         {/* HEADER */}
@@ -61,7 +58,7 @@ export default function BlogPage() {
                     El hallazgo del Folio 22: Un proceso inquisitorial olvidado
                   </h2>
                   <p className="font-light text-lg text-[#2B2A29]/80 leading-relaxed max-w-2xl mb-6">
-                    Durante siglos, la historia oficial silenció el destino de un ermitaño que escribió 29 cuadernos bajo "dictado divino". El descubrimiento de los archivos secretos de la Inquisición de Cartagena de Indias en Madrid abrió la puerta a una historia de herejía y martirio.
+                    Durante siglos, la historia oficial silenció el destino de un ermitaño que escribió 29 cuadernos bajo "dictado divino". El descubrimiento de los archivos secretos de la Inquisición de Cartagena de Indias en Madrid abrió la puerta a una historia de iluminación, herejía y martirio.
                   </p>
                   <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#7A3B22] group-hover:translate-x-2 transition-transform">
                     Leer artículo completo <ChevronRight size={14} />
@@ -81,7 +78,7 @@ export default function BlogPage() {
                   ¿Qué significaba ser un ermitaño en el siglo XVII?
                 </h3>
                 <p className="font-light text-sm text-[#2B2A29]/70 leading-relaxed">
-                  Aislarse en el Desierto de la Candelaria, alimentarse de raíces y dormir sobre tablas no era solo penitencia; era un acto de rebeldía espiritual que rozaba los límites del dogma permitido.
+                  Aislarse en el Desierto de la Candelaria, alimentarse de raíces y frutos silvestres y dormir sobre tablas no era solo penitencia, era un acto de liberación espiritual que rozaba los límites del dogma permitido.
                 </p>
               </Link>
 
@@ -186,7 +183,6 @@ export default function BlogPage() {
         </section>
 
       </div>
-      <Footer />
     </>
   );
 }

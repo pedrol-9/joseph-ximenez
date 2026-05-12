@@ -2,8 +2,6 @@
 
 import { use } from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/layout/Navbar";
-import { Footer } from "@/layout/Footer";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { blogArticles } from "@/data/blogData";
@@ -19,7 +17,6 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
   return (
     <>
-      <Navbar />
       <main className="min-h-screen bg-[#F4F1EA] pt-32 pb-24 text-[#2B2A29] selection:bg-[#7A3B22] selection:text-[#F4F1EA]">
         <article className="max-w-3xl mx-auto px-6">
           
@@ -63,7 +60,6 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
         </article>
       </main>
-      <Footer />
     </>
   );
 }

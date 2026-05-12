@@ -6,7 +6,7 @@ export const blogArticles = [
     date: "Madrid, 1995",
     readTime: "6 min de lectura",
     content: [
-      "Durante siglos, la historia oficial silenció el destino de un ermitaño que escribió 29 cuadernos bajo 'dictado divino'. El descubrimiento de los archivos secretos de la Inquisición de Cartagena de Indias en Madrid abrió la puerta a una historia de herejía y martirio.",
+      "Durante siglos, la historia oficial silenció el destino de un ermitaño que escribió 29 cuadernos bajo 'dictado divino'. El descubrimiento de los archivos secretos de la Inquisición de Cartagena de Indias en Madrid abrió la puerta a una historia de iluminación, herejía y martirio.",
       "Todo comenzó cuando Patricia Enciso, durante su investigación en el Archivo Histórico Nacional de Madrid, se topó con el Legajo 1622. Allí, en el Folio 22, aparecía el nombre de Joseph Ximénez, un personaje que escapaba a todas las categorías convencionales del siglo XVII neogranadino.",
       "El documento, escrito en 1676, fue el resultado de una pesquisa que respondía a una acusación del cura doctrinero de Oicatá, Agustín de Tovar. Tovar declaró haberlo visitado para ganarse su amistad por la fama de santo que tenía en la región. En la humilde choza observó que tenía muchos cuadernos escritos con reflexiones que dijo eran dictadas por Dios.",
       "Joseph Ximénez no era un hombre de poder, ni un político. Era un espíritu libre que se creía un instrumento divino. Este hallazgo fue el punto de partida del libro 'Del desierto a la hoguera', que busca sacarlo del silencio y la oscuridad a la que fue condenado."
@@ -19,7 +19,7 @@ export const blogArticles = [
     date: "Desierto de la Candelaria",
     readTime: "8 min de lectura",
     content: [
-      "Aislarse en el Desierto de la Candelaria, alimentarse de raíces y dormir sobre tablas no era solo penitencia; era un acto de rebeldía espiritual que rozaba los límites del dogma permitido.",
+      "Aislarse en el Desierto de la Candelaria, alimentarse de raíces y frutos silvestres y dormir sobre tablas no era solo penitencia, era un acto de liberación espiritual que rozaba los límites del dogma permitido.",
       "Cuando Joseph Ximénez se retiró al desierto tenía 33 años. De algún modo, buscaba un paralelismo entre su vida y la de Jesús. Era su modelo. Permaneció en el desierto once años, entre 1665 y 1676, cuando fue apresado.",
       "Milagrosamente apareció un pájaro que se le puso delante y le indicó el sitio donde formó su bohío. Con algunos maderos armó un camastro sobre el que dormía sin cubrirse, aun las noches más frías. Talló con palo bruto unos asientos y una mesita donde pasaba largas horas escribiendo. Había aprendido a deletrear y a escribir allí mismo. Todo su vestuario consistía en dos hábitos viejos y rotos de sayal.",
       "El convento de la Candelaria llamaba especialmente su atención por haber sido fundado por un grupo de ermitaños que fueron a vivir al desierto para orar. Sin embargo, Joseph llevó esta práctica al extremo: al sentir que había alcanzado el estado de 'unión con Dios', dejó de ir a confesarse, considerando que ya no necesitaba intermediarios, lo que despertó el recelo mortal de los inquisidores."
@@ -32,9 +32,9 @@ export const blogArticles = [
     date: "Ráquira, Boyacá",
     readTime: "4 min de lectura",
     content: [
-      "El artista Eduardo Rodríguez, vecino de Ráquira, ha creado una escultura tridimensional que le devuelve el rostro al místico, reivindicando su figura como mártir del desierto.",
+      "El artista Eduardo Rodríguez, vecino de Ráquira, ha creado una escultura con anverso y reverso para representar los dos períodos místicos de su vida: 11 años en el Desierto y 11 años en el Calabozo.",
       "El resurgir de la figura de Joseph Ximénez está abriendo una veta de trabajo colectivo y de creación artística e histórica muy interesante entre los vecinos del desierto y otros interesados en el tema.",
-      "La escultura, elaborada con gran sensibilidad, nos presenta su imagen tridimensional como una reparación a su memoria. Considerando que padeció terribles sufrimientos y una muerte espantosa en defensa de sus creencias espirituales, esta obra de arte se convierte en un símbolo de resistencia.",
+      "La escultura, elaborada con gran sensibilidad, nos presenta su imagen como una reparación a su memoria. Considerando que padeció terribles sufrimientos y una muerte espantosa en defensa de sus creencias espirituales, esta obra de arte se convierte en un símbolo de resistencia.",
       "Es el momento de reparar su memoria, y hacerlo no solo por medio del libro, sino en un proyecto colectivo alrededor del arte, la cultura local y la educación en la región."
     ]
   },

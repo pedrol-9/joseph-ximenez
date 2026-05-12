@@ -64,8 +64,8 @@ export default function Pasado() {
     {
       year: "Circa 1660",
       location: "Málaga",
-      title: "El crimen y la sangre.",
-      text: "Un altercado selló su destino. Con una navaja le cortó el rostro a una mujer llamada Ana y disparó un arcabuz contra el hermano de ella. Perseguido por la justicia, se convirtió en prófugo."
+      title: "El punto de quiebre.",
+      text: "Un confuso y violento altercado selló su destino. En medio de una riña desesperada, hirió a una mujer llamada Ana y se enfrentó al hermano de esta para lograr escapar. Temiendo por su vida y perseguido por la justicia, se vio obligado a convertirse en prófugo."
     },
     {
       year: "1661",

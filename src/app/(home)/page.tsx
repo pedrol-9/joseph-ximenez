@@ -7,8 +7,6 @@ import Retiro from "./components/Retiro";
 import Hoguera from "./components/Hoguera";
 import Legado from "./components/Legado";
 import { InteractiveMap } from "./components/InteractiveMap";
-import { Navbar } from "@/layout/Navbar";
-import { Footer } from "@/layout/Footer";
 import { TimelineSidebar } from "@/app/(home)/components/TimelineSidebar";
 
 export default function HomePage() {
@@ -18,24 +16,19 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen font-sans overflow-x-hidden selection:bg-[#C1533B] selection:text-[#100F0D]" style={{ background: "#100F0D", color: "#DDD8CF" }}>
-        
-        <TimelineSidebar />
+    <main className="min-h-screen font-sans overflow-x-hidden selection:bg-[#C1533B] selection:text-[#100F0D]" style={{ background: "#100F0D", color: "#DDD8CF" }}>
+      
+      <TimelineSidebar />
 
-        {/* Actos de la Narrativa */}
-        <Inicio />
-        <Pasado />
-        <Retiro />
-        <Hoguera />
-        <Legado />
-        
-        <InteractiveMap />
-        
-        <Footer />
+      {/* Actos de la Narrativa */}
+      <Inicio />
+      <Pasado />
+      <Retiro />
+      <Hoguera />
+      <Legado />
+      
+      <InteractiveMap />
 
-      </main>
-    </>
+    </main>
   );
 }

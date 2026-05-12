@@ -77,7 +77,7 @@ export const CardCarousel = () => {
         </div>
 
         {/* Galería Stack */}
-        <div className="relative w-full max-w-sm md:max-w-md h-[450px] md:h-[500px] perspective-[1000px]">
+        <div className="relative w-full max-w-sm md:max-w-md h-[450px] md:h-[500px] perspective-[1000px] mb-24 md:mb-0">
           <AnimatePresence>
             {cards.map((card, index) => {
               // Calculamos estilos basados en la posición de la carta en el array
