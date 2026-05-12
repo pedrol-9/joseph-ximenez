@@ -3,6 +3,7 @@
 import React from "react";
 import { CardCarousel } from "./components/CardCarousel";
 import { ArtShowcase } from "./components/ArtShowcase";
+import { MysticBook } from "./components/MysticBook";
 
 export default function GaleriaPage() {
   return (
@@ -11,6 +12,9 @@ export default function GaleriaPage() {
         <CardCarousel />
       </div>
       <ArtShowcase />
+      <div className="w-full border-t border-white/5" />
+      <MysticBook />
+
     </main>
   );
 }

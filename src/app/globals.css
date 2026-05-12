@@ -63,3 +63,32 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(193, 83, 59, 0.4) transparent;
 }
+
+/* ── MysticBook page-flip keyframes ──────────────────────────────────────── */
+@keyframes flipRightOut {
+  from { transform: perspective(1400px) rotateY(0deg);   }
+  to   { transform: perspective(1400px) rotateY(-90deg); }
+}
+@keyframes flipRightIn {
+  from { transform: perspective(1400px) rotateY(90deg);  }
+  to   { transform: perspective(1400px) rotateY(0deg);   }
+}
+@keyframes flipLeftOut {
+  from { transform: perspective(1400px) rotateY(0deg);  }
+  to   { transform: perspective(1400px) rotateY(90deg); }
+}
+@keyframes flipLeftIn {
+  from { transform: perspective(1400px) rotateY(-90deg); }
+  to   { transform: perspective(1400px) rotateY(0deg);  }
+}
+
+.flip-right-out { animation: flipRightOut 0.25s ease-in  forwards; transform-origin: left  center; }
+.flip-right-in  { animation: flipRightIn  0.25s ease-out forwards; transform-origin: left  center; }
+.flip-left-out  { animation: flipLeftOut  0.25s ease-in  forwards; transform-origin: right center; }
+.flip-left-in   { animation: flipLeftIn   0.25s ease-out forwards; transform-origin: right center; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
