@@ -5,6 +5,8 @@ import { BookOpen, MapPin, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+import { blogArticles } from "@/data/blogData";
+
 export const Footer = () => {
   const [activeLink, setActiveLink] = React.useState("");
   const pathname = usePathname();
@@ -25,10 +27,28 @@ export const Footer = () => {
             Revista
           </h4>
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
-            <li><Link href="/blog" onClick={() => setActiveLink("/blog")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog") ? "#C1533B" : "inherit" }}>Portada Editorial</Link></li>
-            <li><Link href="/blog/hallazgo-folio-22" onClick={() => setActiveLink("/blog/hallazgo-folio-22")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog/hallazgo-folio-22") ? "#C1533B" : "inherit" }}>El Folio 22</Link></li>
-            <li><Link href="/blog/auto-de-fe-1688" onClick={() => setActiveLink("/blog/auto-de-fe-1688")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog/auto-de-fe-1688") ? "#C1533B" : "inherit" }}>La Inquisición</Link></li>
-            <li><Link href="/blog/ermitano-siglo-xvii" onClick={() => setActiveLink("/blog/ermitano-siglo-xvii")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/blog/ermitano-siglo-xvii") ? "#C1533B" : "inherit" }}>Vida Eremítica</Link></li>
+            <li>
+              <Link 
+                href="/blog" 
+                onClick={() => setActiveLink("/blog")} 
+                className="hover:text-[#C1533B] transition-colors" 
+                style={{ color: isActive("/blog") ? "#C1533B" : "inherit" }}
+              >
+                Portada Editorial
+              </Link>
+            </li>
+            {blogArticles.map((article) => (
+              <li key={article.slug}>
+                <Link 
+                  href={`/blog/${article.slug}`} 
+                  onClick={() => setActiveLink(`/blog/${article.slug}`)} 
+                  className="hover:text-[#C1533B] transition-colors" 
+                  style={{ color: isActive(`/blog/${article.slug}`) ? "#C1533B" : "inherit" }}
+                >
+                  {article.title.split(":")[0]}
+                </Link>
+              </li>
+            ))}
           </ul>
         </>
       );
