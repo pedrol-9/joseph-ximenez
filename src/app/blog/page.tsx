@@ -16,7 +16,7 @@ const articleImages: Record<string, string> = {
   "auto-de-fe-1688": "/blog/autodefe.png",
   "frontera-mental-misticismo": "/blog/misticismo.png",
   "ermitano-siglo-xvii": "/blog/candelaria.png",
-  "esculpiendo-silencio": "/blog/escultura.png",
+  "esculpiendo-silencio": "/blog/rostro-joseph.jpeg",
   "meditadores-del-desierto": "/blog/meditadores.jpg",
   "la-senal-del-pajaro": "/blog/pajaro.png",
   "palacio-inquisicion-cartagena": "/blog/tribunal.png",
@@ -91,7 +91,7 @@ export default function BlogPage() {
             {/* GRID OF REMAINING ARTICLES */}
             {regularArticles.length > 0 && (
               <div className="mb-24">
-                <div className="flex justify-between items-end mb-12 border-b border-[#2B2A29]/10 pb-4">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 border-b border-[#2B2A29]/10 pb-4 gap-2 md:gap-0">
                   <h3 className="font-serif text-3xl text-[#100F0D]">Archivo Histórico</h3>
                   <span className="text-xs font-bold uppercase tracking-widest text-[#2B2A29]/40 flex items-center gap-1">
                     {regularArticles.length} {regularArticles.length === 1 ? 'artículo' : 'artículos'}

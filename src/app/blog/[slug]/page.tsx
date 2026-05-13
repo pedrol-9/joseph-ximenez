@@ -12,7 +12,7 @@ const articleImages: Record<string, string> = {
   "auto-de-fe-1688": "/blog/autodefe.png",
   "frontera-mental-misticismo": "/blog/misticismo.png",
   "ermitano-siglo-xvii": "/blog/candelaria.png",
-  "esculpiendo-silencio": "/blog/escultura.png",
+  "esculpiendo-silencio": "/blog/rostro-joseph.jpeg",
   "meditadores-del-desierto": "/blog/meditadores.jpg",
   "la-senal-del-pajaro": "/blog/pajaro.png",
   "palacio-inquisicion-cartagena": "/blog/tribunal.png",
