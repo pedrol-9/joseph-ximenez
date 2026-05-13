@@ -192,8 +192,14 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* GRADIENT TRANSITION TO FOOTER */}
-      <div className="w-full h-12 bg-gradient-to-b from-[#F4F1EA] to-[#100F0D]" />
+      {/* EXACT USER WAVE */}
+      {/* EXACT USER WAVE - NO CROP, RESPONSIVE HEIGHT */}
+      <div className="w-full overflow-hidden leading-[0] bg-[#F4F1EA] relative -mb-[2px] z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" className="block w-full h-[100px] md:h-[200px] lg:h-[320px]">
+          <path fill="#050505" fillOpacity="1" d="M0,96L48,96C96,96,192,96,288,112C384,128,480,160,576,160C672,160,768,128,864,128C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <div className="w-full h-[5px] bg-[#050505] -mt-[1px]" />
+      </div>
 
     </div>
   );
