@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
     qualities: [75, 85],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '*.public.blob.vercel-storage.com',
-        port: '',
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+        port: "",
       },
     ],
   },
@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
   },
   onDemandEntries: {
     maxInactiveAge: 15 * 1000, // Keep compiled pages in memory for only 15 seconds
-    pagesBufferLength: 1,      // Keep only 1 compiled page in memory buffer
+    pagesBufferLength: 1, // Keep only 1 compiled page in memory buffer
   },
 };
 

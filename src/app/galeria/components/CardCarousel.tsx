@@ -2,13 +2,21 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Image as ImageIcon, RotateCcw, MoveHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Image as ImageIcon,
+  RotateCcw,
+  MoveHorizontal,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { CARDS } from "@/data/galeriaData";
 
 export const CardCarousel = () => {
   const [cards, setCards] = useState(CARDS);
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
-  const [animatingDir, setAnimatingDir] = useState<"left" | "right" | null>(null);
+  const [animatingDir, setAnimatingDir] = useState<"left" | "right" | null>(
+    null,
+  );
   const [isMobile, setIsMobile] = useState(false);
 
   React.useEffect(() => {
@@ -20,7 +28,7 @@ export const CardCarousel = () => {
 
   const handleNext = () => {
     if (animatingDir) return;
-    setAnimatingDir("left");
+    setAnimatingDir("right");
     setTimeout(() => {
       setCards((prevCards) => {
         const newArray = [...prevCards];
@@ -34,7 +42,7 @@ export const CardCarousel = () => {
 
   const handlePrev = () => {
     if (animatingDir) return;
-    setAnimatingDir("right");
+    setAnimatingDir("left");
     setTimeout(() => {
       setCards((prevCards) => {
         const newArray = [...prevCards];
@@ -47,26 +55,32 @@ export const CardCarousel = () => {
   };
 
   const toggleFlip = (id: number) => {
-    setFlippedCards(prev => ({
+    setFlippedCards((prev) => ({
       ...prev,
-      [id]: !prev[id]
+      [id]: !prev[id],
     }));
   };
 
   return (
     <>
       {/* Atmósfera similar a /demo */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{ backgroundImage: "radial-gradient(circle,#DDD8CF 1px,transparent 1px)", backgroundSize: "28px 28px" }} 
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle,#DDD8CF 1px,transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
       />
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
-        style={{ background: "radial-gradient(circle,#C1533B 0%,transparent 70%)" }} 
+        style={{
+          background: "radial-gradient(circle,#C1533B 0%,transparent 70%)",
+        }}
       />
 
       {/* Contenedor principal de las cartas */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 pt-20">
-        
         <div className="text-center mb-20 md:mb-28">
           <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.4em] uppercase block mb-4">
             Paralelismos Místicos
@@ -116,7 +130,12 @@ export const CardCarousel = () => {
                   animate={{
                     opacity: opacity,
                     scale: scale,
-                    x: isFront && animatingDir === "left" ? -250 : isFront && animatingDir === "right" ? 250 : 0,
+                    x:
+                      isFront && animatingDir === "left"
+                        ? -250
+                        : isFront && animatingDir === "right"
+                          ? 250
+                          : 0,
                     y: yOffset,
                     zIndex: zIndex,
                   }}
@@ -125,56 +144,75 @@ export const CardCarousel = () => {
                     stiffness: 260,
                     damping: 20,
                   }}
-                  className={`absolute inset-0 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ${isFront ? 'cursor-grab active:cursor-grabbing' : 'cursor-default pointer-events-none'}`}
-                  style={{ transformOrigin: "bottom center", perspective: 1000 }}
+                  className={`absolute inset-0 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ${isFront ? (isMobile ? "cursor-grab active:cursor-grabbing" : "cursor-default") : "cursor-default pointer-events-none"}`}
+                  style={{
+                    transformOrigin: "bottom center",
+                    perspective: 1000,
+                  }}
                 >
                   <motion.div
                     className="relative w-full h-full"
                     style={{ transformStyle: "preserve-3d" }}
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
-                    transition={{ duration: 0.6, type: "spring", stiffness: 200, damping: 20 }}
+                    transition={{
+                      duration: 0.6,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 20,
+                    }}
                   >
                     {/* FRENTE DE LA CARTA (IMAGEN - PRIMERA VISTA) */}
                     <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden [backface-visibility:hidden] flex flex-col">
                       <div className="absolute inset-0">
                         {/* Imagen de fondo sin filtros (colores originales) */}
-                        <div 
+                        <div
                           className="w-full h-full bg-cover bg-center transition-opacity duration-700"
                           style={{ backgroundImage: `url(${card.imageUrl})` }}
                         />
                         {/* Degradado inferior para legibilidad del texto */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-[#0A0908]/25 to-transparent" />
                       </div>
-                      
+
                       <div className="relative z-10 flex flex-col h-full justify-end p-8 md:p-10">
-                        <span 
-                          className="font-mono text-[#C1533B] text-[10px] tracking-widest uppercase mb-2 px-4 py-0.5 w-fit inline-block"
+                        <span
+                          className="font-mono text-[#E8E2D2]/70 text-[10px] tracking-widest uppercase mb-2 px-3 py-1 w-fit inline-block rounded-full backdrop-blur-md border border-[#E8E2D2]/20"
                           style={{
-                            background: `linear-gradient(to right, transparent, ${card.badgeColor || '#544b42'}BF, transparent)`
+                            background:
+                              "linear-gradient(to right, rgba(193,83,59,0.4), rgba(193,83,59,0.5), rgba(193,83,59,0.4))",
                           }}
                         >
                           {card.dates} · {card.location}
                         </span>
-                        <h3 
+                        <h3
                           className="font-serif text-2xl md:text-3xl text-[#E8E2D2] mb-1"
-                          style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.95)" }}
+                          style={{
+                            textShadow: "0 2px 8px rgba(0, 0, 0, 0.95)",
+                          }}
                         >
                           {card.name}
                         </h3>
-                        <p 
+                        <p
                           className="text-[#E8E2D2]/70 text-xs md:text-sm font-light mb-6 italic"
-                          style={{ textShadow: "0 2px 4px rgba(0, 0, 0, 0.95)" }}
+                          style={{
+                            textShadow: "0 2px 4px rgba(0, 0, 0, 0.95)",
+                          }}
                         >
                           {card.title}
                         </p>
-                        
+
                         {/* Botón para ver detalles */}
                         <div className="flex justify-center">
-                          <button 
-                            onClick={(e) => { e.stopPropagation(); toggleFlip(card.id); }}
-                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? 'text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto' : 'text-transparent pointer-events-none'}`}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleFlip(card.id);
+                            }}
+                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? "text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto" : "text-transparent pointer-events-none"}`}
                           >
-                            <RotateCcw size={14} className="transition-transform duration-500 group-hover:-rotate-180" />
+                            <RotateCcw
+                              size={14}
+                              className="transition-transform duration-500 group-hover:-rotate-180"
+                            />
                             Ver detalles
                           </button>
                         </div>
@@ -188,37 +226,48 @@ export const CardCarousel = () => {
 
                       {/* Contenido */}
                       <div className="relative z-10 flex flex-col h-full">
-                        <span className="font-mono text-[#C1533B] text-[10px] tracking-widest uppercase mb-6">
+                        <span
+                          className="font-mono text-[#E8E2D2]/70 text-[10px] tracking-widest uppercase mb-6 px-3 py-1 w-fit inline-block rounded-full backdrop-blur-md border border-[#E8E2D2]/20"
+                          style={{
+                            background:
+                              "linear-gradient(to right, rgba(193,83,59,0.4), rgba(193,83,59,0.5), rgba(193,83,59,0.4))",
+                          }}
+                        >
                           {card.dates} · {card.location}
                         </span>
-                        
+
                         <h2 className="font-serif text-3xl md:text-4xl text-[#E8E2D2] leading-tight mb-2">
                           {card.name}
                         </h2>
-                        
+
                         <p className="font-serif italic text-[#E8E2D2]/50 text-lg md:text-xl mb-6">
                           {card.title}
                         </p>
-                        
+
                         <div className="w-12 h-[1px] bg-[#C1533B]/40 mb-6" />
-                        
+
                         <p className="text-[#E8E2D2]/70 font-light text-sm md:text-base leading-relaxed flex-1 pointer-events-none select-none overflow-hidden">
                           {card.description}
                         </p>
-                        
+
                         {/* Botón para volver al retrato */}
                         <div className="mt-6 flex justify-center">
-                          <button 
-                            onClick={(e) => { e.stopPropagation(); toggleFlip(card.id); }}
-                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? 'text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto' : 'text-transparent pointer-events-none'}`}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleFlip(card.id);
+                            }}
+                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? "text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto" : "text-transparent pointer-events-none"}`}
                           >
-                            <RotateCcw size={14} className="transition-transform duration-500 group-hover:-rotate-180" />
+                            <RotateCcw
+                              size={14}
+                              className="transition-transform duration-500 group-hover:-rotate-180"
+                            />
                             Ver retrato
                           </button>
                         </div>
                       </div>
                     </div>
-
                   </motion.div>
                 </motion.div>
               );
@@ -227,7 +276,10 @@ export const CardCarousel = () => {
 
           {/* Indicador de Deslizar (Solo Mobile) */}
           <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 opacity-60 flex md:hidden">
-            <MoveHorizontal size={20} className="text-[#E8E2D2] animate-pulse" />
+            <MoveHorizontal
+              size={20}
+              className="text-[#E8E2D2] animate-pulse"
+            />
             <span className="font-mono text-[10px] tracking-widest uppercase text-[#E8E2D2]">
               Desliza para explorar
             </span>
@@ -235,7 +287,7 @@ export const CardCarousel = () => {
 
           {/* Flechas de Navegación Laterales (Solo Desktop) */}
           <div className="absolute top-1/2 -left-16 md:-left-24 -translate-y-1/2 z-20 hidden md:block">
-            <button 
+            <button
               onClick={handlePrev}
               className="p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] hover:text-[#C1533B] hover:border-[#C1533B]/30 transition-all backdrop-blur-md"
               aria-label="Anterior"
@@ -244,7 +296,7 @@ export const CardCarousel = () => {
             </button>
           </div>
           <div className="absolute top-1/2 -right-16 md:-right-24 -translate-y-1/2 z-20 hidden md:block">
-            <button 
+            <button
               onClick={handleNext}
               className="p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] hover:text-[#C1533B] hover:border-[#C1533B]/30 transition-all backdrop-blur-md"
               aria-label="Siguiente"
@@ -253,7 +305,6 @@ export const CardCarousel = () => {
             </button>
           </div>
         </div>
-
       </div>
     </>
   );
