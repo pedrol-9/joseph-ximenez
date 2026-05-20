@@ -170,16 +170,16 @@ export default function Legado() {
             href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full md:w-[300px] shrink-0 bg-[#050505] border border-[#E8E2D2]/10 rounded-lg relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10 group overflow-hidden block"
+            className="w-full md:w-[300px] shrink-0 bg-[#050505] border border-[#E8E2D2]/10 rounded-lg relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10 overflow-hidden block"
           >
             {/* Portada del libro */}
             <img 
               src="https://http2.mlstatic.com/D_NQ_NP_764888-MCO84533351158_052025-O.webp" 
               alt="Portada del libro Del desierto a la hoguera"
-              className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-auto block"
             />
             {/* Gradiente decorativo */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-40 pointer-events-none" />
           </a>
         </motion.div>
 
