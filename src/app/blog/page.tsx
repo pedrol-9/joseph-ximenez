@@ -184,9 +184,14 @@ export default function BlogPage() {
               <p className="font-light text-base text-[#2B2A29]/70 mb-10">
                 Adquiere el libro completo y sumérgete en los 29 folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
               </p>
-              <button className="px-8 py-4 bg-[#100F0D] text-[#F4F1EA] text-xs font-bold uppercase tracking-widest hover:bg-[#7A3B22] transition-colors duration-300 rounded-sm flex items-center gap-3 shadow-xl cursor-pointer">
+              <a 
+                href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-[#100F0D] text-[#F4F1EA] text-xs font-bold uppercase tracking-widest hover:bg-[#7A3B22] transition-colors duration-300 rounded-sm flex items-center gap-3 shadow-xl cursor-pointer"
+              >
                 Comprar Ejemplar <ChevronRight size={14} />
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>

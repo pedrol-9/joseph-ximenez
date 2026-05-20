@@ -134,8 +134,55 @@ export const CardCarousel = () => {
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
                     transition={{ duration: 0.6, type: "spring", stiffness: 200, damping: 20 }}
                   >
-                    {/* FRENTE DE LA CARTA */}
-                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col [backface-visibility:hidden]">
+                    {/* FRENTE DE LA CARTA (IMAGEN - PRIMERA VISTA) */}
+                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden [backface-visibility:hidden] flex flex-col">
+                      <div className="absolute inset-0">
+                        {/* Imagen de fondo sin filtros (colores originales) */}
+                        <div 
+                          className="w-full h-full bg-cover bg-center transition-opacity duration-700"
+                          style={{ backgroundImage: `url(${card.imageUrl})` }}
+                        />
+                        {/* Degradado inferior para legibilidad del texto */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-[#0A0908]/25 to-transparent" />
+                      </div>
+                      
+                      <div className="relative z-10 flex flex-col h-full justify-end p-8 md:p-10">
+                        <span 
+                          className="font-mono text-[#C1533B] text-[10px] tracking-widest uppercase mb-2 px-4 py-0.5 w-fit inline-block"
+                          style={{
+                            background: `linear-gradient(to right, transparent, ${card.badgeColor || '#544b42'}BF, transparent)`
+                          }}
+                        >
+                          {card.dates} · {card.location}
+                        </span>
+                        <h3 
+                          className="font-serif text-2xl md:text-3xl text-[#E8E2D2] mb-1"
+                          style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.95)" }}
+                        >
+                          {card.name}
+                        </h3>
+                        <p 
+                          className="text-[#E8E2D2]/70 text-xs md:text-sm font-light mb-6 italic"
+                          style={{ textShadow: "0 2px 4px rgba(0, 0, 0, 0.95)" }}
+                        >
+                          {card.title}
+                        </p>
+                        
+                        {/* Botón para ver detalles */}
+                        <div className="flex justify-center">
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); toggleFlip(card.id); }}
+                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? 'text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto' : 'text-transparent pointer-events-none'}`}
+                          >
+                            <RotateCcw size={14} className="transition-transform duration-500 group-hover:-rotate-180" />
+                            Ver detalles
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* REVERSO DE LA CARTA (TEXTO INFORMATIVO) */}
+                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)]">
                       {/* Brillo interno de la carta */}
                       <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#C1533B]/5 to-transparent rounded-t-3xl pointer-events-none" />
 
@@ -155,46 +202,18 @@ export const CardCarousel = () => {
                         
                         <div className="w-12 h-[1px] bg-[#C1533B]/40 mb-6" />
                         
-                        <p className="text-[#E8E2D2]/70 font-light text-sm md:text-base leading-relaxed overflow-y-auto pr-2 custom-scrollbar flex-1">
+                        <p className="text-[#E8E2D2]/70 font-light text-sm md:text-base leading-relaxed flex-1 pointer-events-none select-none overflow-hidden">
                           {card.description}
                         </p>
                         
-                        {/* Botón para ver imagen (Flip) */}
+                        {/* Botón para volver al retrato */}
                         <div className="mt-6 flex justify-center">
                           <button 
                             onClick={(e) => { e.stopPropagation(); toggleFlip(card.id); }}
                             className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? 'text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto' : 'text-transparent pointer-events-none'}`}
                           >
                             <RotateCcw size={14} className="transition-transform duration-500 group-hover:-rotate-180" />
-                            Ver Imagen
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* REVERSO DE LA CARTA (IMAGEN) */}
-                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col">
-                      <div className="absolute inset-0">
-                        {/* Imagen de fondo (Placeholder o real) */}
-                        <div 
-                          className="w-full h-full bg-cover bg-center opacity-40 transition-opacity duration-700"
-                          style={{ backgroundImage: `url(${card.imageUrl})` }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/40 to-transparent" />
-                      </div>
-                      
-                      <div className="relative z-10 flex flex-col h-full justify-end p-8 md:p-10">
-                        <h3 className="font-serif text-2xl text-[#E8E2D2] mb-2">{card.name}</h3>
-                        <p className="text-[#E8E2D2]/60 text-sm font-light mb-8 italic">Archivo visual</p>
-                        
-                        {/* Botón para volver al texto */}
-                        <div className="flex justify-center">
-                          <button 
-                            onClick={(e) => { e.stopPropagation(); toggleFlip(card.id); }}
-                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? 'text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto' : 'text-transparent pointer-events-none'}`}
-                          >
-                            <RotateCcw size={14} className="transition-transform duration-500 group-hover:-rotate-180" />
-                            Volver al texto
+                            Ver retrato
                           </button>
                         </div>
                       </div>

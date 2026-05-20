@@ -2,7 +2,7 @@
 
 import React from "react";
 import { CardCarousel } from "./components/CardCarousel";
-import { ArtShowcase } from "./components/ArtShowcase";
+import { ArtistGallery } from "./components/ArtistGallery";
 import { MysticBook } from "./components/MysticBook";
 
 export default function GaleriaPage() {
@@ -11,7 +11,7 @@ export default function GaleriaPage() {
       <div id="ermitanos" className="w-full pt-20 flex flex-col">
         <CardCarousel />
       </div>
-      <ArtShowcase />
+      <ArtistGallery />
       <div className="w-full border-t border-white/5" />
       <MysticBook />
 
