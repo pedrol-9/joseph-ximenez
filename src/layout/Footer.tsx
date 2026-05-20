@@ -63,7 +63,7 @@ export const Footer = () => {
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
             <li><Link href="/galeria#ermitanos" onClick={() => setActiveLink("/galeria#ermitanos")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#ermitanos") ? "#C1533B" : "inherit" }}>Ermitaños de la Historia</Link></li>
             <li><Link href="/galeria#arte" onClick={() => setActiveLink("/galeria#arte")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#arte") ? "#C1533B" : "inherit" }}>Exhibición de Arte</Link></li>
-            <li><Link href="/galeria" onClick={() => setActiveLink("/galeria")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li>
+            <li><Link href="/galeria#mystic-book" onClick={() => setActiveLink("/galeria#mystic-book")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#mystic-book") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li>
           </ul>
         </>
       );
@@ -98,11 +98,14 @@ export const Footer = () => {
             El ermitaño místico del Desierto de la Candelaria. Una historia de herejía, silencio y martirio que el fuego de la Inquisición no logró borrar de la memoria de Colombia.
           </p>
           <div className="flex gap-4 text-[#C1533B]/80">
-            <a href="#" aria-label="Instagram" className="hover:text-[#C1533B] transition-colors">
+            <a 
+              href="https://www.instagram.com/josephximenez_hermit/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Instagram" 
+              className="hover:text-[#C1533B] transition-colors"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="#" aria-label="Facebook" className="hover:text-[#C1533B] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
           </div>
         </div>
@@ -120,7 +123,14 @@ export const Footer = () => {
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
             <li className="flex items-start gap-3">
               <BookOpen size={16} className="shrink-0 mt-0.5 text-[#C1533B]/60" />
-              <span className="leading-tight">Libro "Del desierto a la hoguera" (Patricia Enciso Patiño)</span>
+              <a 
+                href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-tight hover:text-[#C1533B] transition-colors"
+              >
+                Libro "Del desierto a la hoguera" (Patricia Enciso Patiño)
+              </a>
             </li>
             <li className="flex items-start gap-3 mt-4">
               <MapPin size={16} className="shrink-0 mt-0.5 text-[#C1533B]/60" />

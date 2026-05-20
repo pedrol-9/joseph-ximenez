@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Legado() {
+  const [isFlipped, setIsFlipped] = useState(false);
   return (
     <section id="legado" className="relative z-30 bg-transparent text-[#E8E2D2] pt-32 pb-12 overflow-hidden border-t border-[#C1533B]/10">
       
@@ -62,13 +64,74 @@ export default function Legado() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="aspect-[4/3] bg-[#100F0D] border border-[#E8E2D2]/5 flex flex-col items-center justify-center rounded-2xl relative overflow-hidden group shadow-2xl"
+            className="w-full aspect-[3/4] max-w-[420px] mx-auto"
           >
-            {/* Espacio para la imagen de la escultura real */}
-            <p className="font-mono text-[#C1533B]/40 text-xs tracking-widest uppercase relative z-10">
-              [ Escultura de Eduardo Rodríguez ]
-            </p>
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#C1533B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out" />
+            <div 
+              className="w-full h-full cursor-pointer relative" 
+              style={{ perspective: "1200px" }}
+              onClick={() => setIsFlipped(!isFlipped)}
+            >
+              <motion.div
+                className="w-full h-full relative"
+                style={{ transformStyle: "preserve-3d" }}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                {/* Lado Frontal */}
+                <div 
+                  className="absolute inset-0 w-full h-full rounded-2xl border border-[#E8E2D2]/10 bg-[#0A0A0A] overflow-hidden shadow-2xl"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <img 
+                    src="https://rp9jryczlxa748zk.public.blob.vercel-storage.com/dr_eduardo/rostro_joseph.png" 
+                    alt="Escultura de Eduardo Rodríguez - El Rostro del Ermitaño"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#C1533B]/10 via-transparent to-transparent opacity-40 pointer-events-none" />
+                  
+                  {/* Botón indicador discreto */}
+                  <div className="absolute bottom-4 right-4 bg-[#0A0A0A]/85 backdrop-blur-sm border border-[#C1533B]/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C1533B] animate-pulse" />
+                    <span className="font-mono text-[9px] tracking-widest text-[#E8E2D2] uppercase">Detrás de la Arcilla</span>
+                  </div>
+                </div>
+
+                {/* Lado Reverso */}
+                <div 
+                  className="absolute inset-0 w-full h-full rounded-2xl border border-[#C1533B]/20 bg-[#0F0E0C] p-6 md:p-8 flex flex-col justify-between shadow-2xl overflow-hidden"
+                  style={{ 
+                    backfaceVisibility: "hidden", 
+                    transform: "rotateY(180deg)" 
+                  }}
+                >
+                  {/* Decoración de fondo */}
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(193,83,59,0.05)_0%,transparent_70%)] pointer-events-none" />
+                  
+                  <div className="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                      <span className="font-mono text-[#C1533B] text-[9px] md:text-xs tracking-[0.3em] uppercase block mb-2 md:mb-4">
+                        El Proceso Escultórico
+                      </span>
+                      <h4 className="font-serif text-xl md:text-2xl text-[#E8E2D2] mb-3 md:mb-4">
+                        Del Barro al Legado
+                      </h4>
+                      <p className="text-xs md:text-sm font-light leading-relaxed text-[#E8E2D2]/75">
+                        Esculpido a mano en Ráquira a partir de arcillas locales. La pieza revive a Joseph Ximenez mediante la técnica ancestral de placas y desbaste, decorada con engobes minerales y quemada a más de 900°C en hornos tradicionales para lograr una textura terrosa orgánica única.
+                      </p>
+                    </div>
+                    
+                    <div className="flex justify-between items-center border-t border-[#E8E2D2]/5 pt-3 md:pt-4 mt-4">
+                      <span className="text-[10px] md:text-xs font-mono text-[#E8E2D2]/40">
+                        [ Eduardo Rodríguez ]
+                      </span>
+                      <span className="text-[9px] font-mono tracking-widest text-[#C1533B] uppercase">
+                        Volver a la Obra
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 
@@ -93,18 +156,31 @@ export default function Legado() {
             </p>
             
             {/* Botón preparado para E-Commerce, sutil pero llamativo */}
-            <button className="bg-transparent border border-[#C1533B]/40 hover:bg-[#C1533B]/10 text-[#E8E2D2] px-8 py-4 rounded-full text-xs font-mono tracking-widest uppercase transition-all duration-300">
+            <a 
+              href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-transparent border border-[#C1533B]/40 hover:bg-[#C1533B]/10 hover:border-[#C1533B] text-[#E8E2D2] px-8 py-4 rounded-full text-xs font-mono tracking-widest uppercase transition-all duration-300"
+            >
               Adquirir el Libro
-            </button>
+            </a>
           </div>
 
-          <div className="w-full md:w-[280px] shrink-0 aspect-[3/4] bg-[#050505] border border-[#E8E2D2]/10 rounded-lg flex items-center justify-center relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10 group cursor-pointer overflow-hidden">
-            {/* Espacio para la portada del libro */}
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#C1533B]/20 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-            <p className="font-serif italic text-2xl text-[#E8E2D2]/20 -rotate-90 origin-center tracking-widest group-hover:text-[#E8E2D2]/40 transition-colors duration-500">
-              El Libro
-            </p>
-          </div>
+          <a 
+            href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-[300px] shrink-0 bg-[#050505] border border-[#E8E2D2]/10 rounded-lg relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10 group overflow-hidden block"
+          >
+            {/* Portada del libro */}
+            <img 
+              src="https://http2.mlstatic.com/D_NQ_NP_764888-MCO84533351158_052025-O.webp" 
+              alt="Portada del libro Del desierto a la hoguera"
+              className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* Gradiente decorativo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
+          </a>
         </motion.div>
 
       </div>

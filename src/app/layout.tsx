@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 // src/app/layout.tsx
 import { Navbar } from "@/layout/Navbar";
 import { Footer } from "@/layout/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export default function RootLayout({
   children,
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-[#100F0D] text-[#DDD8CF]">
         <Navbar />
         {children}
+        <ScrollToTop />
         <Footer />
       </body>
     </html>
