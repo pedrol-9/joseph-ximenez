@@ -12,11 +12,9 @@ import {
 import { CARDS } from "@/data/galeriaData";
 
 export const CardCarousel = () => {
-  const [cards, setCards] = useState(CARDS);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
-  const [animatingDir, setAnimatingDir] = useState<"left" | "right" | null>(
-    null,
-  );
+  const [direction, setDirection] = useState<"next" | "prev" | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   React.useEffect(() => {
@@ -27,31 +25,15 @@ export const CardCarousel = () => {
   }, []);
 
   const handleNext = () => {
-    if (animatingDir) return;
-    setAnimatingDir("right");
-    setTimeout(() => {
-      setCards((prevCards) => {
-        const newArray = [...prevCards];
-        const frontCard = newArray.shift();
-        if (frontCard) newArray.push(frontCard);
-        return newArray;
-      });
-      setAnimatingDir(null);
-    }, 250);
+    setDirection("next");
+    setFlippedCards({});
+    setActiveIndex((prev) => (prev + 1) % CARDS.length);
   };
 
   const handlePrev = () => {
-    if (animatingDir) return;
-    setAnimatingDir("left");
-    setTimeout(() => {
-      setCards((prevCards) => {
-        const newArray = [...prevCards];
-        const backCard = newArray.pop();
-        if (backCard) newArray.unshift(backCard);
-        return newArray;
-      });
-      setAnimatingDir(null);
-    }, 250);
+    setDirection("prev");
+    setFlippedCards({});
+    setActiveIndex((prev) => (prev - 1 + CARDS.length) % CARDS.length);
   };
 
   const toggleFlip = (id: number) => {
@@ -93,51 +75,54 @@ export const CardCarousel = () => {
         {/* Galería Stack */}
         <div className="relative w-full max-w-sm md:max-w-md h-[450px] md:h-[500px] perspective-[1000px] mb-24 md:mb-0">
           <AnimatePresence>
-            {cards.map((card, index) => {
-              // Calculamos estilos basados en la posición de la carta en el array
-              const isFront = index === 0;
-              const scale = 1 - index * 0.05; // 1, 0.95, 0.90
-              const yOffset = index * -30; // 0, -30px, -60px (Efecto de cascada hacia atrás/arriba)
-              const zIndex = cards.length - index; // El primero (0) tiene el z-index más alto
-              const opacity = 1 - index * 0.25; // 1, 0.75, 0.50
+            {CARDS.map((card, index) => {
+              // Calculate relative position of card in the stack
+              let relativeIndex = index - activeIndex;
+              if (relativeIndex < 0) {
+                relativeIndex += CARDS.length;
+              }
 
+              const isFront = relativeIndex === 0;
               const isFlipped = flippedCards[card.id] || false;
+
+              // Calculate animations based on relativeIndex
+              const scale = 1 - Math.min(relativeIndex, 3) * 0.05;
+              const yOffset = Math.min(relativeIndex, 3) * -30;
+              const opacity = relativeIndex >= 3 ? 0 : 1 - relativeIndex * 0.25;
+              let zIndex = CARDS.length - relativeIndex;
+
+              // Exit/entry animations for horizontal smoothness
+              let x: any = 0;
+              if (relativeIndex === CARDS.length - 1 && direction === "next") {
+                // Card that just exited (went Next). Exits to the left.
+                x = "-120%";
+                zIndex = CARDS.length + 1; // Keep on top during exit
+              } else if (relativeIndex === 0 && direction === "prev") {
+                // Card that just entered (went Prev). Enters from the left.
+                x = ["-120%", "0%"];
+              }
 
               return (
                 <motion.div
                   key={card.id}
-                  layout
                   drag={isFront && isMobile ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
-                  onDragEnd={(e, { offset }) => {
-                    if (offset.x > 50) {
-                      setCards((prevCards) => {
-                        const newArray = [...prevCards];
-                        const backCard = newArray.pop();
-                        if (backCard) newArray.unshift(backCard);
-                        return newArray;
-                      });
-                    } else if (offset.x < -50) {
-                      setCards((prevCards) => {
-                        const newArray = [...prevCards];
-                        const frontCard = newArray.shift();
-                        if (frontCard) newArray.push(frontCard);
-                        return newArray;
-                      });
+                  dragElastic={0.7}
+                  onDragEnd={(e, info) => {
+                    const threshold = 80;
+                    const velocityThreshold = 300;
+                    if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) {
+                      handleNext();
+                    } else if (info.offset.x > threshold || info.velocity.x > velocityThreshold) {
+                      handlePrev();
                     }
                   }}
                   initial={{ opacity: 0, scale: 0.8, y: 100 }}
                   animate={{
                     opacity: opacity,
                     scale: scale,
-                    x:
-                      isFront && animatingDir === "left"
-                        ? -250
-                        : isFront && animatingDir === "right"
-                          ? 250
-                          : 0,
+                    x: x,
                     y: yOffset,
-                    zIndex: zIndex,
                   }}
                   transition={{
                     type: "spring",
@@ -148,6 +133,7 @@ export const CardCarousel = () => {
                   style={{
                     transformOrigin: "bottom center",
                     perspective: 1000,
+                    zIndex: zIndex,
                   }}
                 >
                   <motion.div
