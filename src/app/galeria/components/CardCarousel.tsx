@@ -171,6 +171,8 @@ export const CardCarousel = () => {
                   height: "100%",
                   zIndex: style.zIndex,
                   pointerEvents: style.pointerEvents,
+                  transformStyle: "preserve-3d",
+                  WebkitTransformStyle: "preserve-3d",
                 }}
                 animate={{
                   x: style.x,
@@ -186,10 +188,20 @@ export const CardCarousel = () => {
                 onDragEnd={handleDragEnd}
                 className="bg-transparent rounded-3xl"
               >
-                <div className="relative w-full h-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-3xl overflow-hidden">
+                <div
+                  className="relative w-full h-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-3xl"
+                  style={{
+                    transformStyle: "preserve-3d",
+                    WebkitTransformStyle: "preserve-3d",
+                  }}
+                >
                   <motion.div
                     className="relative w-full h-full"
-                    style={{ transformStyle: "preserve-3d" }}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      WebkitTransformStyle: "preserve-3d",
+                      willChange: "transform",
+                    }}
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
                     transition={{
                       duration: 0.6,
@@ -199,7 +211,15 @@ export const CardCarousel = () => {
                     }}
                   >
                     {/* FRENTE DE LA CARTA (IMAGEN - PRIMERA VISTA) */}
-                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden [backface-visibility:hidden] flex flex-col">
+                    <div
+                      className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden flex flex-col"
+                      style={{
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                        transform: "translate3d(0,0,0)",
+                        WebkitTransform: "translate3d(0,0,0)",
+                      }}
+                    >
                       <div className="absolute inset-0">
                         {/* Imagen de fondo optimizada sin filtros (colores originales) */}
                         <Image
@@ -207,7 +227,7 @@ export const CardCarousel = () => {
                           alt={card.name}
                           fill
                           sizes="(max-width: 768px) 320px, 450px"
-                          priority={index === 0}
+                          priority={index === 0 || Math.abs(index - activeIndex) <= 1}
                           className="object-cover transition-opacity duration-700 pointer-events-none"
                         />
                         {/* Degradado inferior para legibilidad del texto */}
@@ -261,7 +281,15 @@ export const CardCarousel = () => {
                     </div>
 
                     {/* REVERSO DE LA CARTA (TEXTO INFORMATIVO) */}
-                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                    <div
+                      className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col"
+                      style={{
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                        transform: "rotateY(180deg) translate3d(0,0,0)",
+                        WebkitTransform: "rotateY(180deg) translate3d(0,0,0)",
+                      }}
+                    >
                       {/* Brillo interno de la carta */}
                       <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#C1533B]/5 to-transparent rounded-t-3xl pointer-events-none" />
 
