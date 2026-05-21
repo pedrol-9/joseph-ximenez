@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   RotateCcw,
   MoveHorizontal,
@@ -200,13 +201,17 @@ export const CardCarousel = () => {
                     {/* FRENTE DE LA CARTA (IMAGEN - PRIMERA VISTA) */}
                     <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden [backface-visibility:hidden] flex flex-col">
                       <div className="absolute inset-0">
-                        {/* Imagen de fondo sin filtros (colores originales) */}
-                        <div
-                          className="w-full h-full bg-cover bg-center transition-opacity duration-700"
-                          style={{ backgroundImage: `url(${card.imageUrl})` }}
+                        {/* Imagen de fondo optimizada sin filtros (colores originales) */}
+                        <Image
+                          src={card.imageUrl}
+                          alt={card.name}
+                          fill
+                          sizes="(max-width: 768px) 320px, 450px"
+                          priority={index === 0}
+                          className="object-cover transition-opacity duration-700 pointer-events-none"
                         />
                         {/* Degradado inferior para legibilidad del texto */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-[#0A0908]/25 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-[#0A0908]/25 to-transparent z-10" />
                       </div>
 
                       <div className="relative z-10 flex flex-col h-full justify-end p-8 md:p-10">
