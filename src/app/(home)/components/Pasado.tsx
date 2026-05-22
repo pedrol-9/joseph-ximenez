@@ -90,7 +90,7 @@ export default function Pasado() {
   return (
     <section id="pasado" className="relative bg-transparent w-full">
       
-      <div className="max-w-5xl mx-auto px-6 md:px-12 py-24 md:py-40">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:pl-[140px] py-24 md:py-40">
         
         <motion.div 
           id="pasado-title"
