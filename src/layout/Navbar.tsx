@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className={`!fixed !top-0 !left-0 !right-0 z-[9999] flex items-center justify-between px-6 py-5 transition-colors duration-300 backdrop-blur-md border-b border-sand/[0.06] ${isOpen ? "bg-[#100F0D]" : "bg-[#100F0D]/80"}`}>
+      <nav className={`!fixed !top-0 !left-0 !right-0 z-[9999] flex items-center justify-between px-6 py-5 transition-colors duration-300 backdrop-blur-md border-b border-sand/[0.06] ${isOpen || pathname?.startsWith("/blog") ? "bg-[#100F0D]" : "bg-[#100F0D]/80"}`}>
         <Link href="/" className="font-serif italic text-xl relative z-10 hover:opacity-80 transition-opacity text-terracotta">J. Ximénez</Link>
 
         {/* Desktop Links */}
