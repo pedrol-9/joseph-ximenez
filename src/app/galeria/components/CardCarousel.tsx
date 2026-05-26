@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import {
-  Image as ImageIcon,
   RotateCcw,
   MoveHorizontal,
   ChevronLeft,
@@ -12,46 +12,31 @@ import {
 import { CARDS } from "@/data/galeriaData";
 
 export const CardCarousel = () => {
-  const [cards, setCards] = useState(CARDS);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
-  const [animatingDir, setAnimatingDir] = useState<"left" | "right" | null>(
-    null,
-  );
   const [isMobile, setIsMobile] = useState(false);
 
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleNext = () => {
-    if (animatingDir) return;
-    setAnimatingDir("right");
-    setTimeout(() => {
-      setCards((prevCards) => {
-        const newArray = [...prevCards];
-        const frontCard = newArray.shift();
-        if (frontCard) newArray.push(frontCard);
-        return newArray;
-      });
-      setAnimatingDir(null);
-    }, 250);
+    if (activeIndex < CARDS.length - 1) {
+      setFlippedCards({}); // Reset flips on navigation
+      setActiveIndex((prev) => prev + 1);
+    }
   };
 
   const handlePrev = () => {
-    if (animatingDir) return;
-    setAnimatingDir("left");
-    setTimeout(() => {
-      setCards((prevCards) => {
-        const newArray = [...prevCards];
-        const backCard = newArray.pop();
-        if (backCard) newArray.unshift(backCard);
-        return newArray;
-      });
-      setAnimatingDir(null);
-    }, 250);
+    if (activeIndex > 0) {
+      setFlippedCards({}); // Reset flips on navigation
+      setActiveIndex((prev) => prev - 1);
+    }
   };
 
   const toggleFlip = (id: number) => {
@@ -60,6 +45,86 @@ export const CardCarousel = () => {
       [id]: !prev[id],
     }));
   };
+
+  const getCardStyle = (index: number) => {
+    const diff = index - activeIndex;
+
+    let opacity = 0;
+    let scale = 0.8;
+    let x = 0;
+    let y = 0;
+    let rotate = 0;
+    let zIndex = 0;
+    let pointerEvents: "auto" | "none" = "none";
+
+    const offset = isMobile ? 180 : 285;
+
+    if (diff === 0) {
+      opacity = 1;
+      scale = 1;
+      x = 0;
+      y = 0;
+      rotate = 0;
+      zIndex = 30;
+      pointerEvents = "auto";
+    } else if (diff === 1) {
+      opacity = 0.55;
+      scale = 0.85;
+      x = offset;
+      y = 0;
+      rotate = 4;
+      zIndex = 20;
+      pointerEvents = "none";
+    } else if (diff === -1) {
+      opacity = 0.55;
+      scale = 0.85;
+      x = -offset;
+      y = 0;
+      rotate = -4;
+      zIndex = 20;
+      pointerEvents = "none";
+    } else {
+      // Hidden cards pre-positioned to the left or right to slide in when activeIndex shifts
+      opacity = 0;
+      scale = 0.7;
+      x = diff > 0 ? offset * 1.5 : -offset * 1.5;
+      y = 0;
+      rotate = diff > 0 ? 8 : -8;
+      zIndex = 10;
+      pointerEvents = "none";
+    }
+
+    return {
+      opacity,
+      scale,
+      x,
+      y,
+      rotate,
+      zIndex,
+      pointerEvents,
+    };
+  };
+
+  const handleDragEnd = (event: any, info: any) => {
+    const swipeThreshold = 80;
+    const swipeVelocity = 0.5;
+
+    if (info.offset.x < -swipeThreshold || info.velocity.x < -swipeVelocity) {
+      handleNext();
+    } else if (info.offset.x > swipeThreshold || info.velocity.x > swipeVelocity) {
+      handlePrev();
+    }
+  };
+
+  const cardTransition = {
+    type: "spring" as const,
+    stiffness: 260,
+    damping: 26,
+    mass: 0.8,
+  };
+
+  const isFirst = activeIndex === 0;
+  const isLast = activeIndex === CARDS.length - 1;
 
   return (
     <>
@@ -92,67 +157,51 @@ export const CardCarousel = () => {
 
         {/* Galería Stack */}
         <div className="relative w-full max-w-sm md:max-w-md h-[450px] md:h-[500px] perspective-[1000px] mb-24 md:mb-0">
-          <AnimatePresence>
-            {cards.map((card, index) => {
-              // Calculamos estilos basados en la posición de la carta en el array
-              const isFront = index === 0;
-              const scale = 1 - index * 0.05; // 1, 0.95, 0.90
-              const yOffset = index * -30; // 0, -30px, -60px (Efecto de cascada hacia atrás/arriba)
-              const zIndex = cards.length - index; // El primero (0) tiene el z-index más alto
-              const opacity = 1 - index * 0.25; // 1, 0.75, 0.50
+          {CARDS.map((card, index) => {
+            const style = getCardStyle(index);
+            const isFlipped = flippedCards[card.id] || false;
+            const isFront = index === activeIndex;
 
-              const isFlipped = flippedCards[card.id] || false;
-
-              return (
-                <motion.div
-                  key={card.id}
-                  layout
-                  drag={isFront && isMobile ? "x" : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  onDragEnd={(e, { offset }) => {
-                    if (offset.x > 50) {
-                      setCards((prevCards) => {
-                        const newArray = [...prevCards];
-                        const backCard = newArray.pop();
-                        if (backCard) newArray.unshift(backCard);
-                        return newArray;
-                      });
-                    } else if (offset.x < -50) {
-                      setCards((prevCards) => {
-                        const newArray = [...prevCards];
-                        const frontCard = newArray.shift();
-                        if (frontCard) newArray.push(frontCard);
-                        return newArray;
-                      });
-                    }
-                  }}
-                  initial={{ opacity: 0, scale: 0.8, y: 100 }}
-                  animate={{
-                    opacity: opacity,
-                    scale: scale,
-                    x:
-                      isFront && animatingDir === "left"
-                        ? -250
-                        : isFront && animatingDir === "right"
-                          ? 250
-                          : 0,
-                    y: yOffset,
-                    zIndex: zIndex,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                  }}
-                  className={`absolute inset-0 shadow-[0_20px_50px_rgba(0,0,0,0.5)] ${isFront ? (isMobile ? "cursor-grab active:cursor-grabbing" : "cursor-default") : "cursor-default pointer-events-none"}`}
+            return (
+              <motion.div
+                key={card.id}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  zIndex: style.zIndex,
+                  pointerEvents: style.pointerEvents,
+                  transformStyle: "preserve-3d",
+                  WebkitTransformStyle: "preserve-3d",
+                }}
+                animate={{
+                  x: style.x,
+                  y: style.y,
+                  scale: style.scale,
+                  rotate: style.rotate,
+                  opacity: style.opacity,
+                }}
+                transition={cardTransition}
+                drag={isFront && !isFlipped ? "x" : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.6}
+                onDragEnd={handleDragEnd}
+                className="bg-transparent rounded-3xl"
+              >
+                <div
+                  className="relative w-full h-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-3xl"
                   style={{
-                    transformOrigin: "bottom center",
-                    perspective: 1000,
+                    transformStyle: "preserve-3d",
+                    WebkitTransformStyle: "preserve-3d",
                   }}
                 >
                   <motion.div
                     className="relative w-full h-full"
-                    style={{ transformStyle: "preserve-3d" }}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      WebkitTransformStyle: "preserve-3d",
+                      willChange: "transform",
+                    }}
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
                     transition={{
                       duration: 0.6,
@@ -162,15 +211,27 @@ export const CardCarousel = () => {
                     }}
                   >
                     {/* FRENTE DE LA CARTA (IMAGEN - PRIMERA VISTA) */}
-                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden [backface-visibility:hidden] flex flex-col">
+                    <div
+                      className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden flex flex-col"
+                      style={{
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                        transform: "translate3d(0,0,0)",
+                        WebkitTransform: "translate3d(0,0,0)",
+                      }}
+                    >
                       <div className="absolute inset-0">
-                        {/* Imagen de fondo sin filtros (colores originales) */}
-                        <div
-                          className="w-full h-full bg-cover bg-center transition-opacity duration-700"
-                          style={{ backgroundImage: `url(${card.imageUrl})` }}
+                        {/* Imagen de fondo optimizada sin filtros (colores originales) */}
+                        <Image
+                          src={card.imageUrl}
+                          alt={card.name}
+                          fill
+                          sizes="(max-width: 768px) 320px, 450px"
+                          priority={index === 0 || Math.abs(index - activeIndex) <= 1}
+                          className="object-cover transition-opacity duration-700 pointer-events-none"
                         />
                         {/* Degradado inferior para legibilidad del texto */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-[#0A0908]/25 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-[#0A0908]/25 to-transparent z-10" />
                       </div>
 
                       <div className="relative z-10 flex flex-col h-full justify-end p-8 md:p-10">
@@ -207,7 +268,7 @@ export const CardCarousel = () => {
                               e.stopPropagation();
                               toggleFlip(card.id);
                             }}
-                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? "text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto" : "text-transparent pointer-events-none"}`}
+                            className="group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto cursor-pointer"
                           >
                             <RotateCcw
                               size={14}
@@ -220,7 +281,15 @@ export const CardCarousel = () => {
                     </div>
 
                     {/* REVERSO DE LA CARTA (TEXTO INFORMATIVO) */}
-                    <div className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                    <div
+                      className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col"
+                      style={{
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                        transform: "rotateY(180deg) translate3d(0,0,0)",
+                        WebkitTransform: "rotateY(180deg) translate3d(0,0,0)",
+                      }}
+                    >
                       {/* Brillo interno de la carta */}
                       <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#C1533B]/5 to-transparent rounded-t-3xl pointer-events-none" />
 
@@ -257,7 +326,7 @@ export const CardCarousel = () => {
                               e.stopPropagation();
                               toggleFlip(card.id);
                             }}
-                            className={`group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 ${isFront ? "text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto" : "text-transparent pointer-events-none"}`}
+                            className="group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto cursor-pointer"
                           >
                             <RotateCcw
                               size={14}
@@ -269,10 +338,10 @@ export const CardCarousel = () => {
                       </div>
                     </div>
                   </motion.div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+                </div>
+              </motion.div>
+            );
+          })}
 
           {/* Indicador de Deslizar (Solo Mobile) */}
           <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 opacity-60 flex md:hidden">
@@ -289,7 +358,12 @@ export const CardCarousel = () => {
           <div className="absolute top-1/2 -left-16 md:-left-24 -translate-y-1/2 z-20 hidden md:block">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] hover:text-[#C1533B] hover:border-[#C1533B]/30 transition-all backdrop-blur-md"
+              disabled={isFirst}
+              className={`p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] transition-all backdrop-blur-md ${
+                isFirst
+                  ? "opacity-30 cursor-not-allowed pointer-events-none"
+                  : "hover:text-[#C1533B] hover:border-[#C1533B]/30 cursor-pointer"
+              }`}
               aria-label="Anterior"
             >
               <ChevronLeft size={24} />
@@ -298,7 +372,12 @@ export const CardCarousel = () => {
           <div className="absolute top-1/2 -right-16 md:-right-24 -translate-y-1/2 z-20 hidden md:block">
             <button
               onClick={handleNext}
-              className="p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] hover:text-[#C1533B] hover:border-[#C1533B]/30 transition-all backdrop-blur-md"
+              disabled={isLast}
+              className={`p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] transition-all backdrop-blur-md ${
+                isLast
+                  ? "opacity-30 cursor-not-allowed pointer-events-none"
+                  : "hover:text-[#C1533B] hover:border-[#C1533B]/30 cursor-pointer"
+              }`}
               aria-label="Siguiente"
             >
               <ChevronRight size={24} />
