@@ -1,20 +1,14 @@
 "use client";
 
-import React from "react";
-import { CardCarousel } from "./components/CardCarousel";
-import { ArtistGallery } from "./components/ArtistGallery";
-import { MysticBook } from "./components/MysticBook";
+// import { CardCarousel } from "./components/CardCarousel"; // Ocultado de la UI - registrado en TODO.md
+// import { ArtistGallery } from "./components/ArtistGallery"; // Ocultado de la UI - registrado en TODO.md
 
 export default function GaleriaPage() {
   return (
-    <main className="relative min-h-screen font-sans overflow-x-hidden selection:bg-[#C1533B] selection:text-[#100F0D] flex flex-col" style={{ background: "#100F0D", color: "#DDD8CF" }}>
-      <div id="ermitanos" className="w-full pt-20 flex flex-col">
-        <CardCarousel />
+    <main className="relative min-h-screen font-sans overflow-x-hidden selection:bg-[#C1533B] selection:text-[#100F0D] flex flex-col items-center justify-center" style={{ background: "#100F0D", color: "#DDD8CF" }}>
+      <div className="text-center p-8">
+        <p className="text-[#E8E2D2]/40 italic font-serif text-lg">La galería se encuentra temporalmente inactiva.</p>
       </div>
-      <ArtistGallery />
-      <div className="w-full border-t border-white/5" />
-      <MysticBook />
-
     </main>
   );
 }

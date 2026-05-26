@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BookOpen, MapPin, Mail } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -49,7 +49,7 @@ export const Footer = () => {
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
             <li><Link href="/galeria#ermitanos" onClick={() => setActiveLink("/galeria#ermitanos")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#ermitanos") ? "#C1533B" : "inherit" }}>Ermitaños de la Historia</Link></li>
             <li><Link href="/galeria#arte" onClick={() => setActiveLink("/galeria#arte")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#arte") ? "#C1533B" : "inherit" }}>Exhibición de Arte</Link></li>
-            <li><Link href="/galeria#mystic-book" onClick={() => setActiveLink("/galeria#mystic-book")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#mystic-book") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li>
+            {/* <li><Link href="/galeria#mystic-book" onClick={() => setActiveLink("/galeria#mystic-book")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#mystic-book") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li> */}
           </ul>
         </>
       );
@@ -108,17 +108,6 @@ export const Footer = () => {
           </h4>
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
             <li className="flex items-start gap-3">
-              <BookOpen size={16} className="shrink-0 mt-0.5 text-[#C1533B]/60" />
-              <a 
-                href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="leading-tight hover:text-[#C1533B] transition-colors"
-              >
-                Libro "Del desierto a la hoguera" (Patricia Enciso Patiño)
-              </a>
-            </li>
-            <li className="flex items-start gap-3 mt-4">
               <MapPin size={16} className="shrink-0 mt-0.5 text-[#C1533B]/60" />
               <span className="leading-tight">Desierto de la Candelaria, Boyacá, Colombia</span>
             </li>
