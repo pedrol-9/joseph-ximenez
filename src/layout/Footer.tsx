@@ -5,8 +5,6 @@ import { BookOpen, MapPin, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { blogArticles } from "@/data/blogData";
-
 export const Footer = () => {
   const [activeLink, setActiveLink] = React.useState("");
   const pathname = usePathname();
@@ -34,21 +32,9 @@ export const Footer = () => {
                 className="hover:text-[#C1533B] transition-colors" 
                 style={{ color: isActive("/blog") ? "#C1533B" : "inherit" }}
               >
-                Portada Editorial
+                Artículo Conmemorativo
               </Link>
             </li>
-            {blogArticles.map((article) => (
-              <li key={article.slug}>
-                <Link 
-                  href={`/blog/${article.slug}`} 
-                  onClick={() => setActiveLink(`/blog/${article.slug}`)} 
-                  className="hover:text-[#C1533B] transition-colors" 
-                  style={{ color: isActive(`/blog/${article.slug}`) ? "#C1533B" : "inherit" }}
-                >
-                  {article.title.split(":")[0]}
-                </Link>
-              </li>
-            ))}
           </ul>
         </>
       );

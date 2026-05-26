@@ -18,24 +18,18 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="!fixed !top-0 !left-0 !right-0 z-[9999] flex items-center justify-between px-6 py-5 transition-colors duration-300"
-        style={{
-          background: isOpen ? "rgba(16,15,13,1)" : "rgba(16,15,13,0.88)",
-          backdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(221,216,207,0.06)"
-        }}>
-        <Link href="/" className="font-serif italic text-xl relative z-10 hover:opacity-80 transition-opacity" style={{ color: "#C1533B" }}>J. Ximénez</Link>
+      <nav className={`!fixed !top-0 !left-0 !right-0 z-[9999] flex items-center justify-between px-6 py-5 transition-colors duration-300 backdrop-blur-md border-b border-sand/[0.06] ${isOpen ? "bg-[#100F0D]" : "bg-[#100F0D]/80"}`}>
+        <Link href="/" className="font-serif italic text-xl relative z-10 hover:opacity-80 transition-opacity text-terracotta">J. Ximénez</Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex gap-8 text-xs tracking-widest uppercase relative z-10" style={{ color: "rgba(221,216,207,0.4)" }}>
+        <div className="hidden md:flex gap-8 text-xs tracking-widest uppercase relative z-10 text-sand/40">
           {links.map((link) => {
             const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
             return (
               <Link 
                 key={link.href} 
                 href={link.href} 
-                className="hover:text-[#C1533B] transition-colors"
-                style={{ color: isActive ? "#C1533B" : "inherit" }}
+                className={`transition-colors ${isActive ? "text-terracotta" : "text-inherit hover:text-terracotta"}`}
               >
                 {link.label}
               </Link>
@@ -45,7 +39,7 @@ export const Navbar = () => {
 
         {/* Mobile Hamburger Toggle */}
         <button
-          className="md:hidden relative z-10 p-2 -mr-2 text-[#DDD8CF]"
+          className="md:hidden relative z-10 p-2 -mr-2 text-sand"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Menu"
         >
@@ -63,7 +57,7 @@ export const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="!fixed !inset-0 z-[9998] flex flex-col items-center justify-center bg-[#100F0D]"
           >
-            <div className="flex flex-col items-center gap-8 text-sm tracking-widest uppercase" style={{ color: "rgba(221,216,207,0.8)" }}>
+            <div className="flex flex-col items-center gap-8 text-sm tracking-widest uppercase text-sand/80">
               {links.map((link) => {
                 const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
                 return (
@@ -71,8 +65,7 @@ export const Navbar = () => {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="hover:text-[#C1533B] transition-colors p-4"
-                    style={{ color: isActive ? "#C1533B" : "inherit" }}
+                    className={`transition-colors p-4 ${isActive ? "text-terracotta" : "text-inherit hover:text-terracotta"}`}
                   >
                     {link.label}
                   </Link>

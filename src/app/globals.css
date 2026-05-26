@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit), sans-serif;
@@ -8,15 +8,13 @@
   --font-accent: var(--font-courgette), cursive;
 
   --color-terracotta: #C1533B;
-  --color-terracotta-dark: #A8422B;
   --color-colonial: #F4F1EA;
-  --color-olive: #354F42;
   --color-stone: #2B2A29;
   --color-sand: #E8E2D2;
 }
 
 :root {
-  --background: var(--color-colonial);
+  --background: var(--color-colonial); 
   --foreground: var(--color-stone);
 }
 
@@ -91,4 +89,4 @@ html {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
+
