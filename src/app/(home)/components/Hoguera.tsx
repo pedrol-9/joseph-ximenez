@@ -44,7 +44,7 @@ export default function Hoguera() {
           </h2>
           
           {/* Detalles Históricos de la Inquisición */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left bg-[#100F0D]/50 p-8 md:p-12 border border-[#C1533B]/20 rounded-2xl backdrop-blur-sm mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left bg-[#100F0D]/50 p-8 md:p-12 border border-[#C1533B]/20 rounded-2xl backdrop-blur-sm mb-0">
             {inquisitionSteps.map((step, idx) => (
               <div key={idx}>
                 <h3 className="font-serif text-xl md:text-2xl text-[#E8E2D2] mb-4 border-b border-[#C1533B]/30 pb-4 inline-block">{step.title}</h3>
@@ -53,12 +53,6 @@ export default function Hoguera() {
                 </p>
               </div>
             ))}
-          </div>
-          
-          <div className="py-8 border-y border-[#C1533B]/10 bg-[#C1533B]/[0.02]">
-            <p className="font-serif italic text-[#E8E2D2] text-[clamp(1.5rem,4vw,2.5rem)] drop-shadow-[0_0_15px_rgba(232,226,210,0.2)]">
-              "El único místico quemado vivo sin retractarse."
-            </p>
           </div>
         </motion.div>
       </section>
