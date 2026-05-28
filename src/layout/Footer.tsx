@@ -49,7 +49,7 @@ export const Footer = () => {
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
             <li><Link href="/galeria#ermitanos" onClick={() => setActiveLink("/galeria#ermitanos")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#ermitanos") ? "#C1533B" : "inherit" }}>Ermitaños de la Historia</Link></li>
             <li><Link href="/galeria#arte" onClick={() => setActiveLink("/galeria#arte")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#arte") ? "#C1533B" : "inherit" }}>Exhibición de Arte</Link></li>
-            {/* <li><Link href="/galeria#mystic-book" onClick={() => setActiveLink("/galeria#mystic-book")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#mystic-book") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li> */}
+            <li><Link href="/galeria#mystic-book" onClick={() => setActiveLink("/galeria#mystic-book")} className="hover:text-[#C1533B] transition-colors" style={{ color: isActive("/galeria#mystic-book") ? "#C1533B" : "inherit" }}>Documentos Históricos</Link></li>
           </ul>
         </>
       );
