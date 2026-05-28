@@ -44,8 +44,56 @@ export default function Legado() {
           </h2>
         </motion.div>
 
+        {/* ESCALABILIDAD: EL LIBRO Y EVENTOS */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="bg-[#0A0A0A] border border-[#C1533B]/10 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-2xl mb-32 md:mb-40"
+        >
+          {/* Brillo sutil detrás del libro */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#C1533B]/5 blur-[80px] pointer-events-none rounded-full" />
+
+          <div className="max-w-xl text-center md:text-left relative z-10">
+            <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.3em] uppercase block mb-4">
+              Investigación Histórica
+            </span>
+            <h3 className="font-serif text-3xl md:text-5xl mb-6 text-[#E8E2D2]">Del desierto a la hoguera</h3>
+            <p className="font-light text-[#E8E2D2]/50 mb-10 leading-relaxed text-base md:text-lg">
+              La exhaustiva investigación de Patricia Enciso Patiño que desentierra los folios originales del Archivo Histórico Nacional de Madrid, trayendo a la luz la verdad oculta del ermitaño.
+            </p>
+
+            {/* Botón preparado para E-Commerce, sutil pero llamativo */}
+            <a
+              href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-transparent border border-[#C1533B]/40 hover:bg-[#C1533B]/10 hover:border-[#C1533B] text-[#E8E2D2] px-8 py-4 rounded-full text-xs font-mono tracking-widest uppercase transition-all duration-300"
+            >
+              Adquirir el Libro
+            </a>
+          </div>
+
+          <a
+            href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-[300px] shrink-0 bg-[#050505] border border-[#E8E2D2]/10 rounded-lg relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10 overflow-hidden block"
+          >
+            {/* Portada del libro */}
+            <img
+              src="https://http2.mlstatic.com/D_NQ_NP_764888-MCO84533351158_052025-O.webp"
+              alt="Portada del libro Del desierto a la hoguera"
+              className="w-full h-auto block"
+            />
+            {/* Gradiente decorativo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-40 pointer-events-none" />
+          </a>
+        </motion.div>
+
         {/* LA ESCULTURA & EL ARTE */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mb-32 md:mb-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -134,6 +182,7 @@ export default function Legado() {
             </div>
           </motion.div>
         </div>
+
       </div>
     </section>
   );

@@ -43,9 +43,9 @@ Los siguientes elementos han sido removidos por completo tanto de la interfaz co
 * **Detalles:** Se removieron todas sus referencias en [src/app/galeria/page.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/galeria/page.tsx), los enlaces rotos en [src/layout/Footer.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/layout/Footer.tsx) y sus estilos específicos/keyframes de transición en [src/app/globals.css](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/globals.css).
 
 ### 2. Sección del Libro de MercadoLibre
-* **Estado:** **Eliminado permanentemente**
-* **Ubicación:** `src/app/(home)/components/Legado.tsx` (Se removió el bloque completo del contenedor HTML de MercadoLibre).
-* **Detalles:** Se retiró también el enlace directo en el pie de página de la web ([src/layout/Footer.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/layout/Footer.tsx)).
+* **Estado:** **Restaurado / Activo**
+* **Ubicación:** [src/app/(home)/components/Legado.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/(home)/components/Legado.tsx)
+* **Detalles:** Se restauró el bloque completo con la imagen de portada y link a MercadoLibre en la sección de Legado y se volvió a agregar el enlace directo en el pie de página de la web ([src/layout/Footer.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/layout/Footer.tsx)).
 
 ---
 
