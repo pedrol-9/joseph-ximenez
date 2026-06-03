@@ -36,7 +36,7 @@ export default function Inicio() {
           className="mb-8 md:mb-10"
         >
           <p className="text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.55em] uppercase text-terracotta drop-shadow-sm">
-            Conmemoración de los 350 años de la orden de captura de
+            Conmemoración de los 350 años de la orden de captura contra
           </p>
         </motion.div>
 
@@ -93,13 +93,17 @@ export default function Inicio() {
                 <span className="h-px w-6 bg-terracotta/20 group-hover/link:bg-terracotta/40 transition-colors duration-300" />
               </div>
               
-              <p className="font-sans text-xs md:text-sm italic text-sand/40 max-w-sm md:max-w-md mx-auto leading-relaxed text-center flex items-center justify-center gap-1.5 transition-colors duration-300 group-hover/link:text-sand/60">
-                <span>
-                  Basado en el libro de la historiadora{" "}
-                  <span className="text-terracotta not-italic font-medium group-hover/link:text-terracotta-dark transition-colors duration-300">
-                    Patricia Enciso Patiño
+              <p className="font-sans text-xs md:text-sm text-sand/40 max-w-sm md:max-w-md mx-auto leading-relaxed text-center flex items-center justify-center gap-1.5 transition-colors duration-300 group-hover/link:text-sand/60">
+                <p>
+                  Basado en el libro {" "}
+                  <span className="text-terracotta italic font-medium group-hover/link:text-terracotta-dark transition-colors duration-300">  
+                    &quot;Del Desierto a la Hoguera&quot; {" "}
                   </span>
-                </span>
+                    de la historiadora
+                  <span className="text-terracotta not-italic font-medium group-hover/link:text-terracotta-dark transition-colors duration-300">
+                    {" "}Patricia Enciso Patiño
+                  </span>
+                </p>
                 <ArrowUpRight 
                   size={14} 
                   className="text-terracotta/50 group-hover/link:text-terracotta transition-all duration-300 transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 shrink-0" 
