@@ -11,21 +11,21 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 interface BlobItem { pathname: string; url: string; }
 interface Perspective { url: string; label: string; isMain: boolean; sortKey: string; }
 interface ObraGroup { number: number; perspectives: Perspective[]; }
+interface Artist {
+  id: string;
+  name: string;
+  role: string;
+  instagram?: string;
+  instagramHandle?: string;
+  photoFilename?: string;
+  technique: string;
+  bio: string;
+}
 
 /* ─────────────────────────────────────────────
    ARTISTS DATA
    ───────────────────────────────────────────── */
-const artists = [
-  {
-    id: "santiago",
-    name: "Santiago Rodríguez Ruiz",
-    role: "Alfarero · Ráquira, Boyacá",
-    instagram: "https://www.instagram.com/el_sr_rodriguez/",
-    instagramHandle: "@el_sr_rodriguez",
-    photoFilename: "foto_sr_rdriguez.png",
-    technique: "Modelado manual en arcilla roja de Ráquira. Cada pieza es esculpida a mano mediante la técnica ancestral de placas y desbaste, decorada con engobes minerales naturales y cocida en hornos tradicionales a más de 900°C.",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
+const artists: Artist[] = [
   {
     id: "eduardo",
     name: "Eduardo Rodríguez Ataide",
@@ -143,9 +143,11 @@ export function ArtistGallery() {
   const artist = artists[activeArtist];
 
   // Find artist photo
-  const artistPhoto = blobs.find(b =>
-    b.pathname.toLowerCase().includes("foto_sr")
-  );
+  const artistPhoto = artist.photoFilename
+    ? blobs.find(b =>
+        b.pathname.toLowerCase().includes(artist.photoFilename!.toLowerCase())
+      )
+    : null;
 
   // Get active perspective index for an obra
   const getActiveIdx = (obraNum: number) => activePerspective[obraNum] || 0;
@@ -206,29 +208,31 @@ export function ArtistGallery() {
       {/* ═══════════════════════════════════════
           ARTIST TABS
           ═══════════════════════════════════════ */}
-      <div className="max-w-6xl mx-auto px-6 mb-16">
-        <div className="flex justify-center gap-2 md:gap-4">
-          {artists.map((a, i) => (
-            <button
-              key={a.id}
-              onClick={() => setActiveArtist(i)}
-              className={`relative px-5 md:px-8 py-3 md:py-4 rounded-full text-xs md:text-sm font-mono tracking-widest uppercase transition-all duration-300 border ${
-                activeArtist === i
-                  ? "bg-[#C1533B]/15 border-[#C1533B]/50 text-[#E8E2D2]"
-                  : "bg-transparent border-[#E8E2D2]/10 text-[#E8E2D2]/40 hover:text-[#E8E2D2]/70 hover:border-[#E8E2D2]/20"
-              }`}
-            >
-              {a.name.split(" ")[0]}
-              {activeArtist === i && (
-                <motion.div
-                  layoutId="artistIndicator"
-                  className="absolute -bottom-[1px] left-1/2 -translate-x-1/2 w-8 h-[2px] bg-[#C1533B] rounded-full"
-                />
-              )}
-            </button>
-          ))}
+      {artists.length > 1 && (
+        <div className="max-w-6xl mx-auto px-6 mb-16">
+          <div className="flex justify-center gap-2 md:gap-4">
+            {artists.map((a, i) => (
+              <button
+                key={a.id}
+                onClick={() => setActiveArtist(i)}
+                className={`relative px-5 md:px-8 py-3 md:py-4 rounded-full text-xs md:text-sm font-mono tracking-widest uppercase transition-all duration-300 border ${
+                  activeArtist === i
+                    ? "bg-[#C1533B]/15 border-[#C1533B]/50 text-[#E8E2D2]"
+                    : "bg-transparent border-[#E8E2D2]/10 text-[#E8E2D2]/40 hover:text-[#E8E2D2]/70 hover:border-[#E8E2D2]/20"
+                }`}
+              >
+                {a.name.split(" ")[0]}
+                {activeArtist === i && (
+                  <motion.div
+                    layoutId="artistIndicator"
+                    className="absolute -bottom-[1px] left-1/2 -translate-x-1/2 w-8 h-[2px] bg-[#C1533B] rounded-full"
+                  />
+                )}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* ═══════════════════════════════════════
           ARTIST BIO HEADER
@@ -248,7 +252,7 @@ export function ArtistGallery() {
 
               {/* Artist Photo */}
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[#C1533B]/30 overflow-hidden shrink-0 relative bg-[#1A1918]">
-                {artistPhoto && activeArtist === 0 ? (
+                {artistPhoto ? (
                   <Image
                     src={artistPhoto.url}
                     alt={artist.name}
@@ -304,7 +308,7 @@ export function ArtistGallery() {
           {/* ═══════════════════════════════════════
               OBRAS LIST
               ═══════════════════════════════════════ */}
-          {activeArtist === 0 && obras.length > 0 && (
+          {artist.id === "santiago" && obras.length > 0 && (
             <div className="max-w-6xl mx-auto px-6 space-y-32">
               {obras.map((obra, obraIdx) => {
                 const meta = obraMeta[obra.number] || {
@@ -436,7 +440,7 @@ export function ArtistGallery() {
           )}
 
           {/* Eduardo placeholder */}
-          {activeArtist === 1 && (
+          {artist.id === "eduardo" && (
             <div className="max-w-6xl mx-auto px-6">
               <div className="text-center py-20 border border-[#E8E2D2]/5 rounded-2xl bg-[#0A0A0A]">
                 <span className="font-mono text-[#C1533B] text-xs tracking-[0.3em] uppercase block mb-4">
