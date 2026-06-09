@@ -99,10 +99,7 @@ export default function Inicio() {
                   <span className="text-terracotta italic font-medium group-hover/link:text-terracotta-dark transition-colors duration-300">  
                     &quot;Del Desierto a la Hoguera&quot; {" "}
                   </span>
-                    de la historiadora
-                  <span className="text-terracotta not-italic font-medium group-hover/link:text-terracotta-dark transition-colors duration-300">
-                    {" "}Patricia Enciso Patiño
-                  </span>
+                    de Patricia Enciso Patiño
                 </p>
                 <ArrowUpRight 
                   size={14} 
