@@ -3,7 +3,6 @@
 import React from "react";
 import { CardCarousel } from "./components/CardCarousel";
 import { ArtistGallery } from "./components/ArtistGallery";
-import { MysticBook } from "./components/MysticBook";
 import { InteractiveMap } from "@/app/(home)/components/InteractiveMap";
  
 export default function GaleriaPage() {
@@ -15,8 +14,6 @@ export default function GaleriaPage() {
       <ArtistGallery />
       <div className="w-full border-t border-white/5" />
       <InteractiveMap />
-      <div className="w-full border-t border-white/5" />
-      <MysticBook />
     </main>
   );
 }
