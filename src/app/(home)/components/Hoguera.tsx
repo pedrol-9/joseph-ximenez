@@ -38,17 +38,17 @@ export default function Hoguera() {
         >
           <div className="w-[1px] h-16 md:h-24 bg-gradient-to-b from-transparent to-[#C1533B] mx-auto mb-10 md:mb-16 opacity-50" />
           
-          <h2 className="font-serif text-[#E8E2D2] text-[clamp(3rem,8vw,6rem)] leading-[0.9] mb-16 tracking-tight">
+          <h2 className="font-serif text-text-primary text-[clamp(3rem,8vw,6rem)] leading-[0.9] mb-16 tracking-tight">
             El Juicio y <br/>
             <em className="text-[#C1533B] italic drop-shadow-[0_0_20px_rgba(193,83,59,0.3)]">la Hoguera.</em>
           </h2>
           
           {/* Detalles Históricos de la Inquisición */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left bg-[#100F0D]/50 p-8 md:p-12 border border-[#C1533B]/20 rounded-2xl backdrop-blur-sm mb-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left bg-[#C1533B]/10 p-8 md:p-12 border border-[#C1533B]/25 rounded-2xl backdrop-blur-sm mb-0">
             {inquisitionSteps.map((step, idx) => (
               <div key={idx}>
-                <h3 className="font-serif text-xl md:text-2xl text-[#E8E2D2] mb-4 border-b border-[#C1533B]/30 pb-4 inline-block">{step.title}</h3>
-                <p className="text-[#E8E2D2]/60 text-base md:text-lg font-light leading-relaxed">
+                <h3 className="font-serif text-xl md:text-2xl text-text-primary mb-4 border-b border-[#C1533B]/30 pb-4 inline-block">{step.title}</h3>
+                <p className="text-text-secondary text-base md:text-lg font-light leading-relaxed">
                   {step.text}
                 </p>
               </div>

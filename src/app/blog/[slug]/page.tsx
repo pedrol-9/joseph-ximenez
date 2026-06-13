@@ -65,11 +65,11 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
         style={{ scaleX }}
       />
 
-      <main className="min-h-screen bg-colonial pt-32 pb-24 text-stone selection:bg-terracotta selection:text-colonial">
+      <main className="min-h-screen bg-bg-primary pt-32 pb-24 text-text-primary selection:bg-accent selection:text-bg-primary transition-colors duration-300">
         <article className="max-w-3xl mx-auto px-6 relative w-full">
           
           {/* BREADCRUMBS */}
-          <nav className="flex items-center flex-wrap gap-2 text-[10px] uppercase tracking-widest font-bold text-stone/40 mb-8">
+          <nav className="flex items-center flex-wrap gap-2 text-[10px] uppercase tracking-widest font-bold text-text-secondary mb-8">
             <Link href="/" className="hover:text-terracotta transition-colors">Inicio</Link>
             <span>/</span>
             <Link href="/blog" className="hover:text-terracotta transition-colors">Blog</Link>
@@ -83,12 +83,12 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
           {/* FLOATING SHARE BUTTONS (Only on wide screens to prevent overlapping on standard laptops) */}
           <div className="hidden xl:flex flex-col items-center gap-4 absolute -left-24 top-48">
-            <span className="text-[10px] uppercase tracking-widest font-bold text-stone/40 mb-2 rotate-180" style={{ writingMode: 'vertical-rl' }}>Compartir</span>
-            <div className="w-px h-8 bg-stone/10 mb-2" />
-            <button onClick={copyLink} className="p-2 rounded-full border border-stone/10 text-stone/40 hover:text-terracotta hover:border-terracotta hover:bg-sand/30 transition-all cursor-pointer group" title="Copiar Enlace">
+            <span className="text-[10px] uppercase tracking-widest font-bold text-text-secondary mb-2 rotate-180" style={{ writingMode: 'vertical-rl' }}>Compartir</span>
+            <div className="w-px h-8 bg-border-theme mb-2" />
+            <button onClick={copyLink} className="p-2 rounded-full border border-border-theme text-text-secondary hover:text-accent hover:border-accent hover:bg-bg-card transition-all cursor-pointer group" title="Copiar Enlace">
               <Link2 size={16} className="group-hover:scale-110 transition-transform" />
             </button>
-            <button onClick={shareArticle} className="p-2 rounded-full border border-stone/10 text-stone/40 hover:text-terracotta hover:border-terracotta hover:bg-sand/30 transition-all cursor-pointer group" title="Compartir">
+            <button onClick={shareArticle} className="p-2 rounded-full border border-border-theme text-text-secondary hover:text-accent hover:border-accent hover:bg-bg-card transition-all cursor-pointer group" title="Compartir">
               <Share2 size={16} className="group-hover:scale-110 transition-transform" />
             </button>
           </div>
@@ -98,8 +98,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
               <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-terracotta font-bold">
                 {article.category}
               </span>
-              <span className="w-1 h-1 rounded-full bg-stone/20" />
-              <span className="font-mono text-[10px] text-stone/50">
+              <span className="w-1 h-1 rounded-full bg-text-primary/20" />
+              <span className="font-mono text-[10px] text-text-secondary">
                 {article.date} · {article.readTime}
               </span>
             </div>
@@ -108,7 +108,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
               initial={{ opacity: 0, y: 15 }} 
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-stone font-medium tracking-tight"
+              className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-text-primary font-medium tracking-tight"
             >
               {article.title}
             </motion.h1>
@@ -120,7 +120,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ delay: 0.2 }}
-            className="flex flex-col gap-6 md:gap-8 font-sans text-base md:text-lg text-stone/85 leading-relaxed font-light"
+            className="flex flex-col gap-6 md:gap-8 font-sans text-base md:text-lg text-text-primary/85 leading-relaxed font-light"
           >
             {/* Letra Capitular para el primer párrafo */}
             <p>
@@ -137,7 +137,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
                 
                 if (!imageSrc) {
                   return (
-                    <div key={idx} className="w-full aspect-video bg-sand/30 border border-stone/10 rounded-sm my-12 flex flex-col items-center justify-center text-stone/40">
+                    <div key={idx} className="w-full aspect-video bg-bg-card/30 border border-border-theme rounded-sm my-12 flex flex-col items-center justify-center text-text-secondary">
                       <span className="font-mono text-xs uppercase tracking-widest mb-2">Espacio para Ilustración</span>
                       <span className="font-serif italic text-sm">{article.title}</span>
                     </div>
@@ -146,14 +146,14 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
                 return (
                   <div key={idx} className="my-10 group/img">
-                    <div className="overflow-hidden rounded-sm border border-stone/10 shadow-xl bg-sand/20 p-2">
+                    <div className="overflow-hidden rounded-sm border border-border-theme shadow-xl bg-bg-card/20 p-2">
                       <img 
                         src={imageSrc} 
                         alt={article.title} 
                         className="w-full aspect-video object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 ease-out"
                       />
                     </div>
-                    <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-stone/50 mt-4 text-center italic">
+                    <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-text-secondary mt-4 text-center italic">
                       Ilustración conceptual: {article.title}
                     </p>
                   </div>
@@ -163,13 +163,13 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             })}
 
             {/* COMPARTIR (Móvil/Bottom) */}
-            <div className="mt-16 pt-8 border-t border-stone/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-              <span className="font-mono text-[10px] tracking-widest uppercase text-stone/40">¿Te resultó interesante?</span>
+            <div className="mt-16 pt-8 border-t border-border-theme flex flex-col sm:flex-row items-center justify-between gap-6">
+              <span className="font-mono text-[10px] tracking-widest uppercase text-text-secondary">¿Te resultó interesante?</span>
               <div className="flex gap-3">
-                <button onClick={copyLink} className="flex items-center gap-2 px-4 py-2 rounded-full border border-stone/10 text-stone/60 hover:text-terracotta hover:border-terracotta hover:bg-sand/30 transition-all text-xs font-bold uppercase tracking-widest cursor-pointer">
+                <button onClick={copyLink} className="flex items-center gap-2 px-4 py-2 rounded-full border border-border-theme text-text-secondary hover:text-accent hover:border-accent hover:bg-bg-card transition-all text-xs font-bold uppercase tracking-widest cursor-pointer">
                   <Link2 size={14} /> Copiar Enlace
                 </button>
-                <button onClick={shareArticle} className="flex items-center gap-2 px-4 py-2 rounded-full border border-stone/10 text-stone/60 hover:text-terracotta hover:border-terracotta hover:bg-sand/30 transition-all text-xs font-bold uppercase tracking-widest cursor-pointer">
+                <button onClick={shareArticle} className="flex items-center gap-2 px-4 py-2 rounded-full border border-border-theme text-text-secondary hover:text-accent hover:border-accent hover:bg-bg-card transition-all text-xs font-bold uppercase tracking-widest cursor-pointer">
                   <Share2 size={14} /> Compartir
                 </button>
               </div>
@@ -181,10 +181,10 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
         {/* ARTÍCULOS RELACIONADOS */}
         {relatedArticles.length > 0 && (
-          <div className="max-w-5xl mx-auto px-6 mt-32 border-t border-stone/10 pt-16">
+          <div className="max-w-5xl mx-auto px-6 mt-32 border-t border-border-theme pt-16">
             <div className="flex items-center justify-between mb-12">
-              <h3 className="font-serif text-3xl text-[#100F0D]">Sigue Leyendo</h3>
-              <Link href="/blog" className="text-[10px] uppercase tracking-widest font-bold text-[#7A3B22] flex items-center gap-2 hover:translate-x-2 transition-transform">
+              <h3 className="font-serif text-3xl text-text-primary">Sigue Leyendo</h3>
+              <Link href="/blog" className="text-[10px] uppercase tracking-widest font-bold text-accent flex items-center gap-2 hover:translate-x-2 transition-transform">
                 Ver Todo <ArrowRight size={14} />
               </Link>
             </div>
@@ -192,7 +192,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {relatedArticles.map((relArticle) => (
                 <Link href={`/blog/${relArticle.slug}`} key={relArticle.slug} className="group block">
-                  <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 rounded-sm border border-stone/5 bg-colonial hover:bg-sand hover:border-terracotta/30 transition-colors shadow-sm">
+                  <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 rounded-sm border border-border-theme bg-bg-card hover:bg-bg-primary hover:border-accent/30 transition-colors shadow-sm">
                     {/* Thumbnail */}
                     <div className="w-full sm:w-32 aspect-square shrink-0 overflow-hidden rounded-sm relative">
                       <img 
@@ -203,13 +203,13 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
                     </div>
                     {/* Contenido */}
                     <div className="flex flex-col justify-center h-full">
-                      <span className="font-sans text-[10px] tracking-widest uppercase text-[#7A3B22] font-bold mb-2">
+                      <span className="font-sans text-[10px] tracking-widest uppercase text-accent font-bold mb-2">
                         {relArticle.category}
                       </span>
-                      <h4 className="font-serif text-xl leading-tight text-[#100F0D] group-hover:text-[#7A3B22] transition-colors mb-3">
+                      <h4 className="font-serif text-xl leading-tight text-text-primary group-hover:text-accent transition-colors mb-3">
                         {relArticle.title}
                       </h4>
-                      <p className="font-mono text-[10px] text-stone/40 flex items-center gap-2">
+                      <p className="font-mono text-[10px] text-text-secondary flex items-center gap-2">
                         {relArticle.readTime}
                       </p>
                     </div>
@@ -224,7 +224,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
       
       {/* EXACT USER WAVE */}
       {/* EXACT USER WAVE - NO CROP, RESPONSIVE HEIGHT */}
-      <div className="w-full overflow-hidden leading-0 bg-colonial relative -mb-0.5 z-10">
+      <div className="w-full overflow-hidden leading-0 bg-bg-primary relative -mb-0.5 z-10">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" className="block w-full h-25 md:h-50 lg:h-80">
           <path fill="#050505" fillOpacity="1" d="M0,96L48,96C96,96,192,96,288,112C384,128,480,160,576,160C672,160,768,128,864,128C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>

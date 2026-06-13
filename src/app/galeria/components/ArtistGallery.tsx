@@ -180,8 +180,8 @@ export function ArtistGallery() {
   return (
     <section
       id="arte"
-      className="w-full font-sans py-24"
-      style={{ background: "#100F0D", color: "#DDD8CF" }}
+      className="w-full font-sans py-24 transition-colors duration-300"
+      style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
     >
       {/* ═══════════════════════════════════════
           SECTION HEADER
@@ -197,7 +197,7 @@ export function ArtistGallery() {
           <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.4em] uppercase block mb-4">
             Colección de Arte
           </span>
-          <h2 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] leading-tight text-[#E8E2D2] mb-6">
+          <h2 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] leading-tight text-text-primary mb-6">
             Exhibición de{" "}
             <em className="italic text-[#C1533B]">Artistas</em>
           </h2>
@@ -217,8 +217,8 @@ export function ArtistGallery() {
                 onClick={() => setActiveArtist(i)}
                 className={`relative px-5 md:px-8 py-3 md:py-4 rounded-full text-xs md:text-sm font-mono tracking-widest uppercase transition-all duration-300 border ${
                   activeArtist === i
-                    ? "bg-[#C1533B]/15 border-[#C1533B]/50 text-[#E8E2D2]"
-                    : "bg-transparent border-[#E8E2D2]/10 text-[#E8E2D2]/40 hover:text-[#E8E2D2]/70 hover:border-[#E8E2D2]/20"
+                    ? "bg-[#C1533B]/15 border-[#C1533B]/50 text-text-primary"
+                    : "bg-transparent border-border-theme text-text-secondary/60 hover:text-text-primary hover:border-border-theme/40"
                 }`}
               >
                 {a.name.split(" ")[0]}
@@ -246,7 +246,7 @@ export function ArtistGallery() {
           transition={{ duration: 0.5 }}
         >
           <div className="max-w-6xl mx-auto px-6 mb-24">
-            <div className="bg-[#0A0A0A] border border-[#E8E2D2]/5 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center relative overflow-hidden">
+            <div className="bg-bg-card border border-border-theme rounded-2xl p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center relative overflow-hidden">
               {/* Decorative glow */}
               <div className="absolute -left-20 -top-20 w-[200px] h-[200px] bg-[#C1533B]/5 blur-[80px] rounded-full pointer-events-none" />
 
@@ -271,16 +271,16 @@ export function ArtistGallery() {
 
               {/* Artist Info */}
               <div className="flex-1 text-center md:text-left relative z-10">
-                <h3 className="font-serif text-2xl md:text-3xl text-[#E8E2D2] mb-2">
+                <h3 className="font-serif text-2xl md:text-3xl text-text-primary mb-2">
                   {artist.name}
                 </h3>
                 <span className="font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#C1533B] block mb-4">
                   {artist.role}
                 </span>
-                <p className="text-sm md:text-base font-light leading-relaxed text-[#E8E2D2]/60 mb-4 max-w-2xl">
+                <p className="text-sm md:text-base font-light leading-relaxed text-text-secondary mb-4 max-w-2xl">
                   {artist.bio}
                 </p>
-                <p className="text-xs md:text-sm font-light leading-relaxed text-[#E8E2D2]/40 italic mb-6 max-w-2xl">
+                <p className="text-xs md:text-sm font-light leading-relaxed text-text-secondary/60 italic mb-6 max-w-2xl">
                   {artist.technique}
                 </p>
 
@@ -289,14 +289,14 @@ export function ArtistGallery() {
                     href={artist.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-5 py-2.5 bg-[#1A1918] hover:bg-[#C1533B]/10 border border-[#E8E2D2]/10 hover:border-[#C1533B]/30 rounded-full transition-all duration-300 group"
+                    className="inline-flex items-center gap-3 px-5 py-2.5 bg-bg-primary/50 hover:bg-[#C1533B]/10 border border-border-theme hover:border-[#C1533B]/30 rounded-full transition-all duration-300 group"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C1533B] group-hover:scale-110 transition-transform">
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                     </svg>
-                    <span className="font-mono text-xs tracking-wide text-[#E8E2D2]/80">
+                    <span className="font-mono text-xs tracking-wide text-text-primary/80">
                       {artist.instagramHandle}
                     </span>
                   </a>
@@ -332,8 +332,8 @@ export function ArtistGallery() {
                       <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-[#C1533B]">
                         {String(obraIdx + 1).padStart(2, "0")}
                       </span>
-                      <div className="flex-1 h-[1px] bg-[#E8E2D2]/5" />
-                      <span className="font-mono text-[10px] tracking-widest uppercase text-[#E8E2D2]/30">
+                      <div className="flex-1 h-[1px] bg-border-theme" />
+                      <span className="font-mono text-[10px] tracking-widest uppercase text-text-secondary/40">
                         {obra.perspectives.length}{" "}
                         {obra.perspectives.length === 1
                           ? "vista"
@@ -346,7 +346,7 @@ export function ArtistGallery() {
                       {/* Main Image */}
                       <div className="lg:col-span-7">
                         <div
-                          className="relative aspect-square bg-[#0A0A0A] rounded-xl overflow-hidden border border-[#E8E2D2]/5 cursor-pointer group shadow-2xl"
+                          className="relative aspect-square bg-[#0A0A0A] rounded-xl overflow-hidden border border-border-theme cursor-pointer group shadow-2xl"
                           onClick={() =>
                             setLightbox({
                               obraNumber: obra.number,
@@ -375,7 +375,7 @@ export function ArtistGallery() {
 
                           {/* Expand hint */}
                           <div className="absolute bottom-4 right-4 bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#C1533B]/20 px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <span className="font-mono text-[9px] tracking-widest text-[#E8E2D2]/80 uppercase">
+                            <span className="font-mono text-[9px] tracking-widest text-text-primary/80 uppercase">
                               Ampliar
                             </span>
                           </div>
@@ -396,7 +396,7 @@ export function ArtistGallery() {
                                 className={`relative w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all duration-300 ${
                                   pIdx === activeIdx
                                     ? "border-[#C1533B] shadow-[0_0_12px_rgba(193,83,59,0.3)]"
-                                    : "border-[#E8E2D2]/10 hover:border-[#E8E2D2]/30 opacity-50 hover:opacity-80"
+                                    : "border-border-theme hover:border-border-theme/40 opacity-50 hover:opacity-80"
                                 }`}
                               >
                                 <Image
@@ -417,17 +417,17 @@ export function ArtistGallery() {
                         <span className="font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#C1533B] block mb-3">
                           {meta.date} · Arcilla Roja
                         </span>
-                        <h3 className="font-serif text-3xl md:text-4xl text-[#E8E2D2] mb-4 leading-tight">
+                        <h3 className="font-serif text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
                           {meta.title}
                         </h3>
-                        <p className="text-sm md:text-base font-light leading-relaxed text-[#E8E2D2]/60 mb-6">
+                        <p className="text-sm md:text-base font-light leading-relaxed text-text-secondary mb-6">
                           {meta.description}
                         </p>
 
                         {/* Active perspective label */}
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-[1px] bg-[#C1533B]/40" />
-                          <span className="font-mono text-[10px] tracking-widest text-[#E8E2D2]/30 uppercase">
+                          <span className="font-mono text-[10px] tracking-widest text-text-secondary/40 uppercase">
                             {activePersp.label}
                           </span>
                         </div>
@@ -442,11 +442,11 @@ export function ArtistGallery() {
           {/* Eduardo placeholder */}
           {artist.id === "eduardo" && (
             <div className="max-w-6xl mx-auto px-6">
-              <div className="text-center py-20 border border-[#E8E2D2]/5 rounded-2xl bg-[#0A0A0A]">
+              <div className="text-center py-20 border border-border-theme rounded-2xl bg-bg-card">
                 <span className="font-mono text-[#C1533B] text-xs tracking-[0.3em] uppercase block mb-4">
                   Próximamente
                 </span>
-                <p className="font-serif text-2xl text-[#E8E2D2]/40 italic">
+                <p className="font-serif text-2xl text-text-secondary/40 italic">
                   El portafolio de Eduardo está en preparación
                 </p>
               </div>

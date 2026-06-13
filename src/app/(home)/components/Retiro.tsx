@@ -26,7 +26,7 @@ function DesertStep({ step, index }: { step: any, index: number }) {
           <span className="font-mono text-[#C1533B] text-[10px] tracking-[0.3em] uppercase block mb-3">
             {step.subtitle}
           </span>
-          <h3 className="font-serif text-2xl md:text-4xl text-[#E8E2D2] mb-4">
+          <h3 className="font-serif text-2xl md:text-4xl text-text-primary mb-4">
             {step.title}
           </h3>
           
@@ -37,7 +37,7 @@ function DesertStep({ step, index }: { step: any, index: number }) {
             }`}
           >
             <div className="overflow-hidden">
-              <p className="text-[#E8E2D2]/60 text-base lg:text-xl leading-relaxed font-light">
+              <p className="text-text-secondary text-base lg:text-xl leading-relaxed font-light">
                 {step.text}
               </p>
             </div>
@@ -71,7 +71,7 @@ export default function Retiro() {
   ];
 
   return (
-      <section id="retiro" className="bg-[#141210] border-y border-[#E8E2D2]/5 relative z-20 w-full overflow-hidden">
+      <section id="retiro" className="relative z-20 w-full overflow-hidden bg-transparent border-y border-border-theme">
       
       {/* Marca de agua gigante */}
       <div className="absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden opacity-[0.03]">
@@ -92,7 +92,7 @@ export default function Retiro() {
         1. EL DESIERTO (Los 11 años de silencio)
         ========================================
       */}
-      <div className="py-24 md:py-40 px-6 md:px-12 lg:pl-[140px] max-w-6xl mx-auto border-t border-[#E8E2D2]/5">
+      <div className="py-24 md:py-40 px-6 md:px-12 lg:pl-[140px] max-w-6xl mx-auto border-t border-border-theme">
         
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -104,9 +104,9 @@ export default function Retiro() {
           <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.4em] uppercase block mb-6">
             1665 — 1676 · El Retiro
           </span>
-          <h2 className="font-serif text-[#E8E2D2] text-[clamp(3.5rem,10vw,7rem)] leading-[0.9] tracking-tight">
+          <h2 className="font-serif text-text-primary text-[clamp(3.5rem,10vw,7rem)] leading-[0.9] tracking-tight">
             Once años<br/>
-            <em className="text-[#E8E2D2]/30 italic font-light">de silencio.</em>
+            <em className="text-text-secondary/40 italic font-light">de silencio.</em>
           </h2>
         </motion.div>
 

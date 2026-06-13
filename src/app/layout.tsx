@@ -29,6 +29,8 @@ export const metadata: Metadata = {
 import { Navbar } from "@/layout/Navbar";
 import { Footer } from "@/layout/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export default function RootLayout({
   children,
@@ -41,11 +43,32 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${playfair.variable} ${outfit.variable} ${courgette.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-[#100F0D] text-[#DDD8CF]">
-        <Navbar />
-        {children}
-        <ScrollToTop />
-        <Footer />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('jx-theme');
+                  if (saved && ['cripta', 'colonial', 'terracota', 'indigo'].indexOf(saved) !== -1) {
+                    document.documentElement.setAttribute('data-theme', saved);
+                  } else {
+                    document.documentElement.setAttribute('data-theme', 'cripta');
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-bg-primary text-text-primary transition-colors duration-300">
+        <ThemeProvider>
+          <Navbar />
+          {children}
+          <ScrollToTop />
+          <ThemeSwitcher />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ import { InteractiveMap } from "@/app/(home)/components/InteractiveMap";
  
 export default function GaleriaPage() {
   return (
-    <main className="relative min-h-screen font-sans overflow-x-hidden selection:bg-[#C1533B] selection:text-[#100F0D] flex flex-col" style={{ background: "#100F0D", color: "#DDD8CF" }}>
+    <main className="relative min-h-screen font-sans overflow-x-hidden selection:bg-accent selection:text-bg-primary flex flex-col bg-bg-primary text-text-primary transition-colors duration-300">
       <div id="ermitanos" className="w-full pt-20 flex flex-col">
         <CardCarousel />
       </div>

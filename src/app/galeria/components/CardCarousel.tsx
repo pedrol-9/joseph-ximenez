@@ -133,14 +133,14 @@ export const CardCarousel = () => {
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle,#DDD8CF 1px,transparent 1px)",
+            "radial-gradient(circle,var(--text-primary) 1px,transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
         style={{
-          background: "radial-gradient(circle,#C1533B 0%,transparent 70%)",
+          background: "radial-gradient(circle,var(--accent) 0%,transparent 70%)",
         }}
       />
 
@@ -150,7 +150,7 @@ export const CardCarousel = () => {
           <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.4em] uppercase block mb-4">
             Paralelismos Místicos
           </span>
-          <h1 className="font-serif text-3xl md:text-5xl text-[#E8E2D2]">
+          <h1 className="font-serif text-3xl md:text-5xl text-text-primary">
             Ermitaños de la Historia
           </h1>
         </div>
@@ -212,7 +212,7 @@ export const CardCarousel = () => {
                   >
                     {/* FRENTE DE LA CARTA (IMAGEN - PRIMERA VISTA) */}
                     <div
-                      className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl overflow-hidden flex flex-col"
+                      className="absolute inset-0 bg-bg-card border border-border-theme rounded-3xl overflow-hidden flex flex-col"
                       style={{
                         backfaceVisibility: "hidden",
                         WebkitBackfaceVisibility: "hidden",
@@ -268,7 +268,7 @@ export const CardCarousel = () => {
                               e.stopPropagation();
                               toggleFlip(card.id);
                             }}
-                            className="group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto cursor-pointer"
+                            className="group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 text-accent hover:text-text-primary pointer-events-auto cursor-pointer"
                           >
                             <RotateCcw
                               size={14}
@@ -282,7 +282,7 @@ export const CardCarousel = () => {
 
                     {/* REVERSO DE LA CARTA (TEXTO INFORMATIVO) */}
                     <div
-                      className="absolute inset-0 bg-[#0A0908] border border-[#E8E2D2]/10 rounded-3xl p-8 md:p-10 flex flex-col"
+                      className="absolute inset-0 bg-bg-card border border-border-theme rounded-3xl p-8 md:p-10 flex flex-col"
                       style={{
                         backfaceVisibility: "hidden",
                         WebkitBackfaceVisibility: "hidden",
@@ -291,31 +291,27 @@ export const CardCarousel = () => {
                       }}
                     >
                       {/* Brillo interno de la carta */}
-                      <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#C1533B]/5 to-transparent rounded-t-3xl pointer-events-none" />
+                      <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-accent/5 to-transparent rounded-t-3xl pointer-events-none" />
 
                       {/* Contenido */}
                       <div className="relative z-10 flex flex-col h-full">
                         <span
-                          className="font-mono text-[#E8E2D2]/70 text-[10px] tracking-widest uppercase mb-6 px-3 py-1 w-fit inline-block rounded-full backdrop-blur-md border border-[#E8E2D2]/20"
-                          style={{
-                            background:
-                              "linear-gradient(to right, rgba(193,83,59,0.4), rgba(193,83,59,0.5), rgba(193,83,59,0.4))",
-                          }}
+                          className="font-mono text-accent text-[10px] tracking-widest uppercase mb-6 px-3 py-1 w-fit inline-block rounded-full bg-accent/10 border border-accent/25"
                         >
                           {card.dates} · {card.location}
                         </span>
 
-                        <h2 className="font-serif text-3xl md:text-4xl text-[#E8E2D2] leading-tight mb-2">
+                        <h2 className="font-serif text-3xl md:text-4xl text-text-primary leading-tight mb-2">
                           {card.name}
                         </h2>
 
-                        <p className="font-serif italic text-[#E8E2D2]/50 text-lg md:text-xl mb-6">
+                        <p className="font-serif italic text-text-secondary text-lg md:text-xl mb-6">
                           {card.title}
                         </p>
 
-                        <div className="w-12 h-[1px] bg-[#C1533B]/40 mb-6" />
+                        <div className="w-12 h-[1px] bg-accent/40 mb-6" />
 
-                        <p className="text-[#E8E2D2]/70 font-light text-sm md:text-base leading-relaxed flex-1 pointer-events-none select-none overflow-hidden">
+                        <p className="text-text-primary/80 font-light text-sm md:text-base leading-relaxed flex-1 pointer-events-none select-none overflow-hidden">
                           {card.description}
                         </p>
 
@@ -326,7 +322,7 @@ export const CardCarousel = () => {
                               e.stopPropagation();
                               toggleFlip(card.id);
                             }}
-                            className="group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 text-[#C1533B] hover:text-[#E8E2D2] pointer-events-auto cursor-pointer"
+                            className="group flex items-center gap-2 text-xs font-mono tracking-widest uppercase transition-colors duration-300 text-accent hover:text-text-primary pointer-events-auto cursor-pointer"
                           >
                             <RotateCcw
                               size={14}
@@ -347,10 +343,10 @@ export const CardCarousel = () => {
           <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 opacity-60 flex md:hidden">
             <MoveHorizontal
               size={20}
-              className="text-[#E8E2D2] animate-pulse"
+              className="text-text-primary animate-pulse"
             />
-            <span className="font-mono text-[10px] tracking-widest uppercase text-[#E8E2D2]">
-              Desliza para explorar
+            <span className="font-mono text-[10px] tracking-widest uppercase text-text-primary">
+              Deslizar
             </span>
           </div>
 
@@ -359,10 +355,10 @@ export const CardCarousel = () => {
             <button
               onClick={handlePrev}
               disabled={isFirst}
-              className={`p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] transition-all backdrop-blur-md ${
+              className={`p-3 rounded-full bg-bg-primary/80 border border-border-theme text-text-primary transition-all backdrop-blur-md ${
                 isFirst
                   ? "opacity-30 cursor-not-allowed pointer-events-none"
-                  : "hover:text-[#C1533B] hover:border-[#C1533B]/30 cursor-pointer"
+                  : "hover:text-accent hover:border-accent/30 cursor-pointer"
               }`}
               aria-label="Anterior"
             >
@@ -373,10 +369,10 @@ export const CardCarousel = () => {
             <button
               onClick={handleNext}
               disabled={isLast}
-              className={`p-3 rounded-full bg-[#100F0D]/80 border border-[#DDD8CF]/10 text-[#DDD8CF] transition-all backdrop-blur-md ${
+              className={`p-3 rounded-full bg-bg-primary/80 border border-border-theme text-text-primary transition-all backdrop-blur-md ${
                 isLast
                   ? "opacity-30 cursor-not-allowed pointer-events-none"
-                  : "hover:text-[#C1533B] hover:border-[#C1533B]/30 cursor-pointer"
+                  : "hover:text-accent hover:border-accent/30 cursor-pointer"
               }`}
               aria-label="Siguiente"
             >

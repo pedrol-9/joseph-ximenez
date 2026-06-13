@@ -75,7 +75,7 @@ const journeyData = [
 // Creando un ícono personalizado minimalista
 const customIcon = L.divIcon({
   className: "custom-map-marker",
-  html: `<div style="width: 16px; height: 16px; background-color: #C1533B; border-radius: 50%; border: 3px solid #100F0D; box-shadow: 0 0 10px rgba(193, 83, 59, 0.8);"></div>`,
+  html: `<div style="width: 16px; height: 16px; background-color: var(--accent); border-radius: 50%; border: 3px solid var(--bg-primary); box-shadow: 0 0 10px var(--accent);"></div>`,
   iconSize: [16, 16],
   iconAnchor: [8, 8]
 });
@@ -88,7 +88,7 @@ export default function MapComponent() {
       <MapContainer 
         center={[20.0, -35.0]} // Un punto intermedio entre España y Colombia
         zoom={3} 
-        style={{ height: '100%', width: '100%', background: '#100F0D' }}
+        style={{ height: '100%', width: '100%', background: 'var(--bg-primary)' }}
         scrollWheelZoom={false}
       >
         <TileLayer
@@ -98,7 +98,7 @@ export default function MapComponent() {
 
         <Polyline 
           positions={pathCoordinates} 
-          pathOptions={{ color: '#C1533B', weight: 2, dashArray: '5, 10', opacity: 0.6 }} 
+          pathOptions={{ color: 'var(--accent)', weight: 2, dashArray: '5, 10', opacity: 0.6 }} 
         />
 
         {journeyData.map((point) => (
@@ -110,11 +110,11 @@ export default function MapComponent() {
             <Popup 
               className="custom-popup"
             >
-              <div className="font-sans text-[#DDD8CF]">
-                <h3 className="font-serif text-lg font-bold text-[#C1533B] mb-1">{point.title}</h3>
-                <p className="text-sm italic opacity-80 mb-2">{point.date}</p>
-                <p className="text-sm mb-2 text-[#DDD8CF]"><strong className="text-[#F4F1EA]">Hito:</strong> {point.hito}</p>
-                <p className="text-xs text-[#DDD8CF] opacity-90">{point.relevante}</p>
+              <div className="font-sans text-text-primary">
+                <h3 className="font-serif text-lg font-bold text-accent mb-1">{point.title}</h3>
+                <p className="text-sm italic opacity-85 mb-2">{point.date}</p>
+                <p className="text-sm mb-2 text-text-primary"><strong className="text-accent">Hito:</strong> {point.hito}</p>
+                <p className="text-xs text-text-primary opacity-90">{point.relevante}</p>
               </div>
             </Popup>
           </Marker>
@@ -124,16 +124,16 @@ export default function MapComponent() {
       {/* Estilos para sobreescribir el diseño del popup por defecto de Leaflet para que encaje con el tema oscuro */}
       <style dangerouslySetInnerHTML={{__html: `
         .leaflet-popup-content-wrapper {
-          background-color: #1a1a1a !important;
-          color: #DDD8CF !important;
+          background-color: var(--bg-card) !important;
+          color: var(--text-primary) !important;
           border-radius: 8px !important;
-          border: 1px solid rgba(193, 83, 59, 0.3) !important;
+          border: 1px solid var(--accent) !important;
         }
         .leaflet-popup-tip {
-          background-color: #1a1a1a !important;
+          background-color: var(--bg-card) !important;
         }
         .leaflet-container a.leaflet-popup-close-button {
-          color: #C1533B !important;
+          color: var(--accent) !important;
         }
       `}} />
     </div>

@@ -26,7 +26,7 @@ export default function BlogPage() {
   const featuredArticle = blogArticles[0];
 
   return (
-    <div className="min-h-screen bg-colonial pt-32 text-stone selection:bg-terracotta selection:text-colonial relative">
+    <div className="min-h-screen bg-bg-primary pt-32 text-text-primary selection:bg-accent selection:text-bg-primary relative transition-colors duration-300">
 
       {/* HEADER */}
       <header className="mb-16 flex flex-col items-center text-center px-6">
@@ -38,7 +38,7 @@ export default function BlogPage() {
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="font-serif text-[clamp(3.5rem,8vw,7rem)] leading-[0.9] tracking-tight text-stone mb-8"
+          className="font-serif text-[clamp(3.5rem,8vw,7rem)] leading-[0.9] tracking-tight text-text-primary mb-8"
         >
           Ecos del <br /><span className="italic text-terracotta">Desierto</span>
         </motion.h1>
@@ -62,20 +62,20 @@ export default function BlogPage() {
                     <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-terracotta font-bold">
                       {featuredArticle.category}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-stone/20" />
-                    <span className="font-mono text-[10px] text-stone/50">
+                    <span className="w-1.5 h-1.5 rounded-full bg-text-primary/20" />
+                    <span className="font-mono text-[10px] text-text-secondary">
                       {featuredArticle.date} · {featuredArticle.readTime}
                     </span>
                   </div>
                   
-                  <h2 className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-stone font-medium tracking-tight">
+                  <h2 className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-text-primary font-medium tracking-tight">
                     {featuredArticle.title}
                   </h2>
                   
                   <div className="w-12 h-px bg-terracotta/30 mx-auto mt-8" />
                 </header>
 
-                <div className="flex flex-col gap-6 md:gap-8 font-sans text-base md:text-lg text-stone/85 leading-relaxed font-light">
+                <div className="flex flex-col gap-6 md:gap-8 font-sans text-base md:text-lg text-text-primary/85 leading-relaxed font-light">
                   {/* Letra Capitular para el primer párrafo */}
                   <p>
                     <span className="float-left text-7xl font-serif text-terracotta leading-[0.8] pr-3 pt-1 select-none font-bold">
@@ -121,45 +121,45 @@ export default function BlogPage() {
           {/* Tarjeta flotante estilo revista */}
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="bg-sand border border-stone/10 rounded-sm shadow-2xl relative overflow-hidden flex flex-col md:flex-row"
+            className="bg-bg-card border border-border-theme rounded-sm shadow-2xl relative overflow-hidden flex flex-col md:flex-row"
           >
             {/* Decoración de la tarjeta */}
             <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-terracotta to-terracotta/80" />
-            <div className="absolute -right-24 -top-24 text-stone/5 rotate-12 pointer-events-none">
+            <div className="absolute -right-24 -top-24 text-text-primary/5 rotate-12 pointer-events-none">
                <Quote size={240} />
             </div>
 
             {/* Mitad Autora */}
-            <div className="md:w-1/2 p-12 md:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-stone/10 relative z-10">
+            <div className="md:w-1/2 p-12 md:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-theme relative z-10">
               <span className="font-sans text-[10px] text-terracotta font-bold tracking-[0.3em] uppercase block mb-6 flex items-center gap-2">
                 <span className="w-4 h-[1px] bg-terracotta" /> Sobre la Autora
               </span>
-              <h3 className="font-serif text-4xl mb-6 text-stone">Patricia Enciso Patiño</h3>
-              <p className="font-light text-stone/70 text-base leading-relaxed mb-8">
+              <h3 className="font-serif text-4xl mb-6 text-text-primary">Patricia Enciso Patiño</h3>
+              <p className="font-light text-text-primary/70 text-base leading-relaxed mb-8">
                 PhD en Historia Social por la Universidad Federal Fluminense y Magíster en Historia. Ha dedicado su vida a investigar archivos coloniales, rescatando del silencio historias perdidas en los márgenes de la Inquisición en América Latina.
               </p>
               <div className="flex gap-4 items-center mt-auto">
                 <div className="w-10 h-[1px] bg-terracotta" />
-                <span className="font-mono text-xs text-stone/40 uppercase tracking-widest">Investigadora Principal</span>
+                <span className="font-mono text-xs text-text-primary/40 uppercase tracking-widest">Investigadora Principal</span>
               </div>
             </div>
 
             {/* Mitad Libro */}
-            <div className="md:w-1/2 p-12 md:p-16 flex flex-col justify-center items-start relative z-10 bg-[radial-gradient(ellipse_at_bottom_right,var(--color-colonial),var(--color-sand))]">
+            <div className="md:w-1/2 p-12 md:p-16 flex flex-col justify-center items-start relative z-10 bg-[radial-gradient(ellipse_at_bottom_right,var(--bg-primary),var(--bg-card))]">
               <div className="bg-terracotta/10 p-4 rounded-full mb-8">
                 <BookOpen className="text-terracotta" size={32} />
               </div>
-              <h4 className="font-serif text-3xl md:text-4xl mb-6 text-stone leading-tight">
+              <h4 className="font-serif text-3xl md:text-4xl mb-6 text-text-primary leading-tight">
                 Del desierto <br/>a la hoguera
               </h4>
-              <p className="font-light text-base text-stone/70 mb-10">
+              <p className="font-light text-base text-text-primary/70 mb-10">
                 Adquiere el libro completo y sumérgete en los 29 folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
               </p>
               <a 
                 href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-stone text-colonial text-xs font-bold uppercase tracking-widest hover:bg-terracotta transition-colors duration-300 rounded-sm flex items-center gap-3 shadow-xl cursor-pointer"
+                className="px-8 py-4 bg-text-primary text-bg-primary text-xs font-bold uppercase tracking-widest hover:bg-terracotta hover:text-text-primary transition-colors duration-300 rounded-sm flex items-center gap-3 shadow-xl cursor-pointer"
               >
                 Comprar Ejemplar <ChevronRight size={14} />
               </a>
@@ -170,7 +170,7 @@ export default function BlogPage() {
 
       {/* EXACT USER WAVE */}
       {/* EXACT USER WAVE - NO CROP, RESPONSIVE HEIGHT */}
-      <div className="w-full overflow-hidden leading-[0] bg-[#F4F1EA] relative -mb-[2px] z-10">
+      <div className="w-full overflow-hidden leading-[0] bg-bg-primary relative -mb-[2px] z-10">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" className="block w-full h-[100px] md:h-[200px] lg:h-[320px]">
           <path fill="#050505" fillOpacity="1" d="M0,96L48,96C96,96,192,96,288,112C384,128,480,160,576,160C672,160,768,128,864,128C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>

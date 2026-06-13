@@ -101,7 +101,7 @@ export const TimelineSidebar = () => {
                     <motion.div
                       animate={{ 
                         height: isActive ? "32px" : "12px", 
-                        backgroundColor: isActive ? "#C1533B" : "rgba(232,226,210,0.3)"
+                        backgroundColor: isActive ? "var(--accent)" : "var(--border-theme)"
                       }}
                       className="w-[3px] rounded-full transition-colors duration-500"
                     />
@@ -113,10 +113,10 @@ export const TimelineSidebar = () => {
                     animate={{ opacity: isActive ? 1 : 0.3, x: isActive ? 0 : -10 }}
                     className="flex flex-col"
                   >
-                    <span className="text-sm font-mono tracking-widest uppercase font-bold transition-colors duration-300 group-hover:text-[#C1533B]" style={{ color: isActive ? "#C1533B" : "#E8E2D2" }}>
+                    <span className={`text-sm font-mono tracking-widest uppercase font-bold transition-colors duration-300 group-hover:text-accent ${isActive ? "text-accent" : "text-text-primary"}`}>
                       {section.date}
                     </span>
-                    <span className="text-xs font-serif italic mt-1 transition-colors duration-300 group-hover:text-[#E8E2D2]" style={{ color: isActive ? "#E8E2D2" : "rgba(232,226,210,0.5)" }}>
+                    <span className={`text-xs font-serif italic mt-1 transition-colors duration-300 group-hover:text-text-primary ${isActive ? "text-text-primary" : "text-text-secondary"}`}>
                       {section.label}
                     </span>
                   </motion.div>
@@ -137,18 +137,13 @@ export const TimelineSidebar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="pointer-events-auto flex items-center gap-3 px-6 py-3 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
-              style={{ 
-                background: "rgba(16,15,13,0.95)", 
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(232,226,210,0.15)"
-              }}
+              className="pointer-events-auto flex items-center gap-3 px-6 py-3 rounded-full shadow-lg bg-bg-card/95 backdrop-blur-md border border-border-theme"
             >
-              <span className="text-sm font-mono tracking-widest font-bold" style={{ color: "#C1533B" }}>
+              <span className="text-sm font-mono tracking-widest font-bold text-accent">
                 {activeData.date}
               </span>
-              <div className="w-px h-4" style={{ background: "rgba(232,226,210,0.3)" }} />
-              <span className="text-sm font-serif italic font-medium" style={{ color: "#E8E2D2" }}>
+              <div className="w-px h-4 bg-border-theme" />
+              <span className="text-sm font-serif italic font-medium text-text-primary">
                 {activeData.label}
               </span>
             </motion.div>

@@ -20,13 +20,13 @@ function TimelineItem({ item }: { item: any }) {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6 mb-1 md:mb-6">
-          <span className="font-serif text-3xl md:text-4xl text-[#E8E2D2]/80">{item.year}</span>
+          <span className="font-serif text-3xl md:text-4xl text-text-primary/80">{item.year}</span>
           <span className="font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#C1533B]">
             — {item.location}
           </span>
         </div>
         
-        <h3 className="font-serif text-2xl md:text-3xl text-[#E8E2D2] mb-0 md:mb-4 leading-snug">
+        <h3 className="font-serif text-2xl md:text-3xl text-text-primary mb-0 md:mb-4 leading-snug">
           {item.title}
         </h3>
         
@@ -37,7 +37,7 @@ function TimelineItem({ item }: { item: any }) {
           }`}
         >
           <div className="overflow-hidden">
-            <p className="text-[#E8E2D2]/60 text-base md:text-lg leading-relaxed max-w-2xl font-light pb-6 md:pb-0">
+            <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl font-light pb-6 md:pb-0">
               {item.text}
             </p>
           </div>
@@ -99,10 +99,10 @@ export default function Pasado() {
           viewport={{ once: true, margin: "-10%" }}
           className="mb-20 md:mb-32 text-center md:text-left"
         >
-          <h2 className="font-serif text-[#E8E2D2] text-[clamp(2.5rem,8vw,5rem)] leading-[1.1] mb-4">
+          <h2 className="font-serif text-text-primary text-[clamp(2.5rem,8vw,5rem)] leading-[1.1] mb-4">
             El eco de <em className="text-[#C1533B] italic">la violencia.</em>
           </h2>
-          <p className="text-[#E8E2D2]/50 text-lg max-w-xl font-light">
+          <p className="text-text-secondary text-lg max-w-xl font-light">
             Antes de ser místico, fue un hombre acorralado por sus propias sombras y contradicciones.
           </p>
         </motion.div>
@@ -116,7 +116,7 @@ export default function Pasado() {
       </div>
 
       {/* Epifanía */}
-      <div className="relative min-h-[80dvh] flex flex-col items-center justify-center px-6 py-20 text-center border-t border-[#100F0D] bg-[#0A0908]">
+      <div className="relative min-h-[80dvh] flex flex-col items-center justify-center px-6 py-20 text-center border-t border-border-theme bg-bg-card">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,226,210,0.05)_0%,transparent_60%)] pointer-events-none" />
         
         <motion.div
@@ -124,15 +124,15 @@ export default function Pasado() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20%" }}
           transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl mx-auto lg:pl-[140px] border border-[#E8E2D2]/10 p-10 md:p-16 bg-[#100F0D]/50 backdrop-blur-sm"
+          className="relative z-10 max-w-4xl mx-auto lg:pl-[140px] border border-border-theme p-10 md:p-16 bg-bg-primary/50 backdrop-blur-sm"
         >
           <span className="absolute -top-10 left-1/2 -translate-x-1/2 font-serif text-[#C1533B]/20 text-9xl leading-none">"</span>
-          <p className="font-serif text-[clamp(1.8rem,4vw,3rem)] text-[#E8E2D2] leading-snug">
+          <p className="font-serif text-[clamp(1.8rem,4vw,3rem)] text-text-primary leading-snug">
             Una noche se acostó a su lado, cuando de repente tuvo <em className="text-[#C1533B] not-italic">inspiración de Dios</em> de que se retirase a buscarlo.
           </p>
           <div className="mt-12 flex flex-col items-center gap-2">
             <div className="w-16 h-[1px] bg-[#C1533B]/40" />
-            <p className="font-mono text-[9px] md:text-[10px] tracking-widest uppercase text-[#E8E2D2]/40 mt-4">
+            <p className="font-mono text-[9px] md:text-[10px] tracking-widest uppercase text-text-secondary/60 mt-4">
               [ Folio Extraído · Archivo Histórico Nacional de Madrid ]
             </p>
             <p className="font-mono text-[9px] md:text-[10px] tracking-widest uppercase text-[#C1533B]/60">
