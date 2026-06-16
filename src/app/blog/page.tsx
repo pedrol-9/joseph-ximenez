@@ -11,16 +11,7 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
 };
 
-const articleImages: Record<string, string> = {
-  "hallazgo-folio-22": "/blog/manuscrito.png",
-  "auto-de-fe-1688": "/blog/autodefe.png",
-  "frontera-mental-misticismo": "/blog/misticismo.png",
-  "ermitano-siglo-xvii": "/blog/candelaria.png",
-  "esculpiendo-silencio": "/blog/rostro-joseph.jpeg",
-  "meditadores-del-desierto": "/blog/meditadores.jpg",
-  "la-senal-del-pajaro": "/blog/pajaro.png",
-  "palacio-inquisicion-cartagena": "/blog/tribunal.png",
-};
+const articleImages: Record<string, string> = {};
 
 export default function BlogPage() {
   const featuredArticle = blogArticles[0];

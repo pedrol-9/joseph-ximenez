@@ -2,21 +2,12 @@
 
 import { use } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { ChevronLeft, Share2, Link2, ArrowRight } from "lucide-react";
+import { ChevronLeft, Share2, Link2, ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { blogArticles } from "@/data/blogData";
 import { notFound } from "next/navigation";
 
-const articleImages: Record<string, string> = {
-  "hallazgo-folio-22": "/blog/manuscrito.png",
-  "auto-de-fe-1688": "/blog/autodefe.png",
-  "frontera-mental-misticismo": "/blog/misticismo.png",
-  "ermitano-siglo-xvii": "/blog/candelaria.png",
-  "esculpiendo-silencio": "/blog/rostro-joseph.jpeg",
-  "meditadores-del-desierto": "/blog/meditadores.jpg",
-  "la-senal-del-pajaro": "/blog/pajaro.png",
-  "palacio-inquisicion-cartagena": "/blog/tribunal.png",
-};
+const articleImages: Record<string, string> = {};
 
 export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -194,12 +185,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
                 <Link href={`/blog/${relArticle.slug}`} key={relArticle.slug} className="group block">
                   <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 rounded-sm border border-border-theme bg-bg-card hover:bg-bg-primary hover:border-accent/30 transition-colors shadow-sm">
                     {/* Thumbnail */}
-                    <div className="w-full sm:w-32 aspect-square shrink-0 overflow-hidden rounded-sm relative">
-                      <img 
-                        src={articleImages[relArticle.slug]} 
-                        alt={relArticle.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                    <div className="w-full sm:w-32 aspect-square shrink-0 overflow-hidden rounded-sm relative bg-bg-primary/50 border border-border-theme flex items-center justify-center text-accent/40 group-hover:text-accent/60 transition-colors duration-500">
+                      <BookOpen size={28} />
                     </div>
                     {/* Contenido */}
                     <div className="flex flex-col justify-center h-full">
