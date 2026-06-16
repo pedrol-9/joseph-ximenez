@@ -153,16 +153,11 @@ export default function BlogPage() {
                 Del desierto <br/>a la hoguera
               </h4>
               <p className="font-light text-base text-text-primary/70 mb-10">
-                Adquiere el libro completo y sumérgete en los 29 folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
+                La obra fundamental de Patricia Enciso Patiño que desentierra los folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
               </p>
-              <a 
-                href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-text-primary text-bg-primary text-xs font-bold uppercase tracking-widest hover:bg-terracotta hover:text-text-primary transition-colors duration-300 rounded-sm flex items-center gap-3 shadow-xl cursor-pointer"
-              >
-                Comprar Ejemplar <ChevronRight size={14} />
-              </a>
+              <div className="px-6 py-4 border border-terracotta/30 text-terracotta text-xs font-mono uppercase tracking-widest rounded-sm">
+                Edición de Colección (1995)
+              </div>
             </div>
           </motion.div>
         </div>

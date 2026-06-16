@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const demoSections = [
   { id: "inicio", label: "Inicio", date: "" },
-  { id: "pasado", label: "El Pasado", date: "1632" },
+  { id: "pasado", label: "Infancia y juventud", date: "1632" },
   { id: "retiro", label: "El Retiro", date: "1665" },
   { id: "hoguera", label: "La Hoguera", date: "1688" },
   { id: "legado", label: "El Legado", date: "S.XXI" },
@@ -22,11 +22,6 @@ export const TimelineSidebar = () => {
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         const id = entry.target.id;
-        
-        if (id === "footer") {
-          setIsFooterVisible(entry.isIntersecting);
-          return;
-        }
 
         if (entry.isIntersecting) {
           visibleSections.add(id);
@@ -36,14 +31,14 @@ export const TimelineSidebar = () => {
       });
 
       // Lógica de selección:
-      // Queremos que la sección activa sea la "más avanzada" en la cronología 
+      // Queremos que la sección activa sea la "más avanzada" en la cronología
       // de entre las que son visibles en el área central.
       const visibleArray = Array.from(visibleSections);
       if (visibleArray.length > 0) {
         const latestVisible = demoSections
-          .filter(s => visibleSections.has(s.id))
+          .filter((s) => visibleSections.has(s.id))
           .pop(); // Toma el último en el orden del array demoSections
-        
+
         if (latestVisible) {
           setActiveSection(latestVisible.id);
         }
@@ -56,17 +51,38 @@ export const TimelineSidebar = () => {
       threshold: 0.1,
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
 
     demoSections.forEach((section) => {
       const element = document.getElementById(section.id);
       if (element) observer.observe(element);
     });
 
-    const footerElement = document.getElementById("footer");
-    if (footerElement) observer.observe(footerElement);
+    // Observer separado para el footer con un margen inferior más estricto
+    // para evitar ocultar la barra lateral antes de marcar "El Legado"
+    const footerObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsFooterVisible(entry.isIntersecting);
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -38% 0px", // Se activa cuando el footer sube más allá del 38% inferior del viewport
+        threshold: 0.05,
+      }
+    );
 
-    return () => observer.disconnect();
+    const footerElement = document.getElementById("footer");
+    if (footerElement) footerObserver.observe(footerElement);
+
+    return () => {
+      observer.disconnect();
+      footerObserver.disconnect();
+    };
   }, []);
 
   const scrollTo = (id: string) => {
@@ -76,7 +92,8 @@ export const TimelineSidebar = () => {
     }
   };
 
-  const activeData = demoSections.find(s => s.id === activeSection) || demoSections[0];
+  const activeData =
+    demoSections.find((s) => s.id === activeSection) || demoSections[0];
   const isVisible = activeSection !== "inicio" && !isFooterVisible;
 
   return (
@@ -84,7 +101,7 @@ export const TimelineSidebar = () => {
       {/* Desktop Sidebar (Izquierda, más visible, oculto en inicio) */}
       <AnimatePresence>
         {isVisible && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -94,14 +111,19 @@ export const TimelineSidebar = () => {
             {demoSections.slice(1).map((section) => {
               const isActive = activeSection === section.id;
               return (
-                <div key={section.id} className="flex items-center gap-5 group pointer-events-auto cursor-pointer" onClick={() => scrollTo(section.id)}>
-                  
+                <div
+                  key={section.id}
+                  className="flex items-center gap-5 group pointer-events-auto cursor-pointer"
+                  onClick={() => scrollTo(section.id)}
+                >
                   {/* Linea vertical o punto */}
                   <div className="relative flex items-center justify-center w-4 h-4">
                     <motion.div
-                      animate={{ 
-                        height: isActive ? "32px" : "12px", 
-                        backgroundColor: isActive ? "var(--accent)" : "var(--border-theme)"
+                      animate={{
+                        height: isActive ? "32px" : "12px",
+                        backgroundColor: isActive
+                          ? "var(--accent)"
+                          : "var(--border-theme)",
                       }}
                       className="w-[3px] rounded-full transition-colors duration-500"
                     />
@@ -110,13 +132,20 @@ export const TimelineSidebar = () => {
                   {/* Texto */}
                   <motion.div
                     initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: isActive ? 1 : 0.3, x: isActive ? 0 : -10 }}
+                    animate={{
+                      opacity: isActive ? 1 : 0.3,
+                      x: isActive ? 0 : -10,
+                    }}
                     className="flex flex-col"
                   >
-                    <span className={`text-sm font-mono tracking-widest uppercase font-bold transition-colors duration-300 group-hover:text-accent ${isActive ? "text-accent" : "text-text-primary"}`}>
+                    <span
+                      className={`text-sm font-mono tracking-widest uppercase font-bold transition-colors duration-300 group-hover:text-accent ${isActive ? "text-accent" : "text-text-primary"}`}
+                    >
                       {section.date}
                     </span>
-                    <span className={`text-xs font-serif italic mt-1 transition-colors duration-300 group-hover:text-text-primary ${isActive ? "text-text-primary" : "text-text-secondary"}`}>
+                    <span
+                      className={`text-xs font-serif italic mt-1 transition-colors duration-300 group-hover:text-text-primary ${isActive ? "text-text-primary" : "text-text-secondary"}`}
+                    >
                       {section.label}
                     </span>
                   </motion.div>

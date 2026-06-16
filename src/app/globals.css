@@ -20,6 +20,7 @@
   --color-accent: var(--accent);
   --color-accent-secondary: var(--accent-secondary);
   --color-border-theme: var(--border-theme);
+  --color-arrow-halo-bg: var(--arrow-halo-bg);
 }
 
 :root {
@@ -31,6 +32,7 @@
   --accent: #C1533B;
   --accent-secondary: #A87D4A;
   --border-theme: rgba(229, 224, 216, 0.07);
+  --arrow-halo-bg: rgba(168, 125, 74, 0.25);
 
   --background: var(--bg-primary);
   --foreground: var(--text-primary);
@@ -44,6 +46,7 @@
   --accent: #C1533B;
   --accent-secondary: #A87D4A;
   --border-theme: rgba(229, 224, 216, 0.07);
+  --arrow-halo-bg: rgba(168, 125, 74, 0.25);
 }
 
 [data-theme="colonial"] {
@@ -54,6 +57,7 @@
   --accent: #B84A33;
   --accent-secondary: #8F6E23;
   --border-theme: rgba(38, 36, 33, 0.08);
+  --arrow-halo-bg: rgba(184, 74, 51, 0.12);
 }
 
 [data-theme="terracota"] {
@@ -64,6 +68,7 @@
   --accent: #D46E4B;
   --accent-secondary: #A37748;
   --border-theme: rgba(212, 110, 75, 0.12);
+  --arrow-halo-bg: rgba(212, 110, 75, 0.15);
 }
 
 [data-theme="indigo"] {
@@ -74,6 +79,7 @@
   --accent: #C1533B;
   --accent-secondary: #996930;
   --border-theme: rgba(45, 18, 14, 0.12);
+  --arrow-halo-bg: rgba(193, 83, 59, 0.15);
 }
 
 body {

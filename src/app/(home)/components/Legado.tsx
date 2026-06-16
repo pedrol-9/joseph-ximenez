@@ -1,10 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const bookImages = [
+  { src: "/images/libro/PortadaLibro_1.jpg", alt: "Portada original - Del desierto a la hoguera" },
+  { src: "/images/libro/PortadaLibro_2.jpg", alt: "Página de título interior" },
+  { src: "/images/libro/PortadaLibro_3.jpg", alt: "Página de créditos y edición" },
+];
 
 export default function Legado() {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % bookImages.length);
+  };
+
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + bookImages.length) % bookImages.length);
+  };
   return (
     <section id="legado" className="relative z-30 bg-transparent text-text-primary pt-32 pb-12 overflow-hidden border-t border-border-theme">
 
@@ -60,36 +75,68 @@ export default function Legado() {
               Investigación Histórica
             </span>
             <h3 className="font-serif text-3xl md:text-5xl mb-6 text-text-primary">Del desierto a la hoguera</h3>
-            <p className="font-light text-text-secondary mb-10 leading-relaxed text-base md:text-lg">
+            <p className="font-light text-text-secondary leading-relaxed text-base md:text-lg mb-6">
               La exhaustiva investigación de Patricia Enciso Patiño que desentierra los folios originales del Archivo Histórico Nacional de Madrid, trayendo a la luz la verdad oculta del ermitaño.
             </p>
-
-            {/* Botón preparado para E-Commerce, sutil pero llamativo */}
-            <a
-              href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-transparent border border-[#C1533B]/40 hover:bg-[#C1533B]/10 hover:border-[#C1533B] text-text-primary px-8 py-4 rounded-full text-xs font-mono tracking-widest uppercase transition-all duration-300"
-            >
-              Adquirir el Libro
-            </a>
+            <p className="font-light text-text-secondary/80 leading-relaxed text-sm md:text-base">
+              Publicada en 1995 por la Editorial Ariel, esta obra documenta el proceso del Santo Oficio. A la derecha se pueden examinar las páginas del volumen original: la portada de la primera edición, el título interior y los créditos legales.
+            </p>
           </div>
 
-          <a
-            href="https://www.mercadolibre.com.co/del-desierto-a-la-hoguera--patricia-enciso--la-inquisicion/up/MCOU2434042422"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full md:w-[300px] shrink-0 bg-bg-primary/40 border border-border-theme rounded-lg relative shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10 overflow-hidden block"
-          >
-            {/* Portada del libro */}
-            <img
-              src="https://http2.mlstatic.com/D_NQ_NP_764888-MCO84533351158_052025-O.webp"
-              alt="Portada del libro Del desierto a la hoguera"
-              className="w-full h-auto block"
-            />
-            {/* Gradiente decorativo */}
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-transparent opacity-40 pointer-events-none" />
-          </a>
+          {/* Carrusel Premium del Libro */}
+          <div className="w-full md:w-[280px] lg:w-[320px] shrink-0 bg-black/40 border border-[#C1533B]/20 rounded-2xl p-4 flex flex-col items-center relative z-10 shadow-xl">
+            {/* Image Slider */}
+            <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-stone-955 group">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeSlide}
+                  src={bookImages[activeSlide].src}
+                  alt={bookImages[activeSlide].alt}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full h-full object-cover select-none"
+                />
+              </AnimatePresence>
+
+              {/* Botón Anterior */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 hover:bg-[#C1533B] text-white flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20"
+                aria-label="Imagen anterior"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Botón Siguiente */}
+              <button
+                onClick={nextSlide}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 hover:bg-[#C1533B] text-white flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20"
+                aria-label="Siguiente imagen"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Dot Pagination */}
+            <div className="flex gap-2.5 mt-4">
+              {bookImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveSlide(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeSlide === i ? "bg-[#C1533B] scale-125" : "bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Ir a página ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* LA ESCULTURA & EL ARTE */}
