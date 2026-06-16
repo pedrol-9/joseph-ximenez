@@ -38,7 +38,7 @@ export default function Hoguera() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-15%" }}
           transition={{ duration: 1.5 }}
-          className="relative z-10 text-center max-w-4xl mx-auto w-full px-6 lg:pl-[140px]"
+          className="relative z-10 text-center max-w-4xl mx-auto w-full px-6 xl:pl-[140px]"
         >
           <div className="w-[1px] h-16 md:h-24 bg-gradient-to-b from-transparent to-[#C1533B] mx-auto mb-10 md:mb-16 opacity-50" />
 

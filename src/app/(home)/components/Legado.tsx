@@ -40,7 +40,7 @@ export default function Legado() {
       {/* Luz tenue de fondo para diferenciar la época */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(232,226,210,0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 md:pr-12 lg:pl-[140px] relative z-10">
+      <div className="max-w-6xl mx-auto px-6 md:pr-12 xl:pl-[140px] relative z-10">
 
         {/* ENCABEZADO DEL LEGADO */}
         <motion.div

@@ -96,7 +96,7 @@ export default function Retiro() {
         1. EL DESIERTO (Los 11 años de silencio)
         ========================================
       */}
-      <div className="py-24 md:py-40 px-6 md:px-12 lg:pl-[140px] max-w-6xl mx-auto border-t border-border-theme">
+      <div className="py-24 md:py-40 px-6 md:px-12 xl:pl-[140px] max-w-6xl mx-auto border-t border-border-theme">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

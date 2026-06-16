@@ -106,7 +106,7 @@ export const TimelineSidebar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
-            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-start gap-8 pointer-events-none"
+            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-start gap-8 pointer-events-none"
           >
             {demoSections.slice(1).map((section) => {
               const isActive = activeSection === section.id;
@@ -157,7 +157,7 @@ export const TimelineSidebar = () => {
       </AnimatePresence>
 
       {/* Mobile Floating Indicator */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 lg:hidden pointer-events-none w-full px-6 flex justify-center">
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 xl:hidden pointer-events-none w-full px-6 flex justify-center">
         <AnimatePresence mode="wait">
           {isVisible && (
             <motion.div

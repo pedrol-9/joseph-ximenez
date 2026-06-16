@@ -81,7 +81,7 @@ export default function Pasado() {
 
   return (
     <section id="pasado" className="relative bg-transparent w-full">
-      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:pl-[140px] py-24 md:py-40">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 xl:pl-[140px] py-24 md:py-40">
         <motion.div
           id="pasado-title"
           initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,7 @@ export default function Pasado() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20%" }}
           transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl mx-auto lg:pl-[140px] border border-border-theme p-10 md:p-16 bg-bg-primary/50 backdrop-blur-sm"
+          className="relative z-10 max-w-4xl mx-auto xl:pl-[140px] border border-border-theme p-10 md:p-16 bg-bg-primary/50 backdrop-blur-sm"
         >
           <span className="absolute -top-10 left-1/2 -translate-x-1/2 font-serif text-[#C1533B]/20 text-9xl leading-none">
             "
