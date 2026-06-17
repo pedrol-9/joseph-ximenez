@@ -31,16 +31,6 @@ export const CARDS = [
   },
   {
     id: 4,
-    name: "Pablo d'Ors",
-    title: "Maestro del Silencio Contemporáneo",
-    dates: "1963 — presente",
-    location: "Madrid, España",
-    description: "Sacerdote y escritor, fundador de 'Amigos del Desierto'. Rescata la tradición eremítica de los Padres del Desierto adaptándola al hombre contemporáneo. En su célebre obra 'Biografía del silencio', propone la meditación contemplativa no como escape, sino como un camino para encontrarse a uno mismo y reconciliarse con la realidad mediante el cultivo del silencio cotidiano.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/pablo_D_ors.jpg",
-    badgeColor: "#21201f",
-  },
-  {
-    id: 5,
     name: "San Juan de la Cruz",
     title: "El Poeta de la Noche Oscura",
     dates: "1542 — 1591",
@@ -50,17 +40,7 @@ export const CARDS = [
     badgeColor: "#544b42",
   },
   {
-    id: 6,
-    name: "Thomas Merton",
-    title: "El Ermitaño Moderno",
-    dates: "1915 — 1968",
-    location: "Kentucky, EE.UU.",
-    description: "Monje trapense y ermitaño contemporáneo. Escribió ampliamente sobre la oración contemplativa, la soledad y la necesidad del silencio en el mundo moderno. Fue un pionero en entablar un diálogo espiritual y místico profundo entre la tradición monástica cristiana y las filosofías orientales, especialmente el Budismo Zen.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/thomas_merton.webp",
-    badgeColor: "#544b42",
-  },
-  {
-    id: 7,
+    id: 5,
     name: "Santa Teresa de Jesús",
     title: "La Doctora del Castillo Interior",
     dates: "1515 — 1582",
@@ -68,15 +48,5 @@ export const CARDS = [
     description: "Una de las cumbres de la mística universal y Doctora de la Iglesia. Reformadora de la Orden del Carmen, propuso un camino de oración basado en el recogimiento interior y el silencio contemplativo. En su obra 'El castillo interior', describe el alma como una fortaleza de moradas donde reside Dios.",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/santa-teresa-de-Jesus.webp",
     badgeColor: "#544b42",
-  },
-  {
-    id: 8,
-    name: "Marta Robin",
-    title: "La Mística del Silencio Confinado",
-    dates: "1902 — 1981",
-    location: "Châteauneuf-de-Galaure, Francia",
-    description: "Mística laica que vivió confinada en silencio y penumbra total en su pequeña habitación campesina durante más de 50 años. Su retiro radical se convirtió en un faro espiritual, atrayendo a miles de personas de todo el mundo que buscaban dirección espiritual en la quietud de su humilde habitación.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/marta-robin.jpg",
-    badgeColor: "#2b2a29",
   }
 ];
