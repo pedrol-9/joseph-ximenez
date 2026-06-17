@@ -4,10 +4,106 @@ import { use } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { ChevronLeft, Share2, Link2, ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
-import { blogArticles } from "@/data/blogData";
+import { blogArticles, ContentBlock } from "@/data/blogData";
 import { notFound } from "next/navigation";
+import React from "react";
 
-const articleImages: Record<string, string> = {};
+// Parses [fn:N] markers in paragraph text and returns React nodes with styled superscripts
+function renderWithFootnotes(text: string): React.ReactNode[] {
+  const parts = text.split(/(\[fn:\d+\])/g);
+  return parts.map((part, i) => {
+    const match = part.match(/^\[fn:(\d+)\]$/);
+    if (match) {
+      const num = match[1];
+      return (
+        <a
+          key={i}
+          href={`#footnote-${num}`}
+          className="text-[#C1533B] no-underline font-serif align-super text-[0.6em] ml-[1px] hover:opacity-70 transition-opacity"
+        >
+          {num}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
+function ArticleBlock({ block, isFirst }: { block: ContentBlock; isFirst: boolean }) {
+  switch (block.type) {
+    case "paragraph":
+      if (isFirst) {
+        return (
+          <p>
+            <span className="float-left text-7xl font-serif text-[#C1533B] leading-[0.8] pr-3 pt-1 select-none font-bold">
+              {block.text.charAt(0)}
+            </span>
+            {renderWithFootnotes(block.text.slice(1))}
+          </p>
+        );
+      }
+      return <p>{renderWithFootnotes(block.text)}</p>;
+
+    case "section-title":
+      return (
+        <div className="pt-6 pb-2">
+          <div className="flex items-center gap-4 mb-0">
+            <div className="w-8 h-px bg-[#C1533B]/40 shrink-0" />
+            <h2 className="font-serif text-2xl md:text-3xl text-text-primary tracking-tight">
+              {block.text}
+            </h2>
+          </div>
+        </div>
+      );
+
+    case "author-bio":
+      return (
+        <div className="mt-12 border-t border-border-theme pt-8">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[#C1533B] mb-3">
+            Sobre la autora
+          </p>
+          <p className="text-text-secondary text-sm leading-relaxed font-light italic">
+            * {block.text}
+          </p>
+        </div>
+      );
+
+    case "archive-header":
+      return (
+        <div className="mt-12 border-t border-border-theme pt-8">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[#C1533B] mb-4">
+            Fuentes de Archivo
+          </p>
+        </div>
+      );
+
+    case "archive-entry":
+      return (
+        <p className="text-text-secondary text-sm leading-relaxed font-light pl-4 border-l border-[#C1533B]/20 -mt-2">
+          {block.text}
+        </p>
+      );
+
+    case "bibliography-header":
+      return (
+        <div className="mt-10 border-t border-border-theme pt-8">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[#C1533B] mb-4">
+            Bibliografía
+          </p>
+        </div>
+      );
+
+    case "bibliography-entry":
+      return (
+        <p className="text-text-secondary text-sm leading-relaxed font-light pl-4 border-l border-[#C1533B]/20 -mt-2">
+          {block.text}
+        </p>
+      );
+
+    default:
+      return null;
+  }
+}
 
 export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -48,11 +144,14 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
     }
   };
 
+  // Only paragraph blocks count for "first paragraph" drop-cap logic
+  let firstParagraphSeen = false;
+
   return (
     <>
       {/* BARRA DE PROGRESO DE LECTURA */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-terracotta origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-[#C1533B] origin-left z-50"
         style={{ scaleX }}
       />
 
@@ -61,18 +160,18 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           
           {/* BREADCRUMBS */}
           <nav className="flex items-center flex-wrap gap-2 text-[10px] uppercase tracking-widest font-bold text-text-secondary mb-8">
-            <Link href="/" className="hover:text-terracotta transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-[#C1533B] transition-colors">Inicio</Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-terracotta transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#C1533B] transition-colors">Blog</Link>
             <span>/</span>
-            <span className="text-terracotta">{article.category}</span>
+            <span className="text-[#C1533B]">{article.category}</span>
           </nav>
 
-          <Link href="/blog" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-terracotta hover:-translate-x-1.5 transition-transform mb-12">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#C1533B] hover:-translate-x-1.5 transition-transform mb-12">
             <ChevronLeft size={14} /> Volver al archivo
           </Link>
 
-          {/* FLOATING SHARE BUTTONS (Only on wide screens to prevent overlapping on standard laptops) */}
+          {/* FLOATING SHARE BUTTONS */}
           <div className="hidden xl:flex flex-col items-center gap-4 absolute -left-24 top-48">
             <span className="text-[10px] uppercase tracking-widest font-bold text-text-secondary mb-2 rotate-180" style={{ writingMode: 'vertical-rl' }}>Compartir</span>
             <div className="w-px h-8 bg-border-theme mb-2" />
@@ -86,7 +185,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
           <header className="mb-14 text-center max-w-2xl mx-auto">
             <div className="flex justify-center items-center gap-3 mb-6">
-              <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-terracotta font-bold">
+              <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-[#C1533B] font-bold">
                 {article.category}
               </span>
               <span className="w-1 h-1 rounded-full bg-text-primary/20" />
@@ -103,8 +202,14 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             >
               {article.title}
             </motion.h1>
+
+            {article.author && (
+              <p className="font-mono text-xs text-text-secondary mt-4 tracking-widest uppercase">
+                {article.author}
+              </p>
+            )}
             
-            <div className="w-12 h-px bg-terracotta/30 mx-auto mt-8" />
+            <div className="w-12 h-px bg-[#C1533B]/30 mx-auto mt-8" />
           </header>
 
           <motion.div 
@@ -113,45 +218,39 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             transition={{ delay: 0.2 }}
             className="flex flex-col gap-6 md:gap-8 font-sans text-base md:text-lg text-text-primary/85 leading-relaxed font-light"
           >
-            {/* Letra Capitular para el primer párrafo */}
-            <p>
-              <span className="float-left text-7xl font-serif text-terracotta leading-[0.8] pr-3 pt-1 select-none font-bold">
-                {article.content[0].charAt(0)}
-              </span>
-              {article.content[0].slice(1)}
-            </p>
-
-            {article.content.slice(1).map((paragraph, idx) => {
-              if (paragraph === "[ESPACIO PARA IMAGEN]") {
-                const imgKey = article.slug;
-                const imageSrc = articleImages[imgKey] || "";
-                
-                if (!imageSrc) {
-                  return (
-                    <div key={idx} className="w-full aspect-video bg-bg-card/30 border border-border-theme rounded-sm my-12 flex flex-col items-center justify-center text-text-secondary">
-                      <span className="font-mono text-xs uppercase tracking-widest mb-2">Espacio para Ilustración</span>
-                      <span className="font-serif italic text-sm">{article.title}</span>
-                    </div>
-                  );
-                }
-
-                return (
-                  <div key={idx} className="my-10 group/img">
-                    <div className="overflow-hidden rounded-sm border border-border-theme shadow-xl bg-bg-card/20 p-2">
-                      <img 
-                        src={imageSrc} 
-                        alt={article.title} 
-                        className="w-full aspect-video object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 ease-out"
-                      />
-                    </div>
-                    <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-text-secondary mt-4 text-center italic">
-                      Ilustración conceptual: {article.title}
-                    </p>
-                  </div>
-                );
+            {article.blocks.map((block, idx) => {
+              let isFirst = false;
+              if (block.type === "paragraph" && !firstParagraphSeen) {
+                isFirst = true;
+                firstParagraphSeen = true;
               }
-              return <p key={idx}>{paragraph}</p>;
+              return (
+                <ArticleBlock key={idx} block={block} isFirst={isFirst} />
+              );
             })}
+
+            {/* NOTAS AL PIE */}
+            {article.footnotes.length > 0 && (
+              <div className="mt-12 border-t border-border-theme pt-8">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#C1533B] mb-6">
+                  Notas
+                </p>
+                <ol className="flex flex-col gap-3">
+                  {article.footnotes.map((fn) => (
+                    <li
+                      key={fn.number}
+                      id={`footnote-${fn.number}`}
+                      className="flex gap-3 items-baseline text-text-secondary text-sm font-light leading-relaxed scroll-mt-24"
+                    >
+                      <span className="font-serif text-[#C1533B] text-xs shrink-0 w-4 text-right">
+                        {fn.number}.
+                      </span>
+                      <span>{fn.text}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
 
             {/* COMPARTIR (Móvil/Bottom) */}
             <div className="mt-16 pt-8 border-t border-border-theme flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -184,11 +283,9 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
               {relatedArticles.map((relArticle) => (
                 <Link href={`/blog/${relArticle.slug}`} key={relArticle.slug} className="group block">
                   <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 rounded-sm border border-border-theme bg-bg-card hover:bg-bg-primary hover:border-accent/30 transition-colors shadow-sm">
-                    {/* Thumbnail */}
                     <div className="w-full sm:w-32 aspect-square shrink-0 overflow-hidden rounded-sm relative bg-bg-primary/50 border border-border-theme flex items-center justify-center text-accent/40 group-hover:text-accent/60 transition-colors duration-500">
                       <BookOpen size={28} />
                     </div>
-                    {/* Contenido */}
                     <div className="flex flex-col justify-center h-full">
                       <span className="font-sans text-[10px] tracking-widest uppercase text-accent font-bold mb-2">
                         {relArticle.category}
@@ -209,8 +306,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
       </main>
       
-      {/* EXACT USER WAVE */}
-      {/* EXACT USER WAVE - NO CROP, RESPONSIVE HEIGHT */}
+      {/* WAVE */}
       <div className="w-full overflow-hidden leading-0 bg-bg-primary relative -mb-0.5 z-10">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" className="block w-full h-25 md:h-50 lg:h-80">
           <path fill="#050505" fillOpacity="1" d="M0,96L48,96C96,96,192,96,288,112C384,128,480,160,576,160C672,160,768,128,864,128C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>

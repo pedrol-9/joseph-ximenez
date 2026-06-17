@@ -106,39 +106,24 @@ export default function Hoguera() {
                   </div>
 
                   <h4 className="font-serif text-xl md:text-2xl text-[#E5E0D8] group-hover/card:text-[#F4F1EA] mb-3 transition-colors duration-300">
-                    La Singularidad de su Condena
+                    El único místico del Desierto de la Candelaria quemado vivo por hereje dogmatizante. No se retractó, porque todo lo escrito era dictado de Dios.
                   </h4>
 
-                  <p className="text-[#9E9689] group-hover/card:text-[#B5AC9E] text-base md:text-lg font-light leading-relaxed mb-6 italic transition-colors duration-300">
-                    &ldquo;De los 711 reos procesados por el Tribunal de la Inquisición de Cartagena de Indias, solo siete fueron juzgados por herejía formal. Joseph Ximénez fue el único místico, ermitaño y escritor entre ellos, y el único condenado a ser quemado vivo en la hoguera.&rdquo;
-                  </p>
-
-                  {/* Fila Inferior: Autoría + Enlace Interactivo con Efecto Portal */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#C1533B]/15 pt-5 transition-colors duration-500">
-                    {/* Firma con línea decorativa */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-[1px] bg-[#C1533B]/40" />
-                      <span className="font-mono text-xs text-[#A87D4A]">
-                        Dra. Patricia Enciso Patiño, <span className="italic">Del Desierto a la Hoguera</span>
-                      </span>
-                    </div>
-
-                    {/* Botón de Invitación con Efecto Portal */}
-                    <div className="flex items-center gap-2 self-start sm:self-auto text-[#C1533B] group-hover/card:text-[#E5E0D8] transition-colors duration-300">
-                      <span className="font-mono text-xs uppercase tracking-wider font-semibold whitespace-nowrap">
-                        Leer en el Blog
-                      </span>
-                      <div className="relative flex items-center justify-center w-[18px] h-[18px] shrink-0">
-                        <div className="relative overflow-hidden w-[18px] h-[18px]">
-                          <ArrowUpRight
-                            size={18}
-                            className="absolute inset-0 text-[#C1533B] group-hover/card:text-[#E5E0D8] transition-transform duration-500 ease-out transform group-hover/card:translate-x-full group-hover/card:-translate-y-full"
-                          />
-                          <ArrowUpRight
-                            size={18}
-                            className="absolute inset-0 text-[#C1533B] group-hover/card:text-[#E5E0D8] transition-transform duration-500 ease-out transform translate-x-[-100%] translate-y-[100%] group-hover/card:translate-x-0 group-hover/card:translate-y-0"
-                          />
-                        </div>
+                  {/* Enlace Interactivo con Efecto Portal */}
+                  <div className="flex items-center gap-2 mt-6 border-t border-[#C1533B]/15 pt-5 text-[#C1533B] group-hover/card:text-[#E5E0D8] transition-colors duration-300">
+                    <span className="font-mono text-xs uppercase tracking-wider font-semibold whitespace-nowrap">
+                      Leer en el Blog
+                    </span>
+                    <div className="relative flex items-center justify-center w-[18px] h-[18px] shrink-0">
+                      <div className="relative overflow-hidden w-[18px] h-[18px]">
+                        <ArrowUpRight
+                          size={18}
+                          className="absolute inset-0 text-[#C1533B] group-hover/card:text-[#E5E0D8] transition-transform duration-500 ease-out transform group-hover/card:translate-x-full group-hover/card:-translate-y-full"
+                        />
+                        <ArrowUpRight
+                          size={18}
+                          className="absolute inset-0 text-[#C1533B] group-hover/card:text-[#E5E0D8] transition-transform duration-500 ease-out transform translate-x-[-100%] translate-y-[100%] group-hover/card:translate-x-0 group-hover/card:translate-y-0"
+                        />
                       </div>
                     </div>
                   </div>

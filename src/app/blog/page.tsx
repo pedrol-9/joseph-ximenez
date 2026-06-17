@@ -67,37 +67,36 @@ export default function BlogPage() {
                 </header>
 
                 <div className="flex flex-col gap-6 md:gap-8 font-sans text-base md:text-lg text-text-primary/85 leading-relaxed font-light">
-                  {/* Letra Capitular para el primer párrafo */}
-                  <p>
-                    <span className="float-left text-7xl font-serif text-terracotta leading-[0.8] pr-3 pt-1 select-none font-bold">
-                      {featuredArticle.content[0].charAt(0)}
-                    </span>
-                    {featuredArticle.content[0].slice(1)}
-                  </p>
+                  {/* Author byline */}
+                  {featuredArticle.author && (
+                    <p className="font-mono text-xs text-text-secondary tracking-widest uppercase text-center -mt-8">
+                      {featuredArticle.author}
+                    </p>
+                  )}
 
-                  {featuredArticle.content.slice(1).map((paragraph, idx) => {
-                    if (paragraph === "[ESPACIO PARA IMAGEN]") {
-                      const imageSrc = articleImages[featuredArticle.slug] || "";
-                      
-                      if (!imageSrc) return null;
-
+                  {featuredArticle.blocks
+                    .filter(b => b.type === "paragraph")
+                    .slice(0, 1)
+                    .map((block, idx) => {
+                      if (block.type !== "paragraph") return null;
                       return (
-                        <div key={idx} className="my-10 group/img">
-                          <div className="overflow-hidden rounded-sm border border-stone/10 shadow-xl bg-sand/20 p-2">
-                            <img 
-                              src={imageSrc} 
-                              alt={featuredArticle.title} 
-                              className="w-full aspect-video object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 ease-out"
-                            />
-                          </div>
-                          <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-stone/50 mt-4 text-center italic">
-                            Ilustración conceptual: {featuredArticle.title}
-                          </p>
-                        </div>
+                        <p key={idx}>
+                          <span className="float-left text-7xl font-serif text-terracotta leading-[0.8] pr-3 pt-1 select-none font-bold">
+                            {block.text.charAt(0)}
+                          </span>
+                          {block.text.slice(1).replace(/\[fn:\d+\]/g, "")}
+                        </p>
                       );
-                    }
-                    return <p key={idx}>{paragraph}</p>;
-                  })}
+                    })}
+
+                  <div className="flex justify-center pt-4">
+                    <Link
+                      href={`/blog/${featuredArticle.slug}`}
+                      className="inline-flex items-center gap-2 px-6 py-3 border border-terracotta/40 text-terracotta hover:bg-terracotta/10 transition-colors text-xs font-mono uppercase tracking-widest rounded-sm"
+                    >
+                      Leer artículo completo <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             )}

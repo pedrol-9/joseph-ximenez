@@ -67,9 +67,9 @@ export default function Pasado() {
     },
     {
       year: "1660",
-      location: "Santa Marta",
-      title: "El Océano.",
-      text: "Un confuso y violento altercado selló su destino. En medio de una riña desesperada, hirió a una mujer llamada Ana y se enfrentó al hermano de esta para lograr escapar. Temiendo por su vida y perseguido por la justicia, se vio obligado a convertirse en prófugo.",
+      location: "El Océano / Santa Marta",
+      title: "Viaje a las Indias.",
+      text: "Envuelto en un doloroso incidente criminal, tuvo que abandonar su tierra. Cruzó el Atlántico contratado como tripulante en un galeón rumbo a Las Indias. Ya en Santa Marta, meses después, decidió remontar el Río Grande de la Magdalena hasta Honda.",
     },
     {
       year: "1661 - 1664",
