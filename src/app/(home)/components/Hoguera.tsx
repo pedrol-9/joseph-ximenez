@@ -65,7 +65,7 @@ export default function Hoguera() {
 
           {/* Tarjeta Premium del Juicio Insólito (Ahora es la invitación al Blog) */}
           <Link
-            href="/blog/hallazgo-folio-22"
+            href="/blog/articulo-conmemorativo"
             className="block mt-12 max-w-3xl mx-auto w-full group/card relative z-20 cursor-pointer text-left"
           >
             <motion.div

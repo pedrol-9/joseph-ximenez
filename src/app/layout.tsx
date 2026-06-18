@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Courgette } from "next/font/google";
-import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 const playfair = Playfair_Display({

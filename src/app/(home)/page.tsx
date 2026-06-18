@@ -6,7 +6,6 @@ import Pasado from "./components/Pasado";
 import Retiro from "./components/Retiro";
 import Hoguera from "./components/Hoguera";
 import Legado from "./components/Legado";
-// import { InteractiveMap } from "./components/InteractiveMap"; // Ocultado temporalmente - registrado en TODO.md
 import { TimelineSidebar } from "@/app/(home)/components/TimelineSidebar";
 
 export default function HomePage() {
@@ -26,8 +25,6 @@ export default function HomePage() {
       <Retiro />
       <Hoguera />
       <Legado />
-      
-      {/* <InteractiveMap /> */}
 
     </main>
   );

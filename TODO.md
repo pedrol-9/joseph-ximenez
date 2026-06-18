@@ -22,14 +22,6 @@ Estos componentes han sido comentados en sus respectivas vistas para que no se m
 * **Acciones pendientes:**
   - [ ] Decidir si se reactivará en el futuro o si se eliminará permanentemente del proyecto.
 
-### 3. Mapa Interactivo (`InteractiveMap`)
-* **Estado:** Desactivado (Oculto de la UI)
-* **Archivo del Componente:** [InteractiveMap.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/(home)/components/InteractiveMap.tsx) y [MapComponent.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/(home)/components/MapComponent.tsx)
-* **Dónde se renderizaba:** [src/app/(home)/page.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/(home)/page.tsx)
-* **Detalles:** Depende de Leaflet y presentaba problemas de visualización en la UI/hidratación de Next.js.
-* **Acciones pendientes:**
-  - [ ] Decidir si se corregirán los problemas de renderizado de Leaflet en Next.js.
-  - [ ] En caso de eliminación definitiva, remover las dependencias de `package.json` (`leaflet`, `react-leaflet`, `@types/leaflet`).
 
 ---
 
@@ -46,6 +38,11 @@ Los siguientes elementos han sido removidos por completo tanto de la interfaz co
 * **Estado:** **Restaurado / Activo**
 * **Ubicación:** [src/app/(home)/components/Legado.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/app/(home)/components/Legado.tsx)
 * **Detalles:** Se restauró el bloque completo con la imagen de portada y link a MercadoLibre en la sección de Legado y se volvió a agregar el enlace directo en el pie de página de la web ([src/layout/Footer.tsx](file:///c:/Users/USUARIO/OneDrive/Desktop/joseph-ximenez/src/layout/Footer.tsx)).
+
+### 3. Mapa Interactivo (`InteractiveMap`)
+* **Estado:** **Eliminado permanentemente**
+* **Archivo del Componente:** `src/app/(home)/components/InteractiveMap.tsx` y `src/app/(home)/components/MapComponent.tsx` (Eliminados del sistema de archivos)
+* **Detalles:** Se eliminaron por completo las referencias y usos del mapa en la Home y en la página de Galería, y se removieron del proyecto las dependencias relacionadas con Leaflet (`leaflet`, `react-leaflet`, `@types/leaflet`).
 
 ---
 

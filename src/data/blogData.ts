@@ -28,7 +28,7 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
   {
-    slug: "hallazgo-folio-22",
+    slug: "articulo-conmemorativo",
     title: "Joseph Ximénez: luz en el Desierto, cenizas en la hoguera",
     author: "Patricia Enciso Patiño",
     category: "Investigación",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ChevronRight, ArrowRight, BookOpen, Quote } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +17,7 @@ export default function BlogPage() {
   const featuredArticle = blogArticles[0];
 
   return (
-    <div className="min-h-screen bg-bg-primary pt-32 text-text-primary selection:bg-accent selection:text-bg-primary relative transition-colors duration-300">
+    <div className="blog-page-active min-h-screen bg-bg-primary pt-32 text-text-primary selection:bg-accent selection:text-bg-primary relative transition-colors duration-300">
 
       {/* HEADER */}
       <header className="mb-16 flex flex-col items-center text-center px-6">

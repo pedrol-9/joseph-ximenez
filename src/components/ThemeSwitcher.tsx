@@ -23,8 +23,8 @@ const themes: ThemeOption[] = [
     id: "cripta",
     name: "Cripta",
     icon: "⛪",
-    colors: { bg: "#0D0C0A", card: "#141311", text: "#E5E0D8", accent: "#C1533B" },
-    description: "Oscuro original, místico y sobrio.",
+    colors: { bg: "#191512", card: "#211D19", text: "#E8E3DB", accent: "#C65C43" },
+    description: "Oscuro café-terracota, místico y sobrio.",
   },
   {
     id: "colonial",
@@ -37,15 +37,15 @@ const themes: ThemeOption[] = [
     id: "terracota",
     name: "Terracota",
     icon: "🌅",
-    colors: { bg: "#FBF6F0", card: "#FFFFFF", text: "#381F13", accent: "#D46E4B" },
-    description: "Luz cálida y suave con acentos durazno.",
+    colors: { bg: "#201B17", card: "#28231E", text: "#EDE8E0", accent: "#CA624A" },
+    description: "Tono chocolate oscuro y arcilla. Claramente más claro que la cripta original, muy acogedor y legible.",
   },
   {
     id: "indigo",
     name: "T. Místico",
     icon: "🏺",
-    colors: { bg: "#6E2E20", card: "#562217", text: "#F5EFEB", accent: "#E6B56C" },
-    description: "Fondo terracota profundo con acentos dorados.",
+    colors: { bg: "#12100E", card: "#1A1714", text: "#E6E1D9", accent: "#C3573E" },
+    description: "Mantiene el misticismo pero introduce un tono café espresso ultra-oscuro que suaviza el contraste puro.",
   },
 ];
 

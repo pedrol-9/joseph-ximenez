@@ -155,7 +155,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
         style={{ scaleX }}
       />
 
-      <main className="min-h-screen bg-bg-primary pt-32 pb-24 text-text-primary selection:bg-accent selection:text-bg-primary transition-colors duration-300">
+      <main className="blog-page-active min-h-screen bg-bg-primary pt-32 pb-24 text-text-primary selection:bg-accent selection:text-bg-primary transition-colors duration-300">
         <article className="max-w-3xl mx-auto px-6 relative w-full">
           
           {/* BREADCRUMBS */}

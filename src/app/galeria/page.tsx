@@ -3,7 +3,6 @@
 import React from "react";
 import { CardCarousel } from "./components/CardCarousel";
 import { ArtistGallery } from "./components/ArtistGallery";
-import { InteractiveMap } from "@/app/(home)/components/InteractiveMap";
  
 export default function GaleriaPage() {
   return (
@@ -12,8 +11,6 @@ export default function GaleriaPage() {
         <CardCarousel />
       </div>
       <ArtistGallery />
-      <div className="w-full border-t border-white/5" />
-      <InteractiveMap />
     </main>
   );
 }
