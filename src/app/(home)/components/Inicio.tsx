@@ -89,57 +89,15 @@ export default function Inicio() {
             transition={{ duration: 1.5, delay: 2.8, ease: "easeOut" }}
             className="mt-6 flex flex-col items-center gap-2 px-4"
           >
-            <Link 
-              href="/blog"
-              draggable={false}
-              className="group/link flex flex-col items-center gap-2 cursor-pointer select-text"
-            >
-              {/* Etiqueta mono con líneas laterales */}
-              <div className="flex items-center gap-3 select-text">
-                <span className="h-px w-6 bg-terracotta/20 group-hover/link:bg-terracotta/40 transition-colors duration-300" />
-                <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-terracotta/80 group-hover/link:text-terracotta transition-colors duration-300 select-text">
-                  Una historia que el fuego no pudo borrar
-                </span>
-                <span className="h-px w-6 bg-terracotta/20 group-hover/link:bg-terracotta/40 transition-colors duration-300" />
-              </div>
-
-              <div className="font-sans text-xs md:text-sm text-text-secondary max-w-sm md:max-w-md mx-auto leading-relaxed text-center flex items-center justify-center gap-1.5 transition-colors duration-300 group-hover/link:text-text-primary/60 select-text">
-                <p className="select-text">
-                  Basado en el libro{" "}
-                  <span className="relative inline-block text-terracotta italic font-medium group-hover/link:text-terracotta-dark transition-colors duration-300">
-                    &quot;Del Desierto a la Hoguera&quot;
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-terracotta origin-center scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300" />
-                  </span>{" "}
-                  de Patricia Enciso Patiño
-                </p>
-                <div className="relative flex items-center justify-center w-6 h-6 shrink-0">
-                  {/* Halo con Framer Motion para un pulso suave de respiración */}
-                  <motion.div
-                    animate={{
-                      scale: [0.8, 1.25, 0.8],
-                      opacity: [0.2, 0.6, 0.2],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute inset-0 rounded-full bg-arrow-halo-bg pointer-events-none"
-                  />
-                  {/* Caja de la flecha con el Portal Effect */}
-                  <div className="relative overflow-hidden w-[19px] h-[19px]">
-                    <ArrowUpRight
-                      size={19}
-                      className="absolute inset-0 text-terracotta/50 group-hover/link:text-terracotta transition-transform duration-500 ease-out transform group-hover/link:translate-x-full group-hover/link:-translate-y-full"
-                    />
-                    <ArrowUpRight
-                      size={19}
-                      className="absolute inset-0 text-terracotta/50 group-hover/link:text-terracotta transition-transform duration-500 ease-out transform translate-x-[-100%] translate-y-[100%] group-hover/link:translate-x-0 group-hover/link:translate-y-0"
-                    />
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <div className="font-sans text-xs md:text-sm text-text-secondary max-w-sm md:max-w-md mx-auto leading-relaxed text-center select-text">
+              <p className="select-text">
+                Basado en el libro{" "}
+                <span className="relative inline-block text-terracotta italic font-medium">
+                  &quot;Del Desierto a la Hoguera&quot;
+                </span>{" "}
+                <span className="inline-block">de Patricia Enciso Patiño</span>
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -147,11 +147,8 @@ export const CardCarousel = () => {
       {/* Contenedor principal de las cartas */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 pt-20">
         <div className="text-center mb-20 md:mb-28">
-          <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.4em] uppercase block mb-4">
-            Paralelismos Místicos
-          </span>
           <h1 className="font-serif text-3xl md:text-5xl text-text-primary">
-            Ermitaños de la Historia
+            Místicos de la Historia
           </h1>
         </div>
 

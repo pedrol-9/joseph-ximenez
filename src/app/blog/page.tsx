@@ -18,25 +18,7 @@ export default function BlogPage() {
 
   return (
     <div className="blog-page-active min-h-screen bg-bg-primary pt-32 text-text-primary selection:bg-accent selection:text-bg-primary relative transition-colors duration-300">
-
-      {/* HEADER */}
-      <header className="mb-16 flex flex-col items-center text-center px-6">
-        <motion.span
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="font-sans text-[10px] tracking-[0.4em] uppercase text-terracotta mb-6 font-bold"
-        >
-          Revista de Investigación e Historia
-        </motion.span>
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="font-serif text-[clamp(3.5rem,8vw,7rem)] leading-[0.9] tracking-tight text-text-primary mb-8"
-        >
-          Ecos del <br /><span className="italic text-terracotta">Desierto</span>
-        </motion.h1>
-      </header>
-
       <div className="max-w-3xl mx-auto px-6">
-
         <AnimatePresence mode="wait">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
