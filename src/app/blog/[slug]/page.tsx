@@ -198,9 +198,18 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
               initial={{ opacity: 0, y: 15 }} 
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-text-primary font-medium tracking-tight"
+              className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-text-primary font-medium tracking-tight text-center"
             >
-              {article.title}
+              {article.title.includes(":") ? (
+                <>
+                  <span className="block">{article.title.split(":")[0]}:</span>
+                  <span className="block italic text-[#C1533B] mt-2 text-[clamp(1.3rem,3.5vw,2rem)] md:text-[clamp(1.6rem,4vw,2.4rem)]">
+                    {article.title.split(":")[1].trim()}
+                  </span>
+                </>
+              ) : (
+                article.title
+              )}
             </motion.h1>
 
             {article.author && (

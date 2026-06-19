@@ -41,8 +41,17 @@ export default function BlogPage() {
                     </span>
                   </div>
                   
-                  <h2 className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-text-primary font-medium tracking-tight">
-                    {featuredArticle.title}
+                  <h2 className="font-serif text-[clamp(1.6rem,4.2vw,2.5rem)] md:text-[clamp(2rem,4.8vw,3rem)] leading-[1.2] text-text-primary font-medium tracking-tight text-center">
+                    {featuredArticle.title.includes(":") ? (
+                      <>
+                        <span className="block">{featuredArticle.title.split(":")[0]}:</span>
+                        <span className="block italic text-terracotta mt-2 text-[clamp(1.3rem,3.5vw,2rem)] md:text-[clamp(1.6rem,4vw,2.4rem)]">
+                          {featuredArticle.title.split(":")[1].trim()}
+                        </span>
+                      </>
+                    ) : (
+                      featuredArticle.title
+                    )}
                   </h2>
                   
                   <div className="w-12 h-px bg-terracotta/30 mx-auto mt-8" />
