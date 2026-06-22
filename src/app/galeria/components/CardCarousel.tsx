@@ -153,7 +153,7 @@ export const CardCarousel = () => {
         </div>
 
         {/* Galería Stack */}
-        <div className="relative w-full max-w-sm md:max-w-md h-[450px] md:h-[500px] perspective-[1000px] mb-24 md:mb-0">
+        <div className="relative w-full max-w-sm md:max-w-md h-[550px] md:h-[600px] perspective-[1000px] mb-24 md:mb-0">
           {CARDS.map((card, index) => {
             const style = getCardStyle(index);
             const isFlipped = flippedCards[card.id] || false;
@@ -308,7 +308,7 @@ export const CardCarousel = () => {
 
                         <div className="w-12 h-[1px] bg-accent/40 mb-6" />
 
-                        <p className="text-text-primary/80 font-light text-sm md:text-base leading-relaxed flex-1 pointer-events-none select-none overflow-hidden">
+                        <p className="text-text-primary/80 font-light text-sm md:text-base leading-relaxed flex-1 overflow-y-auto pr-1 select-text">
                           {card.description}
                         </p>
 
