@@ -145,15 +145,15 @@ export const CardCarousel = () => {
       />
 
       {/* Contenedor principal de las cartas */}
-      <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 pt-20">
-        <div className="text-center mb-20 md:mb-28">
+      <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 pt-12">
+        <div className="text-center mb-8 md:mb-12">
           <h1 className="font-serif text-3xl md:text-5xl text-text-primary">
             Místicos de la Historia
           </h1>
         </div>
 
         {/* Galería Stack */}
-        <div className="relative w-full max-w-sm md:max-w-md h-[550px] md:h-[600px] perspective-[1000px] mb-24 md:mb-0">
+        <div className="relative w-full max-w-sm md:max-w-md h-[470px] md:h-[530px] perspective-[1000px] mb-24 md:mb-0">
           {CARDS.map((card, index) => {
             const style = getCardStyle(index);
             const isFlipped = flippedCards[card.id] || false;
