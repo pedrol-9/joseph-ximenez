@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -141,9 +142,15 @@ export default function QuienesSomosPage() {
 
               {/* Side-by-side content */}
               <div className="flex flex-col lg:flex-row gap-8 lg:items-start items-center w-full">
-                {/* Sculpture Image (Empty Placeholder) */}
-                <div className="relative w-36 h-52 shrink-0 rounded-2xl overflow-hidden border border-border-theme/40 shadow-2xl bg-bg-card/20 flex items-center justify-center">
-                  <span className="font-mono text-[9px] text-text-secondary/20 uppercase tracking-widest">[ Obra ]</span>
+                {/* Sculpture Image */}
+                <div className="relative w-36 h-52 shrink-0 rounded-2xl overflow-hidden border border-[#C1533B]/30 shadow-2xl bg-bg-card/20">
+                  <Image
+                    src="/obra_eduardo/joseph_ximenez_1.png"
+                    alt="Escultura de Joseph Ximénez"
+                    fill
+                    className="object-cover"
+                    sizes="144px"
+                  />
                 </div>
 
                 {/* Biography Description */}
@@ -253,8 +260,14 @@ export default function QuienesSomosPage() {
               </span>
             </div>
 
-            <div className="relative w-28 h-40 mx-auto rounded-xl overflow-hidden border border-border-theme/40 bg-bg-card/20 shadow-xl flex items-center justify-center">
-              <span className="font-mono text-[9px] text-text-secondary/20 uppercase tracking-widest">[ Obra ]</span>
+            <div className="relative w-28 h-40 mx-auto rounded-xl overflow-hidden border border-[#C1533B]/30 bg-bg-card/20 shadow-xl">
+              <Image
+                src="/obra_eduardo/joseph_ximenez_1.png"
+                alt="Escultura de Joseph Ximénez"
+                fill
+                className="object-cover"
+                sizes="112px"
+              />
             </div>
 
             <div className="text-center">

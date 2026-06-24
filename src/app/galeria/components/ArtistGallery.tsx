@@ -8,15 +8,12 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 /* ─────────────────────────────────────────────
    TYPES
    ───────────────────────────────────────────── */
-interface BlobItem { pathname: string; url: string; }
 interface Perspective { url: string; label: string; isMain: boolean; sortKey: string; }
 interface ObraGroup { number: number; perspectives: Perspective[]; }
 interface Artist {
   id: string;
   name: string;
   role: string;
-  instagram?: string;
-  instagramHandle?: string;
   photoFilename?: string;
   technique: string;
   bio: string;
@@ -30,124 +27,47 @@ const artists: Artist[] = [
     id: "eduardo",
     name: "Eduardo Rodríguez Ataide",
     role: "Escultor · Ráquira, Boyacá",
-    technique: "Misma técnica ancestral de modelado en arcilla roja. Eduardo trabaja con arcillas locales tamizadas, esculpiendo rostros y figuras que evocan la memoria histórica del Desierto de la Candelaria.",
+    photoFilename: "/obra_eduardo/joseph_ximenez_1.png",
+    technique: "Técnica ancestral de modelado en arcilla roja. Eduardo trabaja con arcillas locales tamizadas, esculpiendo rostros y figuras que evocan la memoria histórica del Desierto de la Candelaria.",
     bio: "Creador visual de las obras que ilustran la historia de Joseph Ximénez. Su arte aporta una dimensión profunda y estética a la narrativa histórica, conectando la tradición alfarera de Ráquira con la preservación de la memoria de Joseph Ximénez.",
   },
 ];
 
 /* ─────────────────────────────────────────────
-   OBRA METADATA (Placeholder titles until user provides real ones)
+   OBRA DATA & METADATA (Local images)
    ───────────────────────────────────────────── */
-const obraMeta: Record<number, { title: string; date: string; description: string }> = {
+const eduardoObras: ObraGroup[] = [
+  {
+    number: 1,
+    perspectives: [
+      { url: "/obra_eduardo/joseph_ximenez_1.png", label: "Vista Principal", isMain: true, sortKey: "0" },
+      { url: "/obra_eduardo/joseph_ximenez_2.png", label: "Vista Lateral Izquierda", isMain: false, sortKey: "a" },
+      { url: "/obra_eduardo/joseph_ximenez_3.png", label: "Vista Lateral Derecha", isMain: false, sortKey: "b" },
+      { url: "/obra_eduardo/joseph_ximenez_4.png", label: "Vista Posterior / Detalle", isMain: false, sortKey: "c" },
+      { url: "/obra_eduardo/joseph_ximenez_5.png", label: "Detalle del Rostro", isMain: false, sortKey: "d" },
+    ],
+  },
+];
+
+const eduardoObraMeta: Record<number, { title: string; date: string; description: string }> = {
   1: {
-    title: "Obra I",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  2: {
-    title: "Obra II",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  4: {
-    title: "Obra IV",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  5: {
-    title: "Obra V",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  6: {
-    title: "Obra VI",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  7: {
-    title: "Obra VII",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  8: {
-    title: "Obra VIII",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-  },
-  9: {
-    title: "Obra IX",
-    date: "2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
+    title: "Joseph Ximénez, Ermitaño del Desierto",
+    date: "2026",
+    description: "Representación tridimensional del místico y mártir Joseph Ximénez. Moldeada en arcilla local de Ráquira con la técnica tradicional de modelado manual, la obra reivindica la memoria del ermitaño que enfrentó a la Inquisición, capturando su mirada contemplativa y su espíritu indomable.",
   },
 };
-
-/* ─────────────────────────────────────────────
-   HELPERS
-   ───────────────────────────────────────────── */
-function groupBlobsByObra(blobs: BlobItem[]): ObraGroup[] {
-  const sfBlobs = blobs.filter(b => b.pathname.toLowerCase().includes("_sf"));
-
-  const groups = new Map<number, Perspective[]>();
-
-  for (const blob of sfBlobs) {
-    const match = blob.pathname.match(/obra_(\d+)([a-d])?_sf/i);
-    if (!match) continue;
-
-    const obraNum = parseInt(match[1]);
-    const variant = match[2] || "";
-    const isMain = !variant;
-
-    if (!groups.has(obraNum)) groups.set(obraNum, []);
-    groups.get(obraNum)!.push({
-      url: blob.url,
-      label: isMain ? "Principal" : `Vista ${variant.toUpperCase()}`,
-      isMain,
-      sortKey: variant || "0",
-    });
-  }
-
-  return Array.from(groups.entries())
-    .sort(([a], [b]) => {
-      if (a === 5) return 1;
-      if (b === 5) return -1;
-      return a - b;
-    })
-    .map(([num, perspectives]) => ({
-      number: num,
-      perspectives: perspectives.sort((a, b) => {
-        if (a.isMain && !b.isMain) return -1;
-        if (!a.isMain && b.isMain) return 1;
-        return a.sortKey.localeCompare(b.sortKey);
-      }),
-    }));
-}
 
 /* ─────────────────────────────────────────────
    COMPONENT
    ───────────────────────────────────────────── */
 export function ArtistGallery() {
-  const [activeArtist, setActiveArtist] = useState(0);
-  const [blobs, setBlobs] = useState<BlobItem[]>([]);
+  const [activeArtist] = useState(0);
   const [activePerspective, setActivePerspective] = useState<Record<number, number>>({});
   const [lightbox, setLightbox] = useState<{ obraNumber: number; perspIdx: number } | null>(null);
 
-  // Fetch blobs from API
-  useEffect(() => {
-    fetch("/api/artworks")
-      .then(r => r.json())
-      .then(d => setBlobs(d.blobs || []))
-      .catch(() => {});
-  }, []);
-
-  const obras = groupBlobsByObra(blobs);
   const artist = artists[activeArtist];
-
-  // Find artist photo
-  const artistPhoto = artist.photoFilename
-    ? blobs.find(b =>
-        b.pathname.toLowerCase().includes(artist.photoFilename!.toLowerCase())
-      )
-    : null;
+  const obras = eduardoObras;
+  const obraMeta = eduardoObraMeta;
 
   // Get active perspective index for an obra
   const getActiveIdx = (obraNum: number) => activePerspective[obraNum] || 0;
@@ -194,9 +114,6 @@ export function ArtistGallery() {
           transition={{ duration: 1 }}
           className="text-center"
         >
-          <span className="font-mono text-[#C1533B] text-[10px] md:text-xs tracking-[0.4em] uppercase block mb-4">
-            Colección de Arte
-          </span>
           <h2 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] leading-tight text-text-primary mb-6">
             Exhibición de{" "}
             <em className="italic text-[#C1533B]">Artistas</em>
@@ -204,35 +121,6 @@ export function ArtistGallery() {
           <div className="w-16 h-[1px] bg-[#C1533B]/40 mx-auto" />
         </motion.div>
       </div>
-
-      {/* ═══════════════════════════════════════
-          ARTIST TABS
-          ═══════════════════════════════════════ */}
-      {artists.length > 1 && (
-        <div className="max-w-6xl mx-auto px-6 mb-16">
-          <div className="flex justify-center gap-2 md:gap-4">
-            {artists.map((a, i) => (
-              <button
-                key={a.id}
-                onClick={() => setActiveArtist(i)}
-                className={`relative px-5 md:px-8 py-3 md:py-4 rounded-full text-xs md:text-sm font-mono tracking-widest uppercase transition-all duration-300 border ${
-                  activeArtist === i
-                    ? "bg-[#C1533B]/15 border-[#C1533B]/50 text-text-primary"
-                    : "bg-transparent border-border-theme text-text-secondary/60 hover:text-text-primary hover:border-border-theme/40"
-                }`}
-              >
-                {a.name.split(" ")[0]}
-                {activeArtist === i && (
-                  <motion.div
-                    layoutId="artistIndicator"
-                    className="absolute -bottom-[1px] left-1/2 -translate-x-1/2 w-8 h-[2px] bg-[#C1533B] rounded-full"
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* ═══════════════════════════════════════
           ARTIST BIO HEADER
@@ -252,9 +140,9 @@ export function ArtistGallery() {
 
               {/* Artist Photo */}
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[#C1533B]/30 overflow-hidden shrink-0 relative bg-[#1A1918]">
-                {artistPhoto ? (
+                {artist.photoFilename ? (
                   <Image
-                    src={artistPhoto.url}
+                    src={artist.photoFilename}
                     alt={artist.name}
                     fill
                     className="object-cover"
@@ -283,24 +171,6 @@ export function ArtistGallery() {
                 <p className="text-xs md:text-sm font-light leading-relaxed text-text-secondary/60 italic mb-6 max-w-2xl">
                   {artist.technique}
                 </p>
-
-                {artist.instagram && (
-                  <a
-                    href={artist.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-5 py-2.5 bg-bg-primary/50 hover:bg-[#C1533B]/10 border border-border-theme hover:border-[#C1533B]/30 rounded-full transition-all duration-300 group"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C1533B] group-hover:scale-110 transition-transform">
-                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                    </svg>
-                    <span className="font-mono text-xs tracking-wide text-text-primary/80">
-                      {artist.instagramHandle}
-                    </span>
-                  </a>
-                )}
               </div>
             </div>
           </div>
@@ -308,12 +178,12 @@ export function ArtistGallery() {
           {/* ═══════════════════════════════════════
               OBRAS LIST
               ═══════════════════════════════════════ */}
-          {artist.id === "santiago" && obras.length > 0 && (
+          {obras.length > 0 ? (
             <div className="max-w-6xl mx-auto px-6 space-y-32">
               {obras.map((obra, obraIdx) => {
                 const meta = obraMeta[obra.number] || {
                   title: `Obra ${obra.number}`,
-                  date: "2024",
+                  date: "2026",
                   description: "Escultura en arcilla roja de Ráquira.",
                 };
                 const activeIdx = getActiveIdx(obra.number);
@@ -437,10 +307,7 @@ export function ArtistGallery() {
                 );
               })}
             </div>
-          )}
-
-          {/* Eduardo placeholder */}
-          {artist.id === "eduardo" && (
+          ) : (
             <div className="max-w-6xl mx-auto px-6">
               <div className="text-center py-20 border border-border-theme rounded-2xl bg-bg-card">
                 <span className="font-mono text-[#C1533B] text-xs tracking-[0.3em] uppercase block mb-4">
