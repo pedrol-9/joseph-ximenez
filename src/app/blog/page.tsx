@@ -121,7 +121,7 @@ export default function BlogPage() {
               </p>
               <div className="flex gap-4 items-center mt-auto">
                 <div className="w-10 h-[1px] bg-terracotta" />
-                <span className="font-mono text-xs text-text-primary/40 uppercase tracking-widest">Investigadora Principal</span>
+                <span className="font-mono text-xs text-text-primary/40 uppercase tracking-widest">Investigadora del caso</span>
               </div>
             </div>
 
@@ -137,7 +137,7 @@ export default function BlogPage() {
                 La obra fundamental de Patricia Enciso Patiño que desentierra los folios inquisitoriales que revelan la verdad sobre Joseph Ximénez.
               </p>
               <div className="px-6 py-4 border border-terracotta/30 text-terracotta text-xs font-mono uppercase tracking-widest rounded-sm">
-                Edición de Colección (1995)
+                Primera Edición (1995)
               </div>
             </div>
           </motion.div>

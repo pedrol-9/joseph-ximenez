@@ -100,7 +100,7 @@ export default function Pasado() {
             {/* Etiqueta mono con líneas laterales */}
             <div className="flex items-center gap-3 select-text">
               <span className="h-px w-6 bg-terracotta/20 group-hover/link:bg-terracotta/40 transition-colors duration-300" />
-              <span className="font-mono text-xs md:text-sm tracking-[0.35em] uppercase text-terracotta/80 group-hover/link:text-terracotta transition-colors duration-300 select-text font-semibold">
+              <span className="font-mono md:text-base tracking-[0.35em] uppercase text-terracotta/80 group-hover/link:text-terracotta transition-colors duration-300 select-text font-semibold">
                 Una historia que el fuego no pudo borrar
               </span>
               <span className="h-px w-6 bg-terracotta/20 group-hover/link:bg-terracotta/40 transition-colors duration-300" />
@@ -183,10 +183,10 @@ export default function Pasado() {
           <span className="absolute -top-10 left-1/2 -translate-x-1/2 font-serif text-[#C1533B]/20 text-9xl leading-none">
             "
           </span>
-          <p className="font-serif text-[clamp(1.8rem,4vw,3rem)] text-text-primary leading-snug">
-            Una noche se acostó a su lado, cuando de repente tuvo{" "}
-            <em className="text-[#C1533B] not-italic">inspiración de Dios</em>{" "}
-            de que se retirase a buscarlo.
+          <p className="font-serif text-[clamp(1.8rem,4vw,3rem)] text-text-primary leading-snug italic">
+            "Una noche se acostó a su lado, cuando de repente tuvo{" "}
+            <em className="text-[#C1533B] italic">inspiración de Dios</em>{" "}
+            de que se retirase a buscarlo."
           </p>
           <div className="mt-12 flex flex-col items-center gap-2">
             <div className="w-16 h-[1px] bg-[#C1533B]/40" />

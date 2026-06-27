@@ -78,7 +78,7 @@ export default function Legado() {
               La exhaustiva investigación de Patricia Enciso Patiño que desentierra los folios originales del Archivo Histórico Nacional de Madrid, trayendo a la luz la verdad oculta del ermitaño.
             </p>
             <p className="font-light text-text-secondary/80 leading-relaxed text-sm md:text-base">
-              Publicada en 1995 por la Editorial Ariel, esta obra documenta el proceso del Santo Oficio. A la derecha se pueden examinar las páginas del volumen original: la portada de la primera edición y el título interior.
+              Publicada en 1995 por la Editorial Ariel, esta obra documenta el proceso del Santo Oficio. A la derecha se puede examinar: la portada de la primera edición y el título interior.
             </p>
             <p className="font-light text-text-secondary/60 leading-relaxed text-xs md:text-sm mt-3 italic">
               En cubierta: fragmento de ilustración de Carlos Páramo Bonilla.
@@ -151,7 +151,7 @@ export default function Legado() {
           >
             <h3 className="font-serif text-3xl md:text-4xl mb-6 text-text-primary">El Rostro del Ermitaño</h3>
             <p className="text-lg md:text-xl font-light leading-relaxed text-text-secondary mb-8">
-              Una historia que se negó a ser ceniza. Hoy, el artista y humanista Eduardo Rodríguez, desde Ráquira, ha esculpido la memoria tridimensional de Joseph, reivindicando su figura como místico y mártir del desierto.
+              Una historia que se negó al olvido. Hoy, el artista y humanista Eduardo Rodríguez, desde Ráquira, ha esculpido la memoria tridimensional de Joseph, reivindicando su figura como místico y mártir del desierto.
             </p>
             <div className="w-12 h-[1px] bg-[#C1533B]/50" />
           </motion.div>
@@ -219,7 +219,7 @@ export default function Legado() {
                         Del Barro al Legado
                       </h4>
                       <p className="text-xs md:text-sm font-light leading-relaxed text-text-secondary">
-                        Esculpido a mano en Ráquira a partir de arcillas locales. La pieza revive a Joseph Ximenez mediante la técnica ancestral de placas y desbaste, decorada con engobes minerales y quemada a más de 900°C en hornos tradicionales para lograr una textura terrosa orgánica única.
+                        Esculpido a mano en Ráquira a partir de arcillas locales. La pieza revive a Joseph Ximenez mediante la técnica ancestral de placas y desbaste, decorada con engobes minerales y quemada a más de 900°C en horno tradicional para lograr una textura terrosa orgánica única.
                       </p>
                     </div>
 

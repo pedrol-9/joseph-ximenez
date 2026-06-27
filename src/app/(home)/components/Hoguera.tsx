@@ -8,11 +8,11 @@ export default function Hoguera() {
   const inquisitionSteps = [
     {
       title: "La Denuncia",
-      text: "El cura Agustín de Tovar lo denuncia formalmente por sospecha de herejía. Inicia al proceso inquisitorial en su contra, por sus escritos y sus dichos. El 10 de julio de 1676, se emite la orden de prisión.",
+      text: "El cura Agustín de Tovar lo denunció formalmente por sospecha de herejía. Así inició el proceso inquisitorial en su contra, por sus escritos y sus dichos. El 10 de julio de 1676, se emitió la orden de prisión.",
     },
     {
       title: "Doce Años en la Oscuridad",
-      text: "Lo trasladan y exhiben encadenado por Sáchica, Tunja y Santafé, hasta su entrega en las cárceles secretas de la Inquisición de Cartagena de Indias. Soporta más de una década de aislamiento, interrogatorios y tormentos del Tribunal Supremo, hasta que se cumple la sentencia.",
+      text: "Fue trasladado y exhibido con grilletes por Sáchica, Tunja y Santafé, hasta su entrega en las cárceles secretas de la Inquisición de Cartagena de Indias. Soportó más de una década de aislamiento, interrogatorios y tormentos del Tribunal Supremo, hasta cumplirse la sentencia.",
     },
   ];
 

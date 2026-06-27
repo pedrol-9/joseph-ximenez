@@ -41,7 +41,7 @@ export default function Inicio() {
           transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
           className="mb-6 md:mb-8"
         >
-          <p className="text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.55em] uppercase text-terracotta drop-shadow-sm">
+          <p className="text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.55em] uppercase font-semibold text-terracotta drop-shadow-sm my-12">
             Conmemoración de los 350 años de la orden de captura contra
           </p>
         </motion.div>
@@ -89,8 +89,8 @@ export default function Inicio() {
             transition={{ duration: 1.5, delay: 2.8, ease: "easeOut" }}
             className="mt-6 flex flex-col items-center gap-2 px-4"
           >
-            <div className="font-sans text-xs md:text-sm text-text-secondary max-w-sm md:max-w-md mx-auto leading-relaxed text-center select-text">
-              <p className="select-text">
+            <div className="font-sans text-text-secondary max-w-sm md:max-w-md mx-auto leading-relaxed text-center select-text">
+              <p className="select-text text-sm md:text-base">
                 Basado en el libro{" "}
                 <span className="relative inline-block text-terracotta italic font-medium">
                   &quot;Del Desierto a la Hoguera&quot;

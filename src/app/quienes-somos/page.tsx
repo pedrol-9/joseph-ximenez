@@ -7,41 +7,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 export default function QuienesSomosPage() {
-  const [activeBg, setActiveBg] = useState<"eduardo" | "patricia">("eduardo");
-  const [hoveredPanel, setHoveredPanel] = useState<"eduardo" | "patricia" | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <main className="relative min-h-screen font-sans overflow-hidden bg-bg-primary text-text-primary selection:bg-accent selection:text-bg-primary transition-colors duration-500">
       
-      {/* 1. DYNAMIC BACKGROUND COLOR-MORPHING BLOB LAYER (UNIFIED FOR DESKTOP & MOBILE) */}
+      {/* 1. DYNAMIC BACKGROUND BLOB LAYER (SINGLE CENTERED BLUE GLOW) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Eduardo's Blur Blob (#4C6873) */}
         <motion.div
           animate={{
-            scale: activeBg === "eduardo" ? 1.6 : 0.3,
-            opacity: activeBg === "eduardo" ? 0.85 : 0,
-            x: activeBg === "eduardo" ? "10%" : "-15%",
-            y: activeBg === "eduardo" ? "-10%" : "0%",
+            scale: isHovered ? 1.4 : 1.0,
+            opacity: isHovered ? 0.6 : 0.2,
           }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="absolute left-[-15%] top-[5%] w-[380px] md:w-[600px] h-[380px] md:h-[600px] rounded-full blur-[80px] md:blur-[110px]"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[800px] h-[500px] md:h-[800px] rounded-full blur-[100px] md:blur-[150px]"
           style={{
             background: "radial-gradient(circle, #4C6873 0%, rgba(76,104,115,0) 70%)",
-          }}
-        />
-
-        {/* Patricia's Blur Blob (#736A40) */}
-        <motion.div
-          animate={{
-            scale: activeBg === "patricia" ? 1.6 : 0.3,
-            opacity: activeBg === "patricia" ? 0.85 : 0,
-            x: activeBg === "patricia" ? "-10%" : "15%",
-            y: activeBg === "patricia" ? "10%" : "0%",
-          }}
-          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="absolute right-[-15%] bottom-[5%] w-[380px] md:w-[600px] h-[380px] md:h-[600px] rounded-full blur-[80px] md:blur-[110px]"
-          style={{
-            background: "radial-gradient(circle, #736A40 0%, rgba(115,106,64,0) 70%)",
           }}
         />
       </div>
@@ -94,32 +75,17 @@ export default function QuienesSomosPage() {
           
           {/* EDUARDO'S PANEL */}
           <motion.div
-            onMouseEnter={() => {
-              setHoveredPanel("eduardo");
-              setActiveBg("eduardo");
-            }}
-            onMouseLeave={() => setHoveredPanel(null)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             style={{
               position: "absolute",
               left: 0,
               top: 0,
               bottom: 0,
               width: "calc(50% - 12px)",
-              zIndex: hoveredPanel === "eduardo" ? 20 : 10,
+              zIndex: 10,
             }}
-            animate={{
-              scale: hoveredPanel === "eduardo" ? 1.02 : hoveredPanel === "patricia" ? 0.85 : 1,
-              x: hoveredPanel === "patricia" ? 90 : 0,
-              opacity: hoveredPanel === "eduardo" ? 1 : hoveredPanel === "patricia" ? 0.25 : 1,
-            }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className={`rounded-2xl border transition-[border-color,background-color,box-shadow] duration-500 overflow-hidden flex flex-col justify-between p-8 lg:p-12 cursor-pointer ${
-              hoveredPanel === "eduardo"
-                ? "border-[#4C6873]/50 bg-bg-card/35 backdrop-blur-md shadow-[0_20px_50px_rgba(76,104,115,0.15)]"
-                : hoveredPanel === "patricia"
-                ? "border-border-theme/40 bg-bg-card/10"
-                : "border-border-theme bg-bg-card/25 backdrop-blur-xs"
-            }`}
+            className="rounded-2xl border border-border-theme bg-bg-card/25 backdrop-blur-xs overflow-hidden flex flex-col justify-between p-8 lg:p-12"
           >
             {/* Top decorative badge */}
             <div className="flex justify-between items-start">
@@ -169,36 +135,21 @@ export default function QuienesSomosPage() {
 
           {/* PATRICIA'S PANEL */}
           <motion.div
-            onMouseEnter={() => {
-              setHoveredPanel("patricia");
-              setActiveBg("patricia");
-            }}
-            onMouseLeave={() => setHoveredPanel(null)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             style={{
               position: "absolute",
               right: 0,
               top: 0,
               bottom: 0,
               width: "calc(50% - 12px)",
-              zIndex: hoveredPanel === "patricia" ? 20 : 10,
+              zIndex: 10,
             }}
-            animate={{
-              scale: hoveredPanel === "patricia" ? 1.02 : hoveredPanel === "eduardo" ? 0.85 : 1,
-              x: hoveredPanel === "eduardo" ? -90 : 0,
-              opacity: hoveredPanel === "patricia" ? 1 : hoveredPanel === "eduardo" ? 0.25 : 1,
-            }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className={`rounded-2xl border transition-[border-color,background-color,box-shadow] duration-500 overflow-hidden flex flex-col justify-between p-8 lg:p-12 cursor-pointer ${
-              hoveredPanel === "patricia"
-                ? "border-[#736A40]/50 bg-bg-card/35 backdrop-blur-md shadow-[0_20px_50px_rgba(115,106,64,0.15)]"
-                : hoveredPanel === "eduardo"
-                ? "border-border-theme/40 bg-bg-card/10"
-                : "border-border-theme bg-bg-card/25 backdrop-blur-xs"
-            }`}
+            className="rounded-2xl border border-border-theme bg-bg-card/25 backdrop-blur-xs overflow-hidden flex flex-col justify-between p-8 lg:p-12"
           >
             {/* Top decorative badge */}
             <div className="flex justify-end items-start">
-              <span className="font-mono text-xs md:text-sm tracking-widest text-[#736A40] uppercase font-bold text-right">
+              <span className="font-mono text-xs md:text-sm tracking-widest text-[#4C6873] uppercase font-bold text-right">
                 [ 02 · Investigación Histórica ]
               </span>
             </div>
@@ -248,7 +199,7 @@ export default function QuienesSomosPage() {
             viewport={{ once: false, amount: 0.35 }}
             onViewportEnter={() => {
               if (window.innerWidth < 768) {
-                setActiveBg("eduardo");
+                setIsHovered(true);
               }
             }}
             transition={{ duration: 0.6 }}
@@ -290,14 +241,14 @@ export default function QuienesSomosPage() {
             viewport={{ once: false, amount: 0.35 }}
             onViewportEnter={() => {
               if (window.innerWidth < 768) {
-                setActiveBg("patricia");
+                setIsHovered(true);
               }
             }}
             transition={{ duration: 0.6 }}
             className="rounded-2xl border border-border-theme bg-bg-card/40 p-6 flex flex-col gap-6"
           >
             <div className="flex justify-end items-center">
-              <span className="font-mono text-xs tracking-widest text-[#736A40] uppercase font-bold text-right">
+              <span className="font-mono text-xs tracking-widest text-[#4C6873] uppercase font-bold text-right">
                 [ 02 · Investigación Histórica ]
               </span>
             </div>

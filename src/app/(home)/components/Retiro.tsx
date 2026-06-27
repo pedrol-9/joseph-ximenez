@@ -63,12 +63,12 @@ export default function Retiro() {
     {
       title: "Los 29 Cuadernos",
       subtitle: "La obra magna, dictado divino",
-      text: "En el silencio de su choza escribió durante años. Llenó folios enteros delineando meticulosamente el viaje del alma por los senderos del misticismo. Dijo a los inquisidores que Dios le dictó todo lo que estaba en sus cuadernos para formar un libro.",
+      text: "En el silencio de su choza, escribió año tras año. Llenó folios enteros delineando meticulosamente el viaje del alma por los senderos del misticismo. Dijo a los inquisidores que Dios le dictó todo para hacer un libro.",
     },
     {
       title: "Sospechoso de herejía",
       subtitle: "El ojo inquisitorial",
-      text: "Como buen cristiano se acercaba a los conventos vecinos para ir a misa, confesarse y comulgar. Cuando sintió que estaba en la vía Unitiva, dejó la confesión. Ya no necesitaba intermediarios. Era uno con Dios. Esta certeza, nacida de su iluminación, hizo que en la iglesia lo extrañaran, sellando las dudas sobre su santidad.",
+      text: "Como buen cristiano se acercaba a los conventos vecinos para ir a misa, confesarse y comulgar. Cuando sintió que estaba en la vía Unitiva, dejó la confesión. Ya no necesitaba intermediarios. Era UNO con Dios. Esta certeza, nacida de su iluminación, hizo que en la iglesia lo extrañaran, creándose las dudas sobre su santidad.",
     },
   ];
 

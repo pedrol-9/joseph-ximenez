@@ -40,11 +40,11 @@ const eduardoObras: ObraGroup[] = [
   {
     number: 1,
     perspectives: [
-      { url: "/obra_eduardo/joseph_ximenez_1.png", label: "Vista Principal", isMain: true, sortKey: "0" },
-      { url: "/obra_eduardo/joseph_ximenez_2.png", label: "Vista Lateral Izquierda", isMain: false, sortKey: "a" },
-      { url: "/obra_eduardo/joseph_ximenez_3.png", label: "Vista Lateral Derecha", isMain: false, sortKey: "b" },
-      { url: "/obra_eduardo/joseph_ximenez_4.png", label: "Vista Posterior / Detalle", isMain: false, sortKey: "c" },
-      { url: "/obra_eduardo/joseph_ximenez_5.png", label: "Detalle del Rostro", isMain: false, sortKey: "d" },
+      { url: "/obra_eduardo/joseph_ximenez_4.png", label: "Vista Superior / Detalle", isMain: false, sortKey: "a" },
+      { url: "/obra_eduardo/joseph_ximenez_7.png", label: "Vista Principal", isMain: true, sortKey: "0" },
+      { url: "/obra_eduardo/joseph_ximenez_3.png", label: "Vista Lateral Derecha", isMain: false, sortKey: "c" },
+      { url: "/obra_eduardo/joseph_ximenez_5.png", label: "Vista Perfil / Detalle", isMain: false, sortKey: "d" },
+      { url: "/obra_eduardo/joseph_ximenez_6.png", label: "Vista Frontal", isMain: false, sortKey: "e" },
     ],
   },
 ];
@@ -115,16 +115,13 @@ export function ArtistGallery() {
           className="text-center"
         >
           <h2 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] leading-tight text-text-primary mb-6">
-            Exhibición de{" "}
-            <em className="italic text-[#C1533B]">Artistas</em>
+            Creación del {" "}
+            <em className="italic text-[#C1533B]">personaje</em>
           </h2>
           <div className="w-16 h-[1px] bg-[#C1533B]/40 mx-auto" />
         </motion.div>
       </div>
 
-      {/* ═══════════════════════════════════════
-          ARTIST BIO HEADER
-          ═══════════════════════════════════════ */}
       <AnimatePresence mode="wait">
         <motion.div
           key={artist.id}
@@ -133,48 +130,6 @@ export function ArtistGallery() {
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="max-w-6xl mx-auto px-6 mb-24">
-            <div className="bg-bg-card border border-border-theme rounded-2xl p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center relative overflow-hidden">
-              {/* Decorative glow */}
-              <div className="absolute -left-20 -top-20 w-[200px] h-[200px] bg-[#C1533B]/5 blur-[80px] rounded-full pointer-events-none" />
-
-              {/* Artist Photo */}
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[#C1533B]/30 overflow-hidden shrink-0 relative bg-[#1A1918]">
-                {artist.photoFilename ? (
-                  <Image
-                    src={artist.photoFilename}
-                    alt={artist.name}
-                    fill
-                    className="object-cover"
-                    sizes="128px"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="font-serif text-3xl text-[#C1533B]/40 italic">
-                      {artist.name.charAt(0)}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Artist Info */}
-              <div className="flex-1 text-center md:text-left relative z-10">
-                <h3 className="font-serif text-2xl md:text-3xl text-text-primary mb-2">
-                  {artist.name}
-                </h3>
-                <span className="font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#C1533B] block mb-4">
-                  {artist.role}
-                </span>
-                <p className="text-sm md:text-base font-light leading-relaxed text-text-secondary mb-4 max-w-2xl">
-                  {artist.bio}
-                </p>
-                <p className="text-xs md:text-sm font-light leading-relaxed text-text-secondary/60 italic mb-6 max-w-2xl">
-                  {artist.technique}
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* ═══════════════════════════════════════
               OBRAS LIST
               ═══════════════════════════════════════ */}
@@ -321,6 +276,32 @@ export function ArtistGallery() {
           )}
         </motion.div>
       </AnimatePresence>
+
+      {/* ═══════════════════════════════════════
+          LUGARES RECORRIDOS (COMING SOON)
+          ═══════════════════════════════════════ */}
+      <div className="max-w-6xl mx-auto px-6 py-24 border-t border-border-theme/40 text-center mt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-accent/5 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="font-mono text-[10px] tracking-widest uppercase text-accent font-bold">
+              Próximamente
+            </span>
+          </div>
+          <h3 className="font-serif text-4xl md:text-5xl text-text-primary mb-6">
+            Lugares {" "}
+            <em className="italic text-[#C1533B]">recorridos</em>
+          </h3>
+          <p className="text-sm md:text-base font-light text-text-secondary max-w-xl mx-auto leading-relaxed">
+            Un recorrido fotográfico por los senderos transitados por Joseph Ximénez: desde Mariquita y el Caguán, pasando por Timaná, Sáchica, Tunja, Santafé y su destino final en Cartagena.
+          </p>
+        </motion.div>
+      </div>
 
       {/* ═══════════════════════════════════════
           LIGHTBOX
