@@ -277,31 +277,7 @@ export function ArtistGallery() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ═══════════════════════════════════════
-          LUGARES RECORRIDOS (COMING SOON)
-          ═══════════════════════════════════════ */}
-      <div className="max-w-6xl mx-auto px-6 py-24 border-t border-border-theme/40 text-center mt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-accent/5 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="font-mono text-[10px] tracking-widest uppercase text-accent font-bold">
-              Próximamente
-            </span>
-          </div>
-          <h3 className="font-serif text-4xl md:text-5xl text-text-primary mb-6">
-            Lugares {" "}
-            <em className="italic text-[#C1533B]">recorridos</em>
-          </h3>
-          <p className="text-sm md:text-base font-light text-text-secondary max-w-xl mx-auto leading-relaxed">
-            Un recorrido fotográfico por los senderos transitados por Joseph Ximénez: desde Mariquita y el Caguán, pasando por Timaná, Sáchica, Tunja, Santafé y su destino final en Cartagena.
-          </p>
-        </motion.div>
-      </div>
+
 
       {/* ═══════════════════════════════════════
           LIGHTBOX

@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "inicio": "Início",
+    "galeria": "Galeria",
+    "blog": "Blog",
+    "quienes_somos": "Quem Somos?"
+  },
+  "inicio": {
+    "antetitulo": "Comemoração dos 350 anos da ordem de prisão contra",
+    "cita": "Eremita e mártir do Deserto da Candelária.",
+    "basado": "Baseado no livro",
+    "libro": "Do Desierto à Fogueira",
+    "autor": "de Patricia Enciso Patiño"
+  }
+}

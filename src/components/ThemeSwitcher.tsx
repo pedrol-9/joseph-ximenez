@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Palette, Check, X } from "lucide-react";
+import { Palette, Check, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, Theme } from "./ThemeProvider";
 
 interface ThemeOption {
   id: Theme;
   name: string;
-  icon: string;
+  iconName: "sun" | "moon";
   colors: {
     bg: string;
     card: string;
@@ -20,32 +20,18 @@ interface ThemeOption {
 
 const themes: ThemeOption[] = [
   {
-    id: "cripta",
-    name: "Cripta",
-    icon: "⛪",
-    colors: { bg: "#191512", card: "#211D19", text: "#E8E3DB", accent: "#C65C43" },
-    description: "Oscuro café-terracota, místico y sobrio.",
+    id: "terracota",
+    name: "Terracota (Oscuro)",
+    iconName: "moon",
+    colors: { bg: "#201B17", card: "#28231E", text: "#EDE8E0", accent: "#CA624A" },
+    description: "Ambiente oscuro con tonos chocolate cálido y arcilla para una lectura reposada.",
   },
   {
     id: "colonial",
-    name: "Colonial",
-    icon: "🏛️",
+    name: "Colonial (Claro)",
+    iconName: "sun",
     colors: { bg: "#F5F2EB", card: "#FCFAF6", text: "#262421", accent: "#B84A33" },
-    description: "Tono pergamino claro inspirado en el archivo.",
-  },
-  {
-    id: "terracota",
-    name: "Terracota",
-    icon: "🌅",
-    colors: { bg: "#201B17", card: "#28231E", text: "#EDE8E0", accent: "#CA624A" },
-    description: "Tono chocolate oscuro y arcilla. Claramente más claro que la cripta original, muy acogedor y legible.",
-  },
-  {
-    id: "indigo",
-    name: "T. Místico",
-    icon: "🏺",
-    colors: { bg: "#12100E", card: "#1A1714", text: "#E6E1D9", accent: "#C3573E" },
-    description: "Mantiene el misticismo pero introduce un tono café espresso ultra-oscuro que suaviza el contraste puro.",
+    description: "Tono pergamino claro inspirado en manuscritos y archivos antiguos.",
   },
 ];
 
@@ -109,8 +95,8 @@ export const ThemeSwitcher = () => {
             {/* Header */}
             <div className="flex items-center justify-between mb-4 pb-2 border-b border-border-theme">
               <div className="flex items-center gap-2">
-                <span className="text-lg">🎨</span>
-                <h3 className="font-serif italic text-base font-semibold text-text-primary">Gama de Colores</h3>
+                <Palette size={16} className="text-accent" />
+                <h3 className="font-serif italic text-base font-semibold text-text-primary">Estilo visual</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
@@ -138,8 +124,12 @@ export const ThemeSwitcher = () => {
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm">{t.icon}</span>
+                      <div className="flex items-center gap-2.5">
+                        {t.iconName === "sun" ? (
+                          <Sun size={14} className={isActive ? "text-accent" : "text-text-secondary"} />
+                        ) : (
+                          <Moon size={14} className={isActive ? "text-accent" : "text-text-secondary"} />
+                        )}
                         <span className="font-serif text-sm font-medium text-text-primary">
                           {t.name}
                         </span>

@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "inicio": "Startseite",
+    "galeria": "Galerie",
+    "blog": "Blog",
+    "quienes_somos": "Über uns"
+  },
+  "inicio": {
+    "antetitulo": "Gedenken an den 350. Jahrestag des Haftbefehls gegen",
+    "cita": "Einsiedler und Märtyrer der Candelaria-Wüste.",
+    "basado": "Basierend auf dem Buch",
+    "libro": "Von der Wüste zum Scheiterhaufen",
+    "autor": "von Patricia Enciso Patiño"
+  }
+}

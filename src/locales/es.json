@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "inicio": "Inicio",
+    "galeria": "Galería",
+    "blog": "Blog",
+    "quienes_somos": "¿Quiénes Somos?"
+  },
+  "inicio": {
+    "antetitulo": "Conmemoración de los 350 años de la orden de captura contra",
+    "cita": "Ermitaño y mártir del Desierto de la Candelaria.",
+    "basado": "Basado en el libro",
+    "libro": "Del Desierto a la Hoguera",
+    "autor": "de Patricia Enciso Patiño"
+  }
+}

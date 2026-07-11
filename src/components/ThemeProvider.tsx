@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme = "cripta" | "colonial" | "terracota" | "indigo";
+export type Theme = "colonial" | "terracota";
 
 interface ThemeContextType {
   theme: Theme;
@@ -12,15 +12,16 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>("cripta");
+  const [theme, setThemeState] = useState<Theme>("terracota");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("jx-theme") as Theme;
-    if (savedTheme && ["cripta", "colonial", "terracota", "indigo"].includes(savedTheme)) {
+    if (savedTheme && ["colonial", "terracota"].includes(savedTheme)) {
       setThemeState(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
     } else {
-      document.documentElement.setAttribute("data-theme", "cripta");
+      setThemeState("terracota");
+      document.documentElement.setAttribute("data-theme", "terracota");
     }
   }, []);
 

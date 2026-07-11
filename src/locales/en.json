@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "galeria": "Gallery",
+    "blog": "Blog",
+    "quienes_somos": "About Us"
+  },
+  "inicio": {
+    "antetitulo": "Commemoration of the 350 years of the arrest warrant against",
+    "cita": "Hermit and martyr of the Candelaria Desert.",
+    "basado": "Based on the book",
+    "libro": "From the Desert to the Pyre",
+    "autor": "by Patricia Enciso Patiño"
+  }
+}

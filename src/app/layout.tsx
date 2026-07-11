@@ -30,6 +30,7 @@ import { Footer } from "@/layout/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export default function RootLayout({
   children,
@@ -49,10 +50,10 @@ export default function RootLayout({
               (function() {
                 try {
                   var saved = localStorage.getItem('jx-theme');
-                  if (saved && ['cripta', 'colonial', 'terracota', 'indigo'].indexOf(saved) !== -1) {
+                  if (saved && ['colonial', 'terracota'].indexOf(saved) !== -1) {
                     document.documentElement.setAttribute('data-theme', saved);
                   } else {
-                    document.documentElement.setAttribute('data-theme', 'cripta');
+                    document.documentElement.setAttribute('data-theme', 'terracota');
                   }
                 } catch (e) {}
               })();
@@ -62,11 +63,13 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-bg-primary text-text-primary transition-colors duration-300">
         <ThemeProvider>
-          <Navbar />
-          {children}
-          <ScrollToTop />
-          <ThemeSwitcher />
-          <Footer />
+          <LanguageProvider>
+            <Navbar />
+            {children}
+            <ScrollToTop />
+            <ThemeSwitcher />
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

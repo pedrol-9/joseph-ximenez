@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Inicio() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="inicio"
@@ -42,7 +45,7 @@ export default function Inicio() {
           className="mb-6 md:mb-8"
         >
           <p className="text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.55em] uppercase font-semibold text-terracotta drop-shadow-sm my-12">
-            Conmemoración de los 350 años de la orden de captura contra
+            {t("inicio.antetitulo")}
           </p>
         </motion.div>
 
@@ -79,7 +82,7 @@ export default function Inicio() {
             transition={{ duration: 1.5, delay: 2.5, ease: "easeOut" }}
             className="font-serif italic text-xl md:text-2xl max-w-lg md:max-w-2xl mx-auto text-text-primary/80 leading-relaxed text-center px-4"
           >
-            Ermitaño y mártir del Desierto de la Candelaria.
+            {t("inicio.cita")}
           </motion.p>
 
           {/* Crédito Histórico */}
@@ -91,11 +94,11 @@ export default function Inicio() {
           >
             <div className="font-sans text-text-secondary max-w-sm md:max-w-md mx-auto leading-relaxed text-center select-text">
               <p className="select-text text-sm md:text-base">
-                Basado en el libro{" "}
+                {t("inicio.basado")}{" "}
                 <span className="relative inline-block text-terracotta italic font-medium">
-                  &quot;Del Desierto a la Hoguera&quot;
+                  &quot;{t("inicio.libro")}&quot;
                 </span>{" "}
-                <span className="inline-block">de Patricia Enciso Patiño</span>
+                <span className="inline-block">{t("inicio.autor")}</span>
               </p>
             </div>
           </motion.div>
