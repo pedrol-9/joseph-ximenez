@@ -1,14 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { MapPin, Image as ImageIcon } from "lucide-react";
 import { LUGARES_REFERENCIA } from "@/data/lugaresData";
 
 export function LugaresReferencia() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [imageError, setImageError] = useState(false);
+
   const activeLugar = LUGARES_REFERENCIA[activeIdx];
+
+  // Restablecer el estado de error de la imagen al cambiar de lugar
+  useEffect(() => {
+    setImageError(false);
+  }, [activeIdx]);
+
+  const showPlaceholder = !activeLugar.imageUrl || imageError;
 
   return (
     <section
@@ -77,16 +86,37 @@ export function LugaresReferencia() {
               transition={{ duration: 0.4 }}
               className="bg-bg-card border border-border-theme/40 rounded-2xl overflow-hidden shadow-2xl"
             >
-              {/* Contenedor de la Imagen */}
-              <div className="relative aspect-[16/9] w-full bg-[#0A0A0A]">
-                <Image
-                  src={activeLugar.imageUrl}
-                  alt={activeLugar.name}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 80vw"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  priority
-                />
+              {/* Contenedor de Imagen o Placeholder CSS */}
+              <div className="relative aspect-[16/9] w-full bg-[#0E0C0A] flex items-center justify-center">
+                {showPlaceholder ? (
+                  /* Placeholder CSS premium si no hay imagen o falla la carga */
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-br from-bg-card via-[#1A1714] to-bg-primary border border-border-theme/20 text-center">
+                    <motion.div
+                      animate={{ opacity: [0.4, 0.7, 0.4] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      className="mb-4"
+                    >
+                      <ImageIcon className="w-12 h-12 text-accent-secondary/40 stroke-[1.2]" />
+                    </motion.div>
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-text-secondary/60">
+                      Fotografía en archivo
+                    </span>
+                    <span className="text-[9px] font-mono text-text-secondary/30 mt-1 block">
+                      Enlace Vercel Blob pendiente
+                    </span>
+                  </div>
+                ) : (
+                  /* Imagen normal si tiene URL y no ha dado error */
+                  <Image
+                    src={activeLugar.imageUrl}
+                    alt={activeLugar.name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 80vw"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    onError={() => setImageError(true)}
+                    priority
+                  />
+                )}
               </div>
 
               {/* Información y Créditos */}

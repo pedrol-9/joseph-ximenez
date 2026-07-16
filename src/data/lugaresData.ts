@@ -21,7 +21,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     name: "Desierto de la Candelaria",
     subtitle: "Valle de retiro en Boyacá, Colombia",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/2.candelaria_1.webp",
+    imageUrl: "",
     credits: "Créditos: Lorem Ipsum"
   },
   {
@@ -29,7 +29,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     name: "Convento del Santo Eccehomo",
     subtitle: "Monasterio dominico colonial en Boyacá",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.eccehomo_1.webp",
+    imageUrl: "",
     credits: "Créditos: Lorem Ipsum"
   },
   {
@@ -37,7 +37,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     name: "Cartagena de Indias",
     subtitle: "Escenario del auto de fe",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.cartagena_1.webp",
+    imageUrl: "",
     credits: "Créditos: Lorem Ipsum"
   }
 ];
