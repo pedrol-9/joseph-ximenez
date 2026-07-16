@@ -3,6 +3,7 @@
 import React from "react";
 import { CardCarousel } from "./components/CardCarousel";
 import { ArtistGallery } from "./components/ArtistGallery";
+import { LugaresReferencia } from "./components/LugaresReferencia";
  
 export default function GaleriaPage() {
   return (
@@ -11,6 +12,8 @@ export default function GaleriaPage() {
       <div className="h-20 w-full" />
       
       <ArtistGallery />
+
+      <LugaresReferencia />
 
       <div id="ermitanos" className="w-full pb-24 flex flex-col border-t border-border-theme/40 bg-transparent">
         <CardCarousel />
