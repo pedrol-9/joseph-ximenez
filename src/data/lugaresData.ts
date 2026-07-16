@@ -21,7 +21,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     name: "Cádiz",
     subtitle: "Puerto de partida y huida",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    imageUrl: "",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/2.c%C3%A1diz_pintura.webp",
     credits: "Créditos: Lorem Ipsum"
   },
   {
@@ -33,11 +33,19 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     credits: "Créditos: Lorem Ipsum"
   },
   {
-    id: "mariquita",
-    name: "Mariquita y el Río Grande",
-    subtitle: "Primeras rozas de maíz y trabajo",
+    id: "magdalena",
+    name: "Río Grande de la Magdalena",
+    subtitle: "Navegación fluvial en el trayecto de Honda",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    imageUrl: "",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.Rio_Magdalena_Honda.webp",
+    credits: "Créditos: Lorem Ipsum"
+  },
+  {
+    id: "mariquita",
+    name: "Mariquita",
+    subtitle: "Primeras rozas de maíz y trabajo en las Indias",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.mariquita.webp",
     credits: "Créditos: Lorem Ipsum"
   },
   {
@@ -59,9 +67,17 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
   {
     id: "candelaria",
     name: "Desierto de la Candelaria",
-    subtitle: "Eremitorio principal y silencio",
+    subtitle: "Eremitorio principal y silencio contemplativo",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    imageUrl: "",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/7.desierto_candelaria.webp",
+    credits: "Créditos: Lorem Ipsum"
+  },
+  {
+    id: "convento_candelaria",
+    name: "Convento de la Candelaria",
+    subtitle: "Monasterio de Recoletos de San Agustín",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/8.convento_la_candelaria.webp",
     credits: "Créditos: Lorem Ipsum"
   },
   {
