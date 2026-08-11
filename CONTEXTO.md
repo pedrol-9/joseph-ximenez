@@ -5,7 +5,7 @@ condenado a la hoguera por la Inquisición de Cartagena de Indias
 ```
 Patricia Enciso Patiño*
 ```
-El próximo 10 de julio se cumplen 350 años del día en que el inquisidor Juan de Mier
+El 10 de julio de 2026 se cumplen 350 años del día en que el inquisidor Juan de Mier
 emitió orden de prisión contra Joseph Ximénez, un místico ermitaño que vivía cerca al
 convento del Santo Eccehomo, en un monte aledaño al Desierto de la Candelaria.^1 El
 documento, escrito en 1676, fue el resultado de una pesquisa que llevaba más de un año
