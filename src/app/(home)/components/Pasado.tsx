@@ -190,11 +190,11 @@ export default function Pasado() {
           </p>
           <div className="mt-12 flex flex-col items-center gap-2">
             <div className="w-16 h-[1px] bg-[#C1533B]/40" />
-            <p className="font-bold text-[11px] md:text-[10px] tracking-widest uppercase text-text-secondary/60 mt-4">
+            <p className="font-bold text-[13px] md:text-[10px] tracking-widest uppercase text-text-secondary/60 mt-4">
               [ Folios Extraídos · Archivo Histórico Nacional de Madrid ]
             </p>
-            <p className="font-bold text-[11px] md:text-[10px] tracking-widest uppercase text-[#C1533B]/60">
-              Proceso Inquisitorial contra Joseph Ximénez
+            <p className="font-bold text-[13px] md:text-[11px] tracking-widest uppercase text-[#C1533B]/60">
+              Proceso Inquisitorial contra Joseph Ximénez. F<span className="lowercase">.66r.</span>
             </p>
           </div>
         </motion.div>

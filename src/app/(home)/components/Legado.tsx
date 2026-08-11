@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const bookImages = [
   { src: "/images/libro/PortadaLibro_1.jpg", alt: "Portada original - Del desierto a la hoguera" },
   { src: "/images/libro/PortadaLibro_2.jpg", alt: "Página de título interior" },
+  { src: "/images/libro/PortadaLibro_3.jpg", alt: "Contraportada original - Del desierto a la hoguera" },
 ];
 
 export default function Legado() {
@@ -60,6 +61,7 @@ export default function Legado() {
 
         {/* ESCALABILIDAD: EL LIBRO Y EVENTOS */}
         <motion.div
+          id="libro-investigacion"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -78,7 +80,7 @@ export default function Legado() {
               La exhaustiva investigación de Patricia Enciso Patiño que desentierra los folios originales del Archivo Histórico Nacional de Madrid, trayendo a la luz la verdad oculta del ermitaño.
             </p>
             <p className="font-light text-text-secondary/80 leading-relaxed text-sm md:text-base">
-              Publicada en 1995 por la Editorial Ariel, esta obra documenta el proceso del Santo Oficio. A la derecha se puede examinar: la portada de la primera edición y el título interior.
+              Publicada en 1995 por la Editorial Ariel, esta obra documenta el proceso del Santo Oficio. A la derecha se puede examinar: la portada de la primera edición, el título interior y la contraportada.
             </p>
             <p className="font-light text-text-secondary/60 leading-relaxed text-xs md:text-sm mt-3 italic">
               En cubierta: fragmento de ilustración de Carlos Páramo Bonilla.

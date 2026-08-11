@@ -182,8 +182,8 @@ export default function QuienesSomosPage() {
 
             {/* Bottom meta */}
             <div className="flex justify-between items-center text-[10px] font-mono text-text-secondary/50">
-              <span>UNIVERSIDAD FEDERAL FLUMINENSE</span>
-              <span>PHD EN HISTORIA SOCIAL</span>
+              <span>UNIVERSIDAD FEDERAL FLUMINENSE R,J.</span>
+              <span>PhD EN HISTORIA SOCIAL</span>
             </div>
           </motion.div>
 

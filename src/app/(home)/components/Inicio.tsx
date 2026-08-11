@@ -94,11 +94,17 @@ export default function Inicio() {
           >
             <div className="font-sans text-text-secondary max-w-sm md:max-w-md mx-auto leading-relaxed text-center select-text">
               <p className="select-text text-sm md:text-base">
-                {t("inicio.basado")}{" "}
-                <span className="relative inline-block text-terracotta italic font-medium">
-                  &quot;{t("inicio.libro")}&quot;
-                </span>{" "}
-                <span className="inline-block">{t("inicio.autor")}</span>
+                <Link
+                  href="#libro-investigacion"
+                  className="group inline-flex flex-wrap items-center justify-center gap-1 text-text-secondary hover:text-text-primary transition-colors duration-300"
+                >
+                  <span>{t("inicio.basado")}</span>
+                  <span className="relative inline-block text-terracotta italic font-medium group-hover:underline group-hover:underline-offset-4 decoration-terracotta/40">
+                    &quot;{t("inicio.libro")}&quot;
+                  </span>
+                  <span>{t("inicio.autor")}</span>
+                  <ArrowUpRight size={14} className="opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 text-terracotta shrink-0" />
+                </Link>
               </p>
             </div>
           </motion.div>
