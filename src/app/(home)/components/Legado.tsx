@@ -185,7 +185,7 @@ export default function Legado() {
                   <div className="absolute inset-3 border border-[#C1533B]/15 rounded-xl pointer-events-none z-20" />
                   
                   <img
-                    src="https://rp9jryczlxa748zk.public.blob.vercel-storage.com/dr_eduardo/rostro_joseph.png"
+                    src="https://rp9jryczlxa748zk.public.blob.vercel-storage.com/rostro_joseph.png"
                     alt="Escultura de Eduardo Rodríguez - El Rostro del Ermitaño"
                     className="w-full h-full object-contain relative z-10 transition-transform duration-500 hover:scale-[1.03]"
                   />

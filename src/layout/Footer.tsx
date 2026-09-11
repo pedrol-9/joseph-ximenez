@@ -48,18 +48,6 @@ export const Footer = () => {
           <ul className="space-y-4 text-sm font-light text-[#E8E2D2]/70">
             <li>
               <Link
-                href="/galeria#ermitanos"
-                onClick={() => setActiveLink("/galeria#ermitanos")}
-                className="hover:text-[#C1533B] transition-colors"
-                style={{
-                  color: isActive("/galeria#ermitanos") ? "#C1533B" : "inherit",
-                }}
-              >
-                Ermitaños de la Historia
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/galeria#arte"
                 onClick={() => setActiveLink("/galeria#arte")}
                 className="hover:text-[#C1533B] transition-colors"
@@ -67,19 +55,31 @@ export const Footer = () => {
                   color: isActive("/galeria#arte") ? "#C1533B" : "inherit",
                 }}
               >
-                Exhibición de Arte
+                Creación del Personaje
               </Link>
             </li>
             <li>
               <Link
-                href="/galeria#mapa"
-                onClick={() => setActiveLink("/galeria#mapa")}
+                href="/galeria#lugares-referencia"
+                onClick={() => setActiveLink("/galeria#lugares-referencia")}
                 className="hover:text-[#C1533B] transition-colors"
                 style={{
-                  color: isActive("/galeria#mapa") ? "#C1533B" : "inherit",
+                  color: isActive("/galeria#lugares-referencia") ? "#C1533B" : "inherit",
                 }}
               >
-                Mapa de Ruta
+                Lugares de Referencia
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/galeria#ermitanos"
+                onClick={() => setActiveLink("/galeria#ermitanos")}
+                className="hover:text-[#C1533B] transition-colors"
+                style={{
+                  color: isActive("/galeria#ermitanos") ? "#C1533B" : "inherit",
+                }}
+              >
+                Místicos de la Historia
               </Link>
             </li>
           </ul>
@@ -219,10 +219,19 @@ export const Footer = () => {
             <li className="flex items-center gap-3 mt-4">
               <Mail size={16} className="shrink-0 text-[#C1533B]/60" />
               <a
-                href="mailto:contacto@josephximenez.com"
+                href="mailto:eduardorodriguezataide@gmail.com"
                 className="hover:text-[#C1533B] transition-colors"
               >
-                contacto@josephximenez.com
+                eduardorodriguezataide@gmail.com
+              </a>
+            </li>
+            <li className="flex items-center gap-3 mt-4">
+              <Mail size={16} className="shrink-0 text-[#C1533B]/60" />
+              <a
+                href="mailto:encisop108@gmail.com"
+                className="hover:text-[#C1533B] transition-colors"
+              >
+                encisop108@gmail.com
               </a>
             </li>
           </ul>
