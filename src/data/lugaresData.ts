@@ -1,7 +1,14 @@
+export interface ExternalSource {
+  label: string;
+  url: string;
+  siteName?: string;
+}
+
 export interface LugarImagen {
   url: string;
   caption?: string;
   credits?: string;
+  externalSource?: ExternalSource;
 }
 
 export interface LugarReferencia {
@@ -66,17 +73,17 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     subtitle: "Desembarco en el Nuevo Mundo",
     description: "Puerto de arribo en la costa caribeña neogranadina, primer contacto de Joseph con la geografía americana antes de remontar las corrientes hacia el interior del continente.",
     imageUrl: "",
-    credits: "Colección Banco de la República",
+    credits: "Colección Banco de la República - Biblioteca virtual",
     images: [
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.SantaMarta-Galeones.webp",
         caption: "Obra gráfica de Edward Walhouse - 1843",
-        credits: "Colección Banco de la República",
+        credits: "Colección Banco de la República - Biblioteca virtual",
       },
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.SantaMarta-EduardWalhouse.webp",
         caption: "Acuarela en papel de Edward Mark Walhouse | 1843 - 1856",
-        credits: "Colección Banco de la República",
+        credits: "Colección Banco de la República - Biblioteca virtual",
       },
     ],
   },
@@ -86,13 +93,34 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     subtitle: "Navegación fluvial en el trayecto de Honda",
     description: "Arteria fluvial primordial de la Nueva Granada. La navegación en champanes río arriba hacia el puerto de Honda constituía un viaje de semanas de introspección ante la inmensidad selvática.",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.Rio_Magdalena_Honda.webp",
-    credits: "Grabado histórico del trayecto de Honda",
+    credits: "Archivo Personal | Patricia Enciso P.",
     images: [
       {
-        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.Rio_Magdalena_Honda.webp",
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.Rio_Magdalena_Honda.webp",
         caption: "El Río Grande de la Magdalena en la ruta fluvial hacia el interior del reino",
-        credits: "Grabado histórico / Archivo Nacional",
+        credits: "Archivo Personal | Patricia Enciso P.",
       },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.Rio_Magdalena_Honda_3.webp",
+        caption: "El Río Grande de la Magdalena en la ruta fluvial hacia el interior del reino",
+        credits: "Archivo Personal | Patricia Enciso P.",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.Honda-Rio-Magdalena.webp",
+        caption: "El Río Grande de la Magdalena en la ruta fluvial hacia el interior del reino",
+        credits: "Yilmar Javier Amaya P. | Las 2 Orillas",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.honda-puente-de-hierro.webp",
+        caption: "Puente de hierro sobre el río Gualí en Honda - José María Gutiérrez de Alba | 1822 - 1897",
+        credits: "Colección Banco de la República - Biblioteca virtual",
+        externalSource: {
+          label: "Impresiones de un viaje a América",
+          url: "https://www.banrepcultural.org/impresiones-de-un-viaje/index.php?r=inicio%2Findex",
+          siteName: "BanRep Cultural",
+        },
+      },
+
     ],
   },
   {
@@ -100,13 +128,33 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     name: "Mariquita",
     subtitle: "Primeras rozas de maíz y trabajo en las Indias",
     description: "Villa colonial donde Joseph se asentó temporalmente para dedicarse al laboreo agrícola y las rozas de maíz, experimentando la dureza del trabajo en el trópico antes de su vocación solitaria.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.mariquita.webp",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/5.mariquita.webp",
     credits: "Ilustración y fotografía histórica",
     images: [
       {
-        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.mariquita.webp",
-        caption: "Arquitectura y entorno colonial de Mariquita",
-        credits: "Archivo Fotográfico Patrimonial",
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/5.mariquita.webp",
+        caption: "Ermita del Señor de los Milagros",
+        credits: "Archivo Fotográfico | Gobernación del Tolima",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/5.mariquita-plaza-SE.webp",
+        caption: "Vista de la parte S.E. de la plaza de Mariquita - José María Gutiérrez de Alba 1874",
+        credits: "Colección Banco de la República - Biblioteca virtual",
+        externalSource: {
+          label: "Impresiones de un viaje a América",
+          url: "https://www.banrepcultural.org/impresiones-de-un-viaje/index.php?r=inicio%2Findex",
+          siteName: "BanRep Cultural",
+        },
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/5.Mariquita-Mina-de-Bocaneme.webp",
+        caption: "Martillos y aparatos de decantación de la Mina de Bocaneme - José María Gutiérrez de Alba 1874",
+        credits: "Colección Banco de la República - Biblioteca virtual",
+        externalSource: {
+          label: "Impresiones de un viaje a América",
+          url: "https://www.banrepcultural.org/impresiones-de-un-viaje/index.php?r=inicio%2Findex",
+          siteName: "BanRep Cultural",
+        },
       },
     ],
   },

@@ -12,6 +12,7 @@ import {
   Minimize2,
   Layers,
   Compass,
+  ExternalLink,
 } from "lucide-react";
 import { LUGARES_REFERENCIA, LugarReferencia, LugarImagen } from "@/data/lugaresData";
 
@@ -338,13 +339,30 @@ export function LugaresReferencia() {
 
                       {/* Pie de foto integrado en el visor */}
                       {currentImage.caption && (
-                        <div className="absolute bottom-3 inset-x-3 md:inset-x-6 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-lg z-30 pointer-events-none flex items-center justify-between gap-4">
-                          <p className="font-serif italic text-xs md:text-sm text-white/90 truncate">
+                        <div
+                          onClick={(e) => e.stopPropagation()}
+                          className="absolute bottom-3 inset-x-3 md:inset-x-6 bg-black/85 backdrop-blur-md border border-white/10 px-3.5 py-2 rounded-lg z-30 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5"
+                        >
+                          <p className="font-serif italic text-xs md:text-sm text-white/90 truncate min-w-0 flex-1">
                             {currentImage.caption}
                           </p>
-                          <span className="font-mono text-[10px] text-white/50 flex-shrink-0">
-                            Clic para ampliar
-                          </span>
+                          <div className="flex items-center gap-2.5 shrink-0">
+                            {currentImage.externalSource && (
+                              <a
+                                href={currentImage.externalSource.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono tracking-wide text-white bg-[#C1533B]/85 hover:bg-[#C1533B] border border-[#C1533B]/70 hover:border-white/40 transition-all duration-300 shadow-sm hover:scale-[1.02]"
+                                title={`Consultar colección: ${currentImage.externalSource.label} (${currentImage.externalSource.siteName || "Sitio externo"})`}
+                              >
+                                <span>{currentImage.externalSource.label}</span>
+                                <ExternalLink className="w-3 h-3 text-white/90" />
+                              </a>
+                            )}
+                            <span className="hidden lg:inline font-mono text-[10px] text-white/50">
+                              Clic para ampliar
+                            </span>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -417,8 +435,22 @@ export function LugaresReferencia() {
                     <Compass className="w-4 h-4 text-[#C1533B]" />
                     <span>Hito de la ruta mística</span>
                   </div>
-                  <div className="truncate font-bold text-[12px]">
-                    {currentImage?.credits || activeLugar.credits}
+                  <div className="flex flex-wrap items-center gap-2.5 sm:justify-end">
+                    <span className="truncate font-bold text-[12px] text-text-secondary/80">
+                      {currentImage?.credits || activeLugar.credits}
+                    </span>
+                    {currentImage?.externalSource && (
+                      <a
+                        href={currentImage.externalSource.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] text-[#C1533B] hover:text-white bg-[#C1533B]/10 hover:bg-[#C1533B] border border-[#C1533B]/30 hover:border-[#C1533B] transition-colors"
+                        title={currentImage.externalSource.siteName}
+                      >
+                        <span>{currentImage.externalSource.label}</span>
+                        <ExternalLink className="w-2.5 h-2.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -528,11 +560,23 @@ export function LugaresReferencia() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Pie de foto y créditos */}
-              <div className="text-center px-4">
+              <div className="text-center px-4 flex flex-col items-center gap-2">
                 {currentImage.caption && (
-                  <p className="font-serif text-sm md:text-base text-white/90 italic mb-1">
+                  <p className="font-serif text-sm md:text-base text-white/90 italic">
                     {currentImage.caption}
                   </p>
+                )}
+                {currentImage.externalSource && (
+                  <a
+                    href={currentImage.externalSource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono tracking-wide text-white bg-[#C1533B]/85 hover:bg-[#C1533B] border border-[#C1533B]/70 hover:border-white/40 transition-all duration-300 shadow-md hover:scale-105"
+                    title={`Visitar: ${currentImage.externalSource.label}`}
+                  >
+                    <span>{currentImage.externalSource.label}</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-white/90" />
+                  </a>
                 )}
               </div>
 
