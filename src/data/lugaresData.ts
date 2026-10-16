@@ -25,18 +25,18 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     images: [
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/1.guaro_1.webp",
-        caption: "Vista panorámica de Guaro en la Sierra de las Nieves",
-        credits: "Archivo Histórico / Fotografía documental",
+        caption: "Arquitectura tradicional y calle escalonada del pueblo de Guaro",
+        credits: "Archivo Personal | Patricia Enciso P.",
       },
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/1.guaro_2.webp",
-        caption: "Arquitectura tradicional y calles del pueblo de Guaro",
-        credits: "Archivo Histórico / Fotografía documental",
+        caption: "Arquitectura tradicional y calle del pueblo de Guaro",
+        credits: "Archivo Personal | Patricia Enciso P.",
       },
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/1.guaro_3.webp",
-        caption: "Paisaje rural y serranía de Guaro",
-        credits: "Archivo Histórico / Fotografía documental",
+        caption: "Paisaje rural de Guaro | Sembrado de Olivos",
+        credits: "Archivo Personal | Patricia Enciso P.",
       },
     ],
   },
@@ -50,8 +50,13 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     images: [
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/2.c%C3%A1diz_pintura.webp",
-        caption: "Puerto y bahía de Cádiz durante la época de las flotas de Indias",
-        credits: "Pintura histórica colonial / Archivo de Indias",
+        caption: "Vista panorámica de la Ciudad de Cádiz en el año 1647",
+        credits: "Museo de las Cortes de Cádiz. (c.a. 1647). Vista Arámburu [imagen]. Junta de Andalucía / Universidad de Sevilla (2022).",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/2.c%C3%A1diz-02.webp",
+        caption: "Vista de Cádiz en el siglo XVIII.",
+        credits: "Biblioteca Virtual Miguel de Cervantes | Ilustraciones de viajeros españoles",
       },
     ],
   },
@@ -61,8 +66,19 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     subtitle: "Desembarco en el Nuevo Mundo",
     description: "Puerto de arribo en la costa caribeña neogranadina, primer contacto de Joseph con la geografía americana antes de remontar las corrientes hacia el interior del continente.",
     imageUrl: "",
-    credits: "Archivo General de Indias",
-    images: [],
+    credits: "Colección Banco de la República",
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.SantaMarta-Galeones.webp",
+        caption: "Obra gráfica de Edward Walhouse - 1843",
+        credits: "Colección Banco de la República",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/3.SantaMarta-EduardWalhouse.webp",
+        caption: "Acuarela en papel de Edward Mark Walhouse | 1843 - 1856",
+        credits: "Colección Banco de la República",
+      },
+    ],
   },
   {
     id: "magdalena",

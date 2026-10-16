@@ -417,7 +417,7 @@ export function LugaresReferencia() {
                     <Compass className="w-4 h-4 text-[#C1533B]" />
                     <span>Hito de la ruta mística</span>
                   </div>
-                  <div className="text-[11px] truncate">
+                  <div className="truncate font-bold text-[12px]">
                     {currentImage?.credits || activeLugar.credits}
                   </div>
                 </div>
@@ -437,12 +437,12 @@ export function LugaresReferencia() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/95 z-[100] flex flex-col justify-between p-4 md:p-6 backdrop-blur-xl select-none"
+            className="fixed inset-0 bg-black/95 z-[100000] flex flex-col justify-between p-3 md:p-4 backdrop-blur-xl select-none"
             onClick={closeLightbox}
           >
             {/* Barra superior de controles del Lightbox */}
             <div
-              className="flex items-center justify-between gap-4 w-full max-w-7xl mx-auto z-10"
+              className="flex items-center justify-between gap-4 w-full max-w-7xl mx-auto z-10 shrink-0"
               onClick={(e) => e.stopPropagation()}
             >
               <div>
@@ -483,7 +483,7 @@ export function LugaresReferencia() {
 
             {/* Escenario central de visualización con preservación absoluta de escala y ratio */}
             <div
-              className="relative w-full flex-1 max-h-[75vh] md:max-h-[80vh] flex items-center justify-center p-2 md:p-6 overflow-hidden"
+              className="relative w-full flex-1 min-h-0 flex items-center justify-center p-2 overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <AnimatePresence mode="wait">
@@ -496,7 +496,6 @@ export function LugaresReferencia() {
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.25 }}
                   className="max-h-full max-w-full w-auto h-auto object-contain shadow-2xl rounded-lg"
-                  style={{ maxHeight: "calc(100vh - 180px)" }}
                 />
               </AnimatePresence>
 
@@ -525,7 +524,7 @@ export function LugaresReferencia() {
 
             {/* Barra inferior de detalles y miniaturas en Lightbox */}
             <div
-              className="w-full max-w-4xl mx-auto flex flex-col items-center gap-3 z-10"
+              className="w-full max-w-4xl mx-auto flex flex-col items-center gap-2 z-10 shrink-0 pt-2"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Pie de foto y créditos */}
@@ -535,9 +534,6 @@ export function LugaresReferencia() {
                     {currentImage.caption}
                   </p>
                 )}
-                <p className="font-mono text-[10px] text-white/50">
-                  {currentImage.credits || activeLugar.credits}
-                </p>
               </div>
 
               {/* Tira de miniaturas interactiva en pantalla completa */}

@@ -240,7 +240,10 @@ export function ArtistGallery() {
                       {/* Info Panel */}
                       <div className="lg:col-span-5 flex flex-col justify-center lg:sticky lg:top-32">
                         <span className="font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#C1533B] block mb-3">
-                          {meta.date} · Arcilla Roja
+                          {meta.date} · Arcilla Roja 
+                        </span>
+                        <span className="font-mono text-[16px] md:text-xs tracking-[0.3em] text-[#C1533B] block mb-3">
+                          Dr. Eduardo Rodríguez Ataíde
                         </span>
                         <h3 className="font-serif text-3xl md:text-4xl text-text-primary mb-4 leading-tight">
                           {meta.title}
