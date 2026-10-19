@@ -103,11 +103,6 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.Rio_Magdalena_Honda_3.webp",
         caption: "El Río Grande de la Magdalena en la ruta fluvial hacia el interior del reino",
-        credits: "Archivo Personal | Patricia Enciso P.",
-      },
-      {
-        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/4.Honda-Rio-Magdalena.webp",
-        caption: "El Río Grande de la Magdalena en la ruta fluvial hacia el interior del reino",
         credits: "Yilmar Javier Amaya P. | Las 2 Orillas",
       },
       {
