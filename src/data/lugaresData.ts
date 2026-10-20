@@ -157,10 +157,31 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     id: "garzon",
     name: "Garzón y Timaná",
     subtitle: "Matrimonio, vida laboral y primer monte",
-    description: "Tierras del Alto Magdalena donde Joseph contrajo matrimonio, vivió en familia y conoció las primeras tentaciones de aislamiento en el monte, preludio de su definitivo retiro eremítico.",
+    description: "Tierras del Alto Magdalena donde Joseph contrajo matrimonio, vivió en familia y trabajó como mercader.",
     imageUrl: "",
     credits: "Archivo Histórico Regional",
-    images: [],
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/6.-Timana-Martin-Horts.webp",
+        caption: "Timaná - Fotografía tomada por el profesor alemán Martín Horts, en su viaje de Bogotá a San Agustin (1934 - 1942)",
+        credits: "Museo Etnológico de Dresde Alemania",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/6.-Timana-Martin-Horts-2.webp",
+        caption: "Timaná - Fotografía tomada por el profesor alemán Martín Horts, en su viaje de Bogotá a San Agustin (1934 - 1942)",
+        credits: "Museo Etnológico de Dresde Alemania",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/6.-garzon-martin-horts-2.webp",
+        caption: "Garzón - Fotografía tomada por el profesor alemán Martín Horts, en su viaje de Bogotá a San Agustin (1934 - 1942)",
+        credits: "Museo Etnológico de Dresde Alemania",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/6.-garzon-martin-horts.webp",
+        caption: "Garzón - Fotografía tomada por el profesor alemán Martín Horts, en su viaje de Bogotá a San Agustin (1934 - 1942)",
+        credits: "Museo Etnológico de Dresde Alemania",
+      },
+    ],
   },
   {
     id: "chiquinquira",
@@ -169,7 +190,18 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     description: "Foco de peregrinación mariana en el altiplano cundiboyacense. Joseph acudía al santuario en busca de guía espiritual y devoción mariana en sus etapas de discernimiento místico.",
     imageUrl: "",
     credits: "Archivo Basílica de Chiquinquirá",
-    images: [],
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/7.-ermita_san_lazaro.webp.webp",
+        caption: "Ermita de San Lázaro (Hernán Díaz, 1931-2009)",
+        credits: "Colección Banco de la República - Biblioteca virtual",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/7.canastos-chiquinquira.webp",
+        caption: "Mercado de canastos Chiquinquirá (Hernán Díaz, 1931-2009)",
+        credits: "Colección Banco de la República - Biblioteca virtual",
+      },
+    ],
   },
   {
     id: "candelaria",
