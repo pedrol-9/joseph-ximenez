@@ -237,14 +237,24 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     credits: "Monasterio de La Candelaria, Ráquira",
     images: [
       {
-        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/8.convento_la_candelaria.webp",
-        caption: "Fachada y claustro colonial del Convento de Nuestra Señora de la Candelaria",
-        credits: "Monasterio de La Candelaria, Ráquira",
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/9.Convento_de_la_candelaria.webp",
+        caption: "Claustro colonial del Monasterio de Nuestra Señora de la Candelaria",
+        credits: "Archivo Personal | Eduardo Rodríguez Ataíde",
       },
       {
-        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/7.desierto_candelaria.webp",
-        caption: "Caminos pedregosos y colinas que conectaban las chozas con el santuario",
-        credits: "Registro fotográfico regional",
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/9.convento_de_la%20_candelaria_2.webp",
+        caption: "Claustro colonial del Monasterio de Nuestra Señora de la Candelaria",
+        credits: "Archivo Personal | Pedro Luis Sanabria Q.",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/9.convento_de_la_candelaria_4.webp.jpg",
+        caption: "Altar colonial del Monasterio de Nuestra Señora de la Candelaria",
+        credits: "Archivo Personal | Pedro Luis Sanabria Q.",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/9.convento-de-la-candelaria.5.webp",
+        caption: "Entrada al Monasterio de Nuestra Señora de la Candelaria",
+        credits: "Archivo Personal | Juan Sebastián Rojas E.",
       },
     ],
   },
