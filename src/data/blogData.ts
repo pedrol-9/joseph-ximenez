@@ -85,7 +85,7 @@ export const blogArticles: BlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "El convento de la Candelaria llamaba especialmente su atención, por haber sido fundado por un grupo de ermitaños que fueron a vivir al desierto para orar y construyeron en 1597 una pequeña ermita en homenaje a la Virgen de la Candelaria. Según la historia que conocía, cuando estos hombres llegaron al desierto vivían en cuevas labradas en las rocas y vestían con túnicas de sayal, dedicaban el tiempo a la contemplación de los divinos misterios, hacían penitencia y largos ayunos, y sólo rompían su retiro los domingos, para asistir a misa, confesarse y comulgar. Algunos años después, fundaron el convento (Enciso, 1995).",
+        text: "El Monasterio de la Candelaria llamaba especialmente su atención, por haber sido fundado por un grupo de ermitaños que fueron a vivir al desierto para orar y construyeron en 1597 una pequeña ermita en homenaje a la Virgen de la Candelaria. Según la historia que conocía, cuando estos hombres llegaron al desierto vivían en cuevas labradas en las rocas y vestían con túnicas de sayal, dedicaban el tiempo a la contemplación de los divinos misterios, hacían penitencia y largos ayunos, y sólo rompían su retiro los domingos, para asistir a misa, confesarse y comulgar. Algunos años después, fundaron el convento (Enciso, 1995).",
       },
       {
         type: "paragraph",

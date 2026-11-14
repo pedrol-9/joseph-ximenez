@@ -230,7 +230,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
   },
   {
     id: "convento_candelaria",
-    name: "Convento de la Candelaria",
+    name: "Monasterio de la Candelaria",
     subtitle: "Monasterio de Recoletos de San Agustín",
     description: "Fundado en 1597 por ermitaños agustinos recoletos. Joseph asistía periódicamente a confesar y comulgar antes de alcanzar el estado de unión mística interior que lo llevó a prescindir de intermediarios.",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/8.convento_la_candelaria.webp",
@@ -260,12 +260,18 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
   },
   {
     id: "eccehomo",
-    name: "Convento del Santo Eccehomo",
+    name: "Monasterio del Santo Eccehomo",
     subtitle: "Monasterio dominico y denuncia",
-    description: "Cercano al retiro de Joseph, este convento de los frailes dominicos fue punto clave donde el cura de Oicatá conoció los cuadernos del ermitaño e inició las pesquisas inquisitoriales.",
+    description: "Cercano al retiro de Joseph, quien lo visitaba ocasionalmente.",
     imageUrl: "",
     credits: "Archivo de la Orden de Predicadores",
-    images: [],
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/10.eccehomo.webp",
+        caption: "Vista de la fachada del Monasterio del Santo Eccehomo",
+        credits: "Archivo Personal | Pedro Luis Sanabria Q.",
+      },
+    ],
   },
   {
     id: "sachica",
@@ -274,16 +280,33 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     description: "Población boyacense donde fue recluido inicialmente tras la orden de captura dictada en julio de 1676, iniciando el largo periplo carcelario custodiado por la autoridad eclesiástica.",
     imageUrl: "",
     credits: "Archivo Municipal de Sáchica",
-    images: [],
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/11.S%C3%A1chica.webp",
+        caption: "Vista de la fachada de la Parroquia San Lorenzo",
+        credits: "Archivo página web Gobernación de Boyacá",
+      },
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/11.S%C3%A1chica.01.webp",
+        caption: "Panorámica de Sáchica",
+        credits: "El Espectador, Sección turismo | Bohío Travel - 05 de mayo 2026 ",
+      },
+    ],
   },
   {
     id: "santafe",
-    name: "Santafé de Bogotá",
+    name: "Santafé",
     subtitle: "Reclusión de tránsito en conventos",
     description: "Capital virreinal donde fue interrogado y recluido provisionalmente antes de su remisión forzosa hacia el tribunal del Santo Oficio de la Inquisición en Cartagena.",
     imageUrl: "",
     credits: "Archivo General de la Nación, Colombia",
-    images: [],
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/12.santafe_catedral_primada.webp",
+        caption: "Vista de la fachada principal de la Catedral de Bogotá | Cuéllar Jiménez, Gumersindo 1891 - 1958",
+        credits: "Colección Banco de la República - Biblioteca virtual",
+      },
+    ],
   },
   {
     id: "cartagena",
