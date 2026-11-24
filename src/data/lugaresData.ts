@@ -212,7 +212,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     id: "candelaria",
     name: "Desierto de la Candelaria",
     subtitle: "Eremitorio principal y silencio contemplativo",
-    description: "Valle del Desierto de la Candelaria donde Joseph construyó su humilde choza de sayal y piedras. Allí pasó once años de ayuno, penitencia y redacción de sus 29 cuadernos de revelaciones divinas.",
+    description: "",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/7.desierto_candelaria.webp",
     credits: "Fotografía del entorno eremítico",
     images: [
@@ -232,7 +232,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     id: "convento_candelaria",
     name: "Monasterio de la Candelaria",
     subtitle: "Monasterio de Recoletos de San Agustín",
-    description: "Fundado en 1597 por ermitaños agustinos recoletos. Joseph asistía periódicamente a confesar y comulgar antes de alcanzar el estado de unión mística interior que lo llevó a prescindir de intermediarios.",
+    description: "Fundado en 1597 por ermitaños agustinos recoletos.",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/8.convento_la_candelaria.webp",
     credits: "Monasterio de La Candelaria, Ráquira",
     images: [
@@ -260,15 +260,15 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
   },
   {
     id: "eccehomo",
-    name: "Monasterio del Santo Eccehomo",
-    subtitle: "Monasterio dominico y denuncia",
-    description: "Cercano al retiro de Joseph, quien lo visitaba ocasionalmente.",
+    name: "Convento del Santo Eccehomo",
+    subtitle: "Convento dominico del Valle de la Candelaria",
+    description: "Cercano al retiro de Joseph.",
     imageUrl: "",
     credits: "Archivo de la Orden de Predicadores",
     images: [
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/10.eccehomo.webp",
-        caption: "Vista de la fachada del Monasterio del Santo Eccehomo",
+        caption: "Convento del Santo Eccehomo",
         credits: "Archivo Personal | Pedro Luis Sanabria Q.",
       },
     ],
@@ -283,7 +283,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     images: [
       {
         url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/11.S%C3%A1chica.webp",
-        caption: "Vista de la fachada de la Parroquia San Lorenzo",
+        caption: "Parroquia San Lorenzo",
         credits: "Archivo página web Gobernación de Boyacá",
       },
       {
@@ -297,13 +297,13 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     id: "santafe",
     name: "Santafé",
     subtitle: "Reclusión de tránsito en conventos",
-    description: "Capital virreinal donde fue interrogado y recluido provisionalmente antes de su remisión forzosa hacia el tribunal del Santo Oficio de la Inquisición en Cartagena.",
+    description: "Capital virreinal donde Joseph fue interrogado antes de su remisión hacia el tribunal del Santo Oficio de la Inquisición en Cartagena de Indias.",
     imageUrl: "",
     credits: "Archivo General de la Nación, Colombia",
     images: [
       {
-        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/12.santafe_catedral_primada.webp",
-        caption: "Vista de la fachada principal de la Catedral de Bogotá | Cuéllar Jiménez, Gumersindo 1891 - 1958",
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/12.santafe_catedral_pintura.webp",
+        caption: "Plaza Mayor de Bogotá, 1846 | Acuarela de Edward Mark Walhouse",
         credits: "Colección Banco de la República - Biblioteca virtual",
       },
     ],
