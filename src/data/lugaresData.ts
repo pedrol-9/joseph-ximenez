@@ -51,7 +51,7 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
     id: "cadiz",
     name: "Cádiz",
     subtitle: "Puerto de partida y huida",
-    description: "Principal puerto marítimo de la Carrera de Indias. Desde sus muelles partían las flotas de galeones hacia el Caribe y fue el escenario de partida de Joseph rumbo a América.",
+    description: "Puerto marítimo de la Carrera de Indias. Fue el escenario de partida de Joseph rumbo a América.",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/2.c%C3%A1diz_pintura.webp",
     credits: "Pintura de época colonial / Archivo de Indias",
     images: [
@@ -311,10 +311,16 @@ export const LUGARES_REFERENCIA: LugarReferencia[] = [
   {
     id: "cartagena",
     name: "Cartagena de Indias",
-    subtitle: "Cárceles secretas y hoguera",
-    description: "Sede del Tribunal del Santo Oficio de la Inquisición. Tras años en las húmedas cárceles secretas, Joseph fue condenado como hereje dogmatizante y martirizado en auto de fe.",
+    subtitle: "Cárcel secreta y audiencias",
+    description: "Palacio del Tribunal del Santo Oficio de la Inquisición de Cartagena de Indias.",
     imageUrl: "",
     credits: "Palacio de la Inquisición, Cartagena",
-    images: [],
+    images: [
+      {
+        url: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/lugares_referencia/13.Casa_Inquisicion.webp",
+        caption: "Vista exterior del Palacio de la Inquisición de Cartagena de Indias.",
+        credits: "Mario Roberto Durán Ortiz | Wikimedia",
+      },
+    ],
   },
 ];
