@@ -5,7 +5,7 @@ export const CARDS = [
     title: "El Padre del Monacato",
     dates: "251 — 356 d.C.",
     location: "Desierto de Egipto",
-    description: "Considerado el iniciador de la vida eremítica. Vendió todas sus posesiones, entregó el dinero a los pobres y se retiró a la soledad del desierto. Allí soportó terribles tentaciones espirituales and físicas, marcando el camino del ascetismo puro que inspiraría a incontables místicos, incluido Joseph Ximénez.",
+    description: "Considerado el iniciador de la vida eremítica. Vendió todas sus posesiones, entregó el dinero a los pobres y se retiró a la soledad del desierto. Allí soportó terribles tentaciones espirituales y físicas, marcando el camino del ascetismo puro que inspiraría a incontables místicos.",
     imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/san_antonio_abad.jpg",
     badgeColor: "#544b42",
   },

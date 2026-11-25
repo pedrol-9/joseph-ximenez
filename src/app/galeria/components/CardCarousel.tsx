@@ -148,7 +148,7 @@ export const CardCarousel = () => {
       <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 pt-12">
         <div className="text-center mb-8 md:mb-12">
           <h1 className="font-serif text-3xl md:text-5xl text-text-primary">
-            Místicos de la Historia
+            Ejemplos de vida Mística
           </h1>
         </div>
 
