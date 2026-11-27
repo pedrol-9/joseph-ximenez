@@ -42,11 +42,21 @@ export const CARDS = [
   {
     id: 5,
     name: "Santa Teresa de Jesús",
-    title: "La Doctora del Castillo Interior",
+    title: "Autora de Las Moradas",
     dates: "1515 — 1582",
     location: "Ávila, España",
-    description: "Una de las cumbres de la mística universal y Doctora de la Iglesia. Reformadora de la Orden del Carmen, propuso un camino de oración basado en el recogimiento interior y el silencio contemplativo. En su obra 'El castillo interior', describe el alma como una fortaleza de moradas donde reside Dios.",
-    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/santa-teresa-de-Jesus.webp",
+    description: "Escritora y Doctora de la Iglesia. Fundó numerosos conventos de Carmelitas Descalzas y promovió una vida de oración y austeridad. Entre sus obras más destacadas están: Libro de la vida, Camino de perfección, Las moradas y Libro de las fundaciones, referentes de la literatura mística española.",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/Santa_Teresa_de_%C3%81vila.webp",
+    badgeColor: "#544b42",
+  },
+  {
+    id: 6,
+    name: "Santa Rosa de Lima",
+    title: "La mística peruana canonizada",
+    dates: "1586 — 1617",
+    location: "Lima, Virreinato del Perú",
+    description: "Primera santa nacida en América, fue una dominica seglar dedicada a la oración, la contemplación y el servicio a los necesitados. Reconocida por su profunda fe y compasión, fue canonizada en 1671 y es patrona de América y Filipinas.",
+    imageUrl: "https://rp9jryczlxa748zk.public.blob.vercel-storage.com/ermitanios_de_la_historia/Sta_Rosa_de_Lima.webp",
     badgeColor: "#544b42",
   }
 ];
